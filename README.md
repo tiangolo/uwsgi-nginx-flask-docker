@@ -208,7 +208,7 @@ The main default file is only in `/app/main.py`. And in the case of the tag `fla
 
 But those files render a "(default)" text in the served web page, so that you can check if you are seeing the default code or your own code overriding the default.
 
-Your app code should be in the container's `/app` directory, it should have a `main.py` file (or somehow a `main` module) and that `main.py` file (or module) should have a Flask object `app`.
+Your app code should be in the container's `/app` directory, it should have a `main.py` file and that `main.py` file should have a Flask object `app`.
 
 If you follow the instructions above or use one of the downloadable example templates, you should be OK.
 
