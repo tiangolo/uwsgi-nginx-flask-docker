@@ -52,8 +52,8 @@ COPY ./app /app
 * Create an `app` directory and enter in it
 * Create a `main.py` file (it should be named like that and should be in your `app` directory) with:
 
- ```
- from flask import Flask
+```
+from flask import Flask
 app = Flask(__name__)
 
 @app.route("/")
@@ -62,7 +62,7 @@ def hello():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True, port=80)
- ```
+```
 
  the main application object should be named `app` (in the code) as in this example.
 
