@@ -8,19 +8,22 @@ This Docker image allows you to create [**Flask**](http://flask.pocoo.org/) appl
 
 uWSGI with Nginx is one of the best ways to deploy a Python application, so you you should have a [good performance (check the benchmarks)](http://nichol.as/benchmark-of-python-web-servers) with this image.
 
+**GitHub repo**: <https://github.com/tiangolo/uwsgi-nginx-flask-docker>
+**Docker Hub image**: <https://hub.docker.com/r/tiangolo/uwsgi-nginx-flask/>
+
 ## General Instructions
 
 You don't have to clone this repo, you should be able to use this image as a base image for your project.
 
 There are two image tags:
 
-* **`flask`** (also `latest`): An image based on the **tiangolo/uwsgi-nginx** image. This image includes Flask and a sample template app.
+* **`flask`** (also `latest`): An image based on the [**tiangolo/uwsgi-nginx**](https://hub.docker.com/r/tiangolo/uwsgi-nginx/) image. This image includes Flask and a sample template app.
 
-The image **tiangolo/uwsgi-nginx** has uWSGI and Nginx installed in the same container and is made to be the base of this image.
+The image [**tiangolo/uwsgi-nginx**](https://hub.docker.com/r/tiangolo/uwsgi-nginx/) has uWSGI and Nginx installed in the same container and is made to be the base of this image.
 
 You probably want to use this (`uwsgi-nginx-flask:flask`) as your base image.
 
-* **`flask-index`**: An image based on the **flask** image, but optimizing the configuration to make Nginx serve `/app/static/index.html` directly when requested for `/`.
+* **`flask-index`**: An image based on the **`flask`** image, but optimizing the configuration to make Nginx serve `/app/static/index.html` directly when requested for `/`.
 This is specially helpful (and efficient) if you are building a single-page app without templates (as with Angular JS) and using Flask as an API / back-end.
 
 ## Creating a Flask Docker project
@@ -115,11 +118,11 @@ Roughly:
 
 * **Your Python code** has the actual application, and is run by uWSGI.
 
-The image **`tiangolo/uwsgi-nginx`** takes advantage of already slim and optimized existing Docker images (based on Debian as [recommended by Docker](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)) and implements Docker best practices.
+The image [**tiangolo/uwsgi-nginx**](https://hub.docker.com/r/tiangolo/uwsgi-nginx/) takes advantage of already slim and optimized existing Docker images (based on Debian as [recommended by Docker](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)) and implements Docker best practices.
 
 It uses the official Python Docker image, installs uWSGI and on top of that, with the least amount of modifications, adds the official Nginx image (as of 2016-02-14).
 
-This image is based on the image **`tiangolo/uwsgi-nginx`** and adds Flask and sensible defaults on top of it.
+This image is based on the image [**tiangolo/uwsgi-nginx**](https://hub.docker.com/r/tiangolo/uwsgi-nginx/) and adds Flask and sensible defaults on top of it.
 
 If you follow the instructions and keep the root directory `/app` in your container, with a file named `main.py` and a Flask object named `app` in it, it should "just work".
 
