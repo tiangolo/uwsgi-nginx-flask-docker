@@ -150,6 +150,8 @@ docker run -d --name mycontainer -p 80:80 myimage
 
 * Now, when you go to your Docker container URL, for example: <http://192.168.99.100/>, you will see your `index.html` as if you were in <http://192.168.99.100/static/index.html>.
 
+* You should be able to also go to, for example: <http://192.168.99.100/hello> to see a "Hello World" page served by Flask.
+
 
 ## Technical details
 
@@ -188,6 +190,20 @@ That helps, for example, isolating an app from its database in different contain
 But if you want to have a "micro-services" approach you may want to [have more than one process in one container](https://valdhaus.co/writings/docker-misconceptions/) if they are all related to the same "service", and you may want to include your Flask code, uWSGI and Nginx in the same container (and maybe run another container with your database).
 
 That's the approach taken in this image.
+
+---
+
+You should be aware that these images have some default files, so if you run them by themselves (not as the base images of your own project) you will see a default "Hello World" web app.
+
+When you build a `Dockerfile` with a `COPY ./app /app` you replace those default files with your app code.
+
+The main default file is only in `/app/main.py`. And in the case of the tag `flask-index`, also in `/app/static/index.html`.
+
+But those files render a "(default)" text in the served web page, so that you can check if you are seeing the default code or your own code overriding the default.
+
+There is also a `/app/uwsgi.ini` file inside the images with the default parameters for uWSGI.
+
+In the downloadable examples is a copy of the same `uwsgi.ini` file for debugging purposes. To learn more, read the **Advanced instructions** below.
 
 ## Advanced instructions
 
