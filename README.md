@@ -52,7 +52,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    print "test"
     return "Hello World from Flask"
 
 if __name__ == "__main__":
@@ -143,6 +142,10 @@ That helps, for example, isolating an app from its database in different contain
 But if you want to have a "micro-services" approach you may want to [have more than one process in one container](https://valdhaus.co/writings/docker-misconceptions/) if they are all related to the same "service", and you may want to include your Flask code, uWSGI and Nginx in the same container (and maybe run another container with your database).
 
 That's the approach taken in this image.
+
+## Advanced instructions
+
+
 
 ## License
 
