@@ -299,7 +299,7 @@ def main():
     return send_file('./static/index.html')
 ```
 
-that makes sure your app also serves the `/app/static/index.html` file when requested for `/`.
+That makes sure your app also serves the `/app/static/index.html` file when requested for `/`.
 
  That's how it is written in the tutorial above and is included in the downloadable examples.
 
