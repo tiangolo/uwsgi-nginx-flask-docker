@@ -4,7 +4,7 @@
 
 ## Description
 
-This Docker image allows you to create [**Flask**](http://flask.pocoo.org/) applications in [**Python**](https://www.python.org/) that run with [**uWSGI**](https://uwsgi-docs.readthedocs.org/en/latest/) and [**Nginx**](http://nginx.org/en/).
+This Docker image allows you to create [**Flask**](http://flask.pocoo.org/) applications in [**Python**](https://www.python.org/) that run with [**uWSGI**](https://uwsgi-docs.readthedocs.org/en/latest/) and [**Nginx**](http://nginx.org/en/) in a single container.
 
 uWSGI with Nginx is one of the best ways to deploy a Python application, so you you should have a [good performance (check the benchmarks)](http://nichol.as/benchmark-of-python-web-servers) with this image.
 
