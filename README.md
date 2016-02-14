@@ -6,7 +6,7 @@
 
 This Docker image allows you to create [**Flask**](http://flask.pocoo.org/) web applications in [**Python**](https://www.python.org/) that run with [**uWSGI**](https://uwsgi-docs.readthedocs.org/en/latest/) and [**Nginx**](http://nginx.org/en/) in a single container.
 
-uWSGI with Nginx is one of the best ways to deploy a Python application, so you you should have a [good performance (check the benchmarks)](http://nichol.as/benchmark-of-python-web-servers) with this image.
+uWSGI with Nginx is one of the best ways to deploy a Python web application, so you you should have a [good performance (check the benchmarks)](http://nichol.as/benchmark-of-python-web-servers) with this image.
 
 **GitHub repo**: <https://github.com/tiangolo/uwsgi-nginx-flask-docker>
 
@@ -32,7 +32,7 @@ Use `FROM tiangolo/uwsgi-nginx-flask:flask-index` in your `Dockerfile` to use th
 
 ## Creating a Flask project with Docker
 
-**Note**: These instructions are for the `flask` tag and are intended for a general purpose Flask application.
+**Note**: These instructions are for the `flask` tag and are intended for a general purpose Flask web application.
 
 You can download this example and use it as the template for your project: [**example-flask**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.0/example-flask.zip>).
 
@@ -164,7 +164,7 @@ docker run -d --name mycontainer -p 80:80 myimage
 
 ## Technical details
 
-One of the best ways to deploy a Python application is with uWSGI and Nginx, as seen in the [benchmarks](http://nichol.as/benchmark-of-python-web-servers).
+One of the best ways to deploy a Python web application is with uWSGI and Nginx, as seen in the [benchmarks](http://nichol.as/benchmark-of-python-web-servers).
 
 Roughly:
 
@@ -260,7 +260,7 @@ docker run -d --name mycontainer -p 80:80 -v $(pwd)/app:/app myimage
 
 If you go to your Docker container URL you should see your app, and you should be able to modify files in `./app/static/` and see those changes reflected in your browser just by reloading.
 
-...but, as uWSGI loads your whole Python Flask application once it starts, you won't be able to edit your Python Flask code and see the changes reflected.
+...but, as uWSGI loads your whole Python Flask web application once it starts, you won't be able to edit your Python Flask code and see the changes reflected.
 
 To be able to (temporarily) debug your Python Flask code live, you can run your container overriding the default command (that starts Supervisord which in turn starts uWSGI and Nginx) and run your application directly with `python`, in debug mode.
 
