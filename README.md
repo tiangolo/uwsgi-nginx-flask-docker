@@ -91,7 +91,7 @@ You can download these example files and use them as the template for your proje
 
 ---
 
-Or you may follow the instructions to build your project from scratch (it's very similar to the instructions above):
+Or you may follow the instructions to build your project from scratch (it's very similar to the procedure above):
 
 * Go to your project directory
 * Create a `Dockerfile` with:
