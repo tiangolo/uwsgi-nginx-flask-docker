@@ -30,7 +30,7 @@ This is specially helpful (and efficient) if you are building a single-page app 
 
 You may use the files in this example and use them as the template for your project:
 
-----
+---
 
 Or you may follow the instructions to build it from scratch:
 
@@ -77,13 +77,41 @@ docker run -d --name mycontainer -p 80:80 myimage
 
 ## Creating an Angular JS app (or similar) with Flask with Docker
 
-* Do the same as above but create the `Dockerfile` with:
+You may use the files in this example and use them as the template for your project:
+
+---
+
+Or you may follow the instructions to build it from scratch (it's very similar to the instructions above):
+
+* Go to your project directory
+* Create a `Dockerfile` with:
 
 ```
 FROM tiangolo/uwsgi-nginx-flask:flask-index
 
 COPY ./app /app
 ```
+
+* Create an `app` directory and enter in it
+* Create a `main.py` file (it should be named like that and should be in your `app` directory) with:
+
+```
+from flask import Flask, send_file
+app = Flask(__name__)
+
+@app.route("/hello")
+def hello():
+    return "Hello World from Flask"
+
+@app.route("/")
+def main():
+    return send_file('./static/index.html')
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', debug=True, port=80)
+```
+
+ the main application object should be named `app` (in the code) as in this example.
 
 * Make sure you have an `index.html` file in `./app/static/index.html`, for example with:
 
@@ -100,9 +128,22 @@ COPY ./app /app
 </html>
 ```
 
-* Now, when you go to your Docker container URL, for example: <http://192.168.99.100/>, you will see your `index.html` as if you were in <http://192.168.99.100/static/index.html>.
+* Go to the project directory (in where your `Dockerfile` is, containing your `app` directory)
+* Build your Flask image:
 
-You may check that Nginx is serving your `index.html` file by checking in your browser that you see "Hello World from HTML" instead of just "Hello World" (as specified in the Flask app code).
+```
+docker build -t myimage .
+```
+
+* Run a container based on your image:
+
+```
+docker run -d --name mycontainer -p 80:80 myimage
+```
+
+...and you have an optimized Flask server in a Docker container. Also optimized to serve your main non-templated `index.html` page.
+
+* Now, when you go to your Docker container URL, for example: <http://192.168.99.100/>, you will see your `index.html` as if you were in <http://192.168.99.100/static/index.html>.
 
 
 ## Technical details
