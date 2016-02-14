@@ -196,7 +196,7 @@ Supervisord takes care of running uWSGI with the `uwsgi.ini` file in `/app` file
 
 There's the rule of thumb that you should have "one process per container".
 
-That helps, for example, isolating an app from its database in different containers.
+That helps, for example, isolating an app and its database in different containers.
 
 But if you want to have a "micro-services" approach you may want to [have more than one process in one container](https://valdhaus.co/writings/docker-misconceptions/) if they are all related to the same "service", and you may want to include your Flask code, uWSGI and Nginx in the same container (and maybe run another container with your database).
 
