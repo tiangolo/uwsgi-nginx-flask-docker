@@ -114,7 +114,9 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True, port=80)
 ```
 
- the main application object should be named `app` (in the code) as in this example.
+the main application object should be named `app` (in the code) as in this example.
+
+**Note**: The section with the `main()` function is for debugging purposes. To learn more, read the **Advanced instructions** below.
 
 * Make sure you have an `index.html` file in `./app/static/index.html`, for example with:
 
