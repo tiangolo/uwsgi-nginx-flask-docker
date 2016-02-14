@@ -279,7 +279,7 @@ For these last steps to work (live debugging and development), your Python Flask
     app.run(host='0.0.0.0', debug=True, port=80)
  ```
 
-otherwise your app will only listen to localhost (inside the container), in another port (5000) and not in debug mode.
+otherwise your app will only listen to localhost (inside the container) and in another port (5000) and not in debug mode.
 
 ---
 
