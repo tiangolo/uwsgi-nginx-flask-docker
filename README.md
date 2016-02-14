@@ -172,7 +172,7 @@ Roughly:
 
 * **uWSGI** is an application server, that's what runs your Python code.
 
-* **Your Python code** has the actual **Flask** application, and is run by uWSGI.
+* **Your Python code** has the actual **Flask** web application, and is run by uWSGI.
 
 The image [**tiangolo/uwsgi-nginx**](https://hub.docker.com/r/tiangolo/uwsgi-nginx/) takes advantage of already slim and optimized existing Docker images (based on Debian as [recommended by Docker](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)) and implements Docker best practices.
 
