@@ -182,7 +182,7 @@ If you follow the instructions and keep the root directory `/app` in your contai
 
 There's already a `uwsgi.ini` file in the `/app` directory with the uWSGI configurations for it to "just work".
 
-If you need to change the main file name or the main Flask object, you would have to provide your own `uwsgi.ini` file. You may use the file in this repo as a template to start with (you only would have to change 2 lines).
+If you need to change the main file name or the main Flask object, you would have to provide your own `uwsgi.ini` file. You may use the one in this repo as a template to start with (you only would have to change 2 lines).
 
 You can have a `/app/static` directory and those files will be efficiently served by Nginx directly (without going through your Flask code or even uWSGI), it's already configured for you.
 
