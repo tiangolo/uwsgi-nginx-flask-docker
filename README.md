@@ -36,7 +36,7 @@ You can download these example files and use them as the template for your proje
 
 ---
 
-Or you may follow the instructions to build it from scratch:
+Or you may follow the instructions to build your project from scratch:
 
 * Go to your project directory
 * Create a `Dockerfile` with:
