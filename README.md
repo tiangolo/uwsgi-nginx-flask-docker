@@ -200,7 +200,7 @@ That's the approach taken in this image.
 
 ---
 
-You should be aware that this image and tags have some default files, so if you run them by themselves (not as the base images of your own project) you will see a default "Hello World" web app.
+This image (and tags) have some default files, so if you run it by itself (not as the base image of your own project) you will see a default "Hello World" web app.
 
 When you build a `Dockerfile` with a `COPY ./app /app` you replace those default files with your app code.
 
