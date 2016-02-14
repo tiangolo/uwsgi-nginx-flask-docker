@@ -272,7 +272,7 @@ Now you can edit your Flask code in your local machine and once you refresh your
 
 Remember that you should use this only for debugging and development, for deployment you shouldn't mount volumes and you should let Supervisord start and let it start uWSGI and Nginx (which is what happens by default).
 
-For these last steps to work (live debugging and development), your Python code should have that section with:
+For these last steps to work (live debugging and development), your Python Flask code should have that section with:
 
  ```
  if __name__ == "__main__":
@@ -283,9 +283,9 @@ otherwise your app will only listen to localhost (inside the container), in anot
 
 ---
 
-Also, if you want to do the same live debugging using the `flask-index` tag (to serve `/app/static/index.html` directly when requested for `/`) your Nginx won't serve it directly as it won't be running (only your Flask app in debug mode will be running).
+Also, if you want to do the same live debugging using the `flask-index` tag (to serve `/app/static/index.html` directly when requested for `/`) your Nginx won't serve it directly as it won't be running (only your Python Flask app in debug mode will be running).
 
-For that, your Python code should have that section with:
+For that, your Python Flask code should have that section with:
 
 ```
 from flask import Flask, send_file
