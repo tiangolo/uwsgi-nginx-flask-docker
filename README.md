@@ -32,7 +32,7 @@ Use `FROM tiangolo/uwsgi-nginx-flask:flask-index` in your `Dockerfile` to use th
 
 ## Creating a Flask Docker project
 
-You download these example files and use them as the template for your project:
+You can download these example files and use them as the template for your project:
 
 ---
 
