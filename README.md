@@ -211,7 +211,9 @@ callable = app
 
 and then you can do the Docker volume mapping.
 
-* For example, go to your project directory (the one with your `Dockerfile` and your `./app` directory)
+**Note**: A `uwsgi.ini` file is included in the downloadable examples.
+
+* To try it go to your project directory (the one with your `Dockerfile` and your `./app` directory)
 * Make sure you have a `uwsgi.ini` file in your `./app` directory
 * Build your Docker image:
 
@@ -250,7 +252,27 @@ For these last steps to work (live debugging and development), your Python code 
 
 otherwise your app will only listen to localhost (inside the container), in another port (5000) and not in debug mode.
 
-Also, if you want to do the same using
+---
+
+Also, if you want to do the same live debugging using the `flask-index` tag (to serve `/app/static/index.html` directly when requested for `/`) your Nginx won't serve it directly as it won't be running (only your Flask app in debug mode will be running).
+
+For that, your Python code should have that section with:
+
+```
+from flask import Flask, send_file
+```
+
+and
+
+```
+@app.route("/")
+def main():
+    return send_file('./static/index.html')
+```
+
+that makes sure your app also serves the `/app/static/index.html` file when requested for `/`.
+
+ That's how it is written in the tutorial above and is included in the downloadable examples.
 
 ## License
 
