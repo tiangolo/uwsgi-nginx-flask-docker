@@ -34,7 +34,7 @@ Use `FROM tiangolo/uwsgi-nginx-flask:flask-index` in your `Dockerfile` to use th
 
 **Note**: These instructions are for the `flask` tag and are intended for a general purpose Flask application.
 
-You can download these example files and use them as the template for your project:
+You can download this example and use it as the template for your project: [**example-flask**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.0/example-flask.zip>).
 
 ---
 
@@ -87,7 +87,7 @@ You should be able to check it in your Docker container's URL, for example: <htt
 
 **Note**: These instructions are for the `flask-index` tag and are intended for an application that serves a static `index.html` file, as in an Angular JS application.
 
-You can download these example files and use them as the template for your project:
+You can download this example and use it as the template for your project: [**example-flask-index**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.0/example-flask-index.zip>).
 
 ---
 
