@@ -159,6 +159,8 @@ docker run -d --name mycontainer -p 80:80 myimage
 
 * You should be able to also go to, for example: <http://192.168.99.100/hello> to see a "Hello World" page served by Flask.
 
+**Note**: As your `index.html` file will be served from `/` and from `/static/index.html`, the links to other files in the `static` directory from your `index.html` file should be absolute, as in `/static/css/styles.css` instead of relative as in `./css/styles.css`.
+
 
 ## Technical details
 
