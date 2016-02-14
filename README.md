@@ -79,6 +79,8 @@ docker run -d --name mycontainer -p 80:80 myimage
 
 ...and you have an optimized Flask server in a Docker container.
 
+You should be able to check it in your Docker container URL, for example: <http://192.168.99.100/>
+
 ## Creating an Angular JS app (or similar) with Flask with Docker
 
 You may use the files in this example and use them as the template for your project:
