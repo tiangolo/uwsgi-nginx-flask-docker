@@ -256,7 +256,7 @@ docker build -t myimage .
 docker run -d --name mycontainer -p 80:80 -v $(pwd)/app:/app myimage
 ```
 
-if you go to your Docker container URL you should see your app, and you should be able to modify, files in `./app/static/` and see those changes reflected in your browser just by reloading.
+If you go to your Docker container URL you should see your app, and you should be able to modify, files in `./app/static/` and see those changes reflected in your browser just by reloading.
 
 ...but, as uWSGI loads your whole Python Flask application once it starts, you won't be able to edit your Python code and see the changes reflected.
 
