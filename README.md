@@ -256,7 +256,7 @@ docker build -t myimage .
 docker run -d --name mycontainer -p 80:80 -v $(pwd)/app:/app myimage
 ```
 
-If you go to your Docker container URL you should see your app, and you should be able to modify, files in `./app/static/` and see those changes reflected in your browser just by reloading.
+If you go to your Docker container URL you should see your app, and you should be able to modify files in `./app/static/` and see those changes reflected in your browser just by reloading.
 
 ...but, as uWSGI loads your whole Python Flask application once it starts, you won't be able to edit your Python code and see the changes reflected.
 
@@ -268,7 +268,7 @@ So, with all the modifications above and making your app run directly with Pytho
 docker run -d --name mycontainer -p 80:80 -v $(pwd)/app:/app myimage python /app/main.py
 ```
 
-Now you can edit your Flask code in your local machine and once you refresh your browser you will see the changes live.
+Now you can edit your Flask code in your local machine and once you refresh your browser, you will see the changes live.
 
 Remember that you should use this only for debugging and development, for deployment you shouldn't mount volumes and you should let Supervisord start and let it start uWSGI and Nginx (which is what happens by default).
 
