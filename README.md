@@ -21,10 +21,13 @@ There are two image tags:
 
 The image [**tiangolo/uwsgi-nginx**](https://hub.docker.com/r/tiangolo/uwsgi-nginx/) has uWSGI and Nginx installed in the same container and is made to be the base of this image.
 
-You probably want to use this (`uwsgi-nginx-flask:flask`) as your base image.
+Use `FROM tiangolo/uwsgi-nginx-flask:flask` in your `Dockerfile` to use this image. (This would be the most general "default" image).
 
-* **`flask-index`**: An image based on the **`flask`** image, but optimizing the configuration to make Nginx serve `/app/static/index.html` directly when requested for `/`.
+* **`flask-index`**: An image based on the **`flask`** image (above), but optimizing the configuration to make Nginx serve `/app/static/index.html` directly (instead of going through uWSGI and your code) when requested for `/`.
+
 This is specially helpful (and efficient) if you are building a single-page app without templates (as with Angular JS) and using Flask as an API / back-end.
+
+Use `FROM tiangolo/uwsgi-nginx-flask:flask-index` in your `Dockerfile` to use this image.
 
 ## Creating a Flask Docker project
 
@@ -170,9 +173,9 @@ There's already a `uwsgi.ini` file in the `/app` directory with the uWSGI config
 
 If you need to change the main file name or the main Flask object, you would have to provide your own `uwsgi.ini` file. You may use the file in this repo as a template to start with (you only would have to change 2 lines).
 
-You can have a `/app/static` directory and those files will be efficiently served by Nginx directly, it's already configured for you.
+You can have a `/app/static` directory and those files will be efficiently served by Nginx directly (without going through your Flask code or even uWSGI), it's already configured for you.
 
-Supervisord takes care of running uWSGI with that `uwsgi.ini` file and start Nginx.
+Supervisord takes care of running uWSGI with the `uwsgi.ini` file in `/app` file and starting Nginx.
 
 ---
 
@@ -186,7 +189,68 @@ That's the approach taken in this image.
 
 ## Advanced instructions
 
+While developing, you might want to make your code directory a volume in your Docker container.
 
+With that you would have your files (temporarily) updated every time you modify them, without needing to build your container again.
+
+To do this, you can use the command `pwd` (print working directory) inside your `docker run` and the flag `-v` for volumes.
+
+With that you could map your `./app` directory to your container's `/app` directory.
+
+But first, as you will be completely replacing the directory `/app` in your container (and all of its contents) you will need to have a `uwsgi.ini` file in your `./app` directory with:
+
+```
+[uwsgi]
+socket = /tmp/uwsgi.sock
+chown-socket = nginx:nginx
+chmod-socket = 664
+
+module = main
+callable = app
+```
+
+and then you can do the Docker volume mapping.
+
+* For example, go to your project directory (the one with your `Dockerfile` and your `./app` directory)
+* Make sure you have a `uwsgi.ini` file in your `./app` directory
+* Build your Docker image:
+
+```
+docker build -t myimage .
+```
+
+* Run a container based on your image, mapping your code directory (`./app`) to your container's `/app` directory:
+
+```
+docker run -d --name mycontainer -p 80:80 -v $(pwd)/app:/app myimage
+```
+
+if you go to your Docker container URL you should see your app, and you should be able to modify, files in `./app/static/` and see those changes reflected in your browser just by reloading.
+
+...but, as uWSGI loads your whole Python Flask application once it starts, you won't be able to edit your Python code and see the changes reflected.
+
+To be able to (temporarily) debug your Flask code live, you can run your container overriding the default command (that starts Supervisord which in turn starts uWSGI and Nginx) and run your application directly with Python, in debug mode.
+
+So, with all the modifications above and making your app run directly with Python, the final Docker command would be:
+
+ ```
+docker run -d --name mycontainer -p 80:80 -v $(pwd)/app:/app myimage python /app/main.py
+```
+
+Now you can edit your Flask code in your local machine and once you refresh your browser you will see the changes live.
+
+Remember that you should use this only for debugging and development, for deployment you shouldn't mount volumes and you should let Supervisord start and let it start uWSGI and Nginx (which is what happens by default).
+
+For these last steps to work (live debugging and development), your Python code should have that section with:
+
+ ```
+ if __name__ == "__main__":
+    app.run(host='0.0.0.0', debug=True, port=80)
+ ```
+
+otherwise your app will only listen to localhost (inside the container), in another port (5000) and not in debug mode.
+
+Also, if you want to do the same using
 
 ## License
 
