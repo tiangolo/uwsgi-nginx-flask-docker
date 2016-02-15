@@ -1,3 +1,8 @@
+## Supported tags and respective `Dockerfile` links
+
+* [`flask`, `latest` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/flask/Dockerfile)
+* [`flask-index` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/flask-index/Dockerfile)
+
 # uwsgi-nginx-flask
 
 **Docker** image with **uWSGI** and **Nginx** for **Flask** web applications in **Python** running in a single container.
