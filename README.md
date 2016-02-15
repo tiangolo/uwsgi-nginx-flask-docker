@@ -170,7 +170,7 @@ Roughly:
 
 * **Nginx** is a web server, it takes care of the HTTP connections and also can serve static files directly and more efficiently.
 
-* **uWSGI** is an application server, that's what runs your Python code.
+* **uWSGI** is an application server, that's what runs your Python code and it talks with Nginx.
 
 * **Your Python code** has the actual **Flask** web application, and is run by uWSGI.
 
