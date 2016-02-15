@@ -19,9 +19,9 @@ uWSGI with Nginx is one of the best ways to deploy a Python web application, so 
 
 ## Examples (project templates)
 
-* **`flask`** tag (general Flask web application): [**example-flask**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.0/example-flask.zip>)
+* **`flask`** tag (general Flask web application): [**example-flask**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.1/example-flask.zip>)
 
-* For **`flask-index`** tag (`static/index.html` served directly in `/`, e.g. for Angular JS): [**example-flask-index**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.0/example-flask-index.zip>)
+* For **`flask-index`** tag (`static/index.html` served directly in `/`, e.g. for Angular JS): [**example-flask-index**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.1/example-flask-index.zip>)
 
 ## General Instructions
 
@@ -35,7 +35,7 @@ The image [**tiangolo/uwsgi-nginx**](https://hub.docker.com/r/tiangolo/uwsgi-ngi
 
 Use `FROM tiangolo/uwsgi-nginx-flask:flask` in your `Dockerfile` to use this image. (This would be the most general purpose tag image).
 
-You can also use the example template project: [**example-flask**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.0/example-flask.zip>).
+You can also use the example template project: [**example-flask**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.1/example-flask.zip>).
 
 * **`flask-index`**: An image based on the **`flask`** image (above), but optimizing the configuration to make Nginx serve `/app/static/index.html` directly (instead of going through uWSGI and your code) when requested for `/`.
 
@@ -43,13 +43,13 @@ This is specially helpful (and efficient) if you are building a single-page app 
 
 Use `FROM tiangolo/uwsgi-nginx-flask:flask-index` in your `Dockerfile` to use this image.
 
-You can also use the example template project: [**example-flask-index**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.0/example-flask-index.zip>).
+You can also use the example template project: [**example-flask-index**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.1/example-flask-index.zip>).
 
 ## Creating a Flask project with Docker
 
 **Note**: These instructions are for the `flask` tag and are intended for a general purpose Flask web application.
 
-You can download this example and use it as the template for your project: [**example-flask**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.0/example-flask.zip>).
+You can download this example and use it as the template for your project: [**example-flask**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.1/example-flask.zip>).
 
 ---
 
@@ -102,7 +102,7 @@ You should be able to check it in your Docker container's URL, for example: <htt
 
 **Note**: These instructions are for the `flask-index` tag and are intended for an application that serves a static `index.html` file, as in an Angular JS application.
 
-You can download this example and use it as the template for your project: [**example-flask-index**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.0/example-flask-index.zip>).
+You can download this example and use it as the template for your project: [**example-flask-index**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.1/example-flask-index.zip>).
 
 ---
 
