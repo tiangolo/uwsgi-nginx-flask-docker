@@ -1,4 +1,4 @@
-FROM tiangolo/uwsgi-nginx:base
+FROM tiangolo/uwsgi-nginx:latest
 
 MAINTAINER Sebastian Ramirez <tiangolo@gmail.com>
 
