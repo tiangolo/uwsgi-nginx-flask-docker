@@ -12,23 +12,33 @@ uWSGI with Nginx is one of the best ways to deploy a Python web application, so 
 
 **Docker Hub image**: <https://hub.docker.com/r/tiangolo/uwsgi-nginx-flask/>
 
+## Examples (project templates)
+
+* **`flask`** tag (general Flask web application): [**example-flask**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.0/example-flask.zip>)
+
+* For **`flask-index`** tag (`static/index.html` served directly in `/`, e.g. for Angular JS): [**example-flask-index**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.0/example-flask-index.zip>)
+
 ## General Instructions
 
 You don't have to clone this repo, you should be able to use this image as a base image for your project.
 
 There are two image tags:
 
-* **`flask`** (also `latest`): An image based on the [**tiangolo/uwsgi-nginx**](https://hub.docker.com/r/tiangolo/uwsgi-nginx/) image. This image includes Flask and a sample template app.
+* **`flask`** (also `latest`): An image based on the [**tiangolo/uwsgi-nginx**](https://hub.docker.com/r/tiangolo/uwsgi-nginx/) image. This image includes Flask and a sample app.
 
 The image [**tiangolo/uwsgi-nginx**](https://hub.docker.com/r/tiangolo/uwsgi-nginx/) has uWSGI and Nginx installed in the same container and is made to be the base of this image.
 
-Use `FROM tiangolo/uwsgi-nginx-flask:flask` in your `Dockerfile` to use this image. (This would be the most general "default" image).
+Use `FROM tiangolo/uwsgi-nginx-flask:flask` in your `Dockerfile` to use this image. (This would be the most general purpose tag image).
+
+You can also use the example template project: [**example-flask**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.0/example-flask.zip>).
 
 * **`flask-index`**: An image based on the **`flask`** image (above), but optimizing the configuration to make Nginx serve `/app/static/index.html` directly (instead of going through uWSGI and your code) when requested for `/`.
 
-This is specially helpful (and efficient) if you are building a single-page app without templates (as with Angular JS) and using Flask as an API / back-end.
+This is specially helpful (and efficient) if you are building a single-page app without Jinja2 templates (as with Angular JS) and using Flask as an API / back-end.
 
 Use `FROM tiangolo/uwsgi-nginx-flask:flask-index` in your `Dockerfile` to use this image.
+
+You can also use the example template project: [**example-flask-index**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.0/example-flask-index.zip>).
 
 ## Creating a Flask project with Docker
 
