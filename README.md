@@ -317,6 +317,38 @@ That makes sure your app also serves the `/app/static/index.html` file when requ
 
  That's how it is written in the tutorial above and is included in the downloadable examples.
 
+## More advanced instructions
+
+If you follow the instructions above, it's probable that at some point, you will write code that will break your Flask debugging server and it will crash.
+
+And since the only process running was your debugging server, that now is stopped, your container will stop.
+
+Then you will have to start your container again after fixing your code and you won't see very easily what is the error that is crashing your server.
+
+So, while developing, you could do the following (that's what I normally do):
+
+* Make your container run and keep it alive in an infinite loop (without running any server):
+
+```
+docker run -d --name mycontainer -p 80:80 -v $(pwd)/app:/app myimage bash -c "while true ; do sleep 10 ; done"
+```
+
+* Connect to your container with a new interactive session:
+
+```
+docker exec -it mycontainer bash
+```
+
+You will now be inside your container in the `/app` directory.
+
+* Now, from inside the container, run your Flask debugging server:
+
+```
+python main.py
+```
+
+You will see your Flask debugging server start, you will see how it sends responses to every request, you will see the errors thrown when you break your code and how they stop your server and you will be able to re-start your server very fast, by just running the command above again.
+
 ## License
 
 This project is licensed under the terms of the Apache license.
