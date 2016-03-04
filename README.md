@@ -2,6 +2,8 @@
 
 * [`flask`, `latest` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/flask/Dockerfile)
 * [`flask-index` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/flask-index/Dockerfile)
+* [`flask-upload` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/flask-upload/Dockerfile)
+* [`flask-index-upload` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/flask-index-upload/Dockerfile)
 
 # uwsgi-nginx-flask
 
@@ -19,15 +21,19 @@ uWSGI with Nginx is one of the best ways to deploy a Python web application, so 
 
 ## Examples (project templates)
 
-* **`flask`** tag (general Flask web application): [**example-flask**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.1/example-flask.zip>)
+* **`flask`** tag (general Flask web application): [**example-flask**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.2/example-flask.zip>)
 
-* For **`flask-index`** tag (`static/index.html` served directly in `/`, e.g. for Angular JS): [**example-flask-index**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.1/example-flask-index.zip>)
+* **`flask-upload`** tag (general Flask web application. Allowing uploads of up to 100 MB.): [**example-flask-upload**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.2/example-flask-upload.zip>)
+
+* For **`flask-index`** tag (`static/index.html` served directly in `/`, e.g. for Angular JS): [**example-flask-index**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.2/example-flask-index.zip>)
+
+* For **`flask-index-upload`** tag (`static/index.html` served directly in `/`, e.g. for Angular JS. Allowing uploads of up to 100 MB.): [**example-flask-index-upload**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.2/example-flask-index-upload.zip>)
 
 ## General Instructions
 
 You don't have to clone this repo, you should be able to use this image as a base image for your project.
 
-There are two image tags:
+There are four image tags:
 
 * **`flask`** (also `latest`): An image based on the [**tiangolo/uwsgi-nginx**](https://hub.docker.com/r/tiangolo/uwsgi-nginx/) image. This image includes Flask and a sample app.
 
@@ -37,6 +43,12 @@ Use `FROM tiangolo/uwsgi-nginx-flask:flask` in your `Dockerfile` to use this ima
 
 You can also use the example template project: [**example-flask**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.1/example-flask.zip>).
 
+* **`flask-upload`**: The same as **`flask`** but configuring Nginx to allow uploads of up to 100 MB (the default is 1 MB).
+
+Use `FROM tiangolo/uwsgi-nginx-flask:flask-upload` in your `Dockerfile` to use this image. (This would be the most general purpose tag image).
+
+You can also use the example template project: [**example-flask-upload**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.2/example-flask-upload.zip>).
+
 * **`flask-index`**: An image based on the **`flask`** image (above), but optimizing the configuration to make Nginx serve `/app/static/index.html` directly (instead of going through uWSGI and your code) when requested for `/`.
 
 This is specially helpful (and efficient) if you are building a single-page app without Jinja2 templates (as with Angular JS) and using Flask as an API / back-end.
@@ -44,6 +56,12 @@ This is specially helpful (and efficient) if you are building a single-page app 
 Use `FROM tiangolo/uwsgi-nginx-flask:flask-index` in your `Dockerfile` to use this image.
 
 You can also use the example template project: [**example-flask-index**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.1/example-flask-index.zip>).
+
+* **`flask-index-upload`**: The same as **`flask-index`** but configuring Nginx to allow uploads of up to 100 MB (the default is 1 MB).
+
+Use `FROM tiangolo/uwsgi-nginx-flask:flask-index-upload` in your `Dockerfile` to use this image. (This would be the most general purpose tag image).
+
+You can also use the example template project: [**example-flask-index-upload**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.2/example-flask-index-upload.zip>).
 
 ## Creating a Flask project with Docker
 
@@ -176,6 +194,37 @@ docker run -d --name mycontainer -p 80:80 myimage
 
 **Note**: As your `index.html` file will be served from `/` and from `/static/index.html`, the links to other files in the `static` directory from your `index.html` file should be absolute, as in `/static/css/styles.css` instead of relative as in `./css/styles.css`.
 
+## Customizing Nginx configurations
+
+If you only need to configure Nginx to allow uploads of up to 100 MB, you can use one of the example projects:
+
+* [**example-flask-upload**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.2/example-flask-upload.zip>): With the Docker image tag `flask-upload`, for general purpose Flask web applications with uploads of up to 100 MB (instead of the default 1 MB).
+
+* [**example-flask-index-upload**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.1.2/example-flask-index-upload.zip>): With the Docker image tag `flask-index-upload`, for Flask web applications that serve `/static/index.html` directly when requested for `/` (useful with Angular JS) and with uploads of up to 100 MB (instead of the default 1 MB).
+
+---
+
+If you need to customize your Nginx configuration, you can copy `*.conf` files to `/etc/nginx/conf.d/` in your Dockerfile.
+
+For example:
+
+* Let's imagine you need to set the maximum upload file size to 50 MB, you can then create a file `my_upload_max.conf` with the contents:
+
+```
+client_max_body_size 50m;
+```
+
+* And in your Dockerfile, you can copy that file to the Nginx configurations directory:
+
+```
+FROM tiangolo/uwsgi-nginx-flask:flask
+
+COPY ./my_upload_max.conf /etc/nginx/conf.d/
+
+COPY ./app /app
+```
+
+And that's it. Just have in mind that the basic image tags (`flask` and `flask-index`) add their configurations in a file in `/etc/nginx/conf.d/nginx.conf`. So you shouldn't overwrite it. You should name your `*.conf` file with something different than `nginx.conf`.
 
 ## Technical details
 
