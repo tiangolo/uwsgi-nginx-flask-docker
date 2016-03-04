@@ -284,7 +284,7 @@ There is also a `/app/uwsgi.ini` file inside the images with the default paramet
 
 In the downloadable examples is a copy of the same `uwsgi.ini` file for debugging purposes. To learn more, read the **Advanced instructions** below.
 
-## Advanced instructions
+## Advanced development instructions
 
 While developing, you might want to make your code directory a volume in your Docker container.
 
@@ -371,7 +371,7 @@ That makes sure your app also serves the `/app/static/index.html` file when requ
 
  That's how it is written in the tutorial above and is included in the downloadable examples.
 
-## More advanced instructions
+## More advanced development instructions
 
 If you follow the instructions above, it's probable that at some point, you will write code that will break your Flask debugging server and it will crash.
 
