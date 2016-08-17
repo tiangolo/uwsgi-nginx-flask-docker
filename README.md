@@ -25,21 +25,21 @@ uWSGI with Nginx is one of the best ways to deploy a Python web application, so 
 
 ## Examples (project templates)
 
-* **`flask`** tag (general Flask web application): [**example-flask**](<>)
+* **`flask`** tag (general Flask web application): [**example-flask**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.2.0/example-flask.zip>)
 
-  * *`flask-python3.5`* tag (the equivalent as above, using Python 3.5): [**example-flask-python3.5**](<>)
+  * *`flask-python3.5`* tag (the equivalent as above, using Python 3.5): [**example-flask-python3.5**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.2.0/example-flask-python3.5.zip>)
 
-* **`flask-upload`** tag (general Flask web application. Allowing uploads of up to 100 MB.): [**example-flask-upload**](<>)
+* **`flask-upload`** tag (general Flask web application. Allowing uploads of up to 100 MB.): [**example-flask-upload**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.2.0/example-flask-upload.zip>)
 
-  * *`flask-python3.5-upload`* tag (the equivalent as above, using Python 3.5): [**example-flask-python3.5-upload**](<>)
+  * *`flask-python3.5-upload`* tag (the equivalent as above, using Python 3.5): [**example-flask-python3.5-upload**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.2.0/example-flask-python3.5-upload.zip>)
 
-* **`flask-index`** tag (`static/index.html` served directly in `/`, e.g. for Angular JS): [**example-flask-index**](<>)
+* **`flask-index`** tag (`static/index.html` served directly in `/`, e.g. for Angular JS): [**example-flask-index**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.2.0/example-flask-index.zip>)
 
-  * *`flask-python3.5-index`* tag (the equivalent as above, using Python 3.5): [**example-flask-python3.5-index**](<>)
+  * *`flask-python3.5-index`* tag (the equivalent as above, using Python 3.5): [**example-flask-python3.5-index**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.2.0/example-flask-python3.5-index.zip>)
 
-* **`flask-index-upload`** tag (`static/index.html` served directly in `/`, e.g. for Angular JS. Allowing uploads of up to 100 MB.): [**example-flask-index-upload**](<>)
+* **`flask-index-upload`** tag (`static/index.html` served directly in `/`, e.g. for Angular JS. Allowing uploads of up to 100 MB.): [**example-flask-index-upload**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.2.0/example-flask-index-upload.zip>)
 
-  * *`flask-python3.5-index-upload`* tag (the equivalent as above, using Python 3.5): [**example-flask-python3.5-index-upload**](<>)
+  * *`flask-python3.5-index-upload`* tag (the equivalent as above, using Python 3.5): [**example-flask-python3.5-index-upload**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.2.0/example-flask-python3.5-index-upload.zip>)
 
 ## General Instructions
 
@@ -73,7 +73,7 @@ Use `FROM tiangolo/uwsgi-nginx-flask:flask-index-upload` in your `Dockerfile` to
 
 **Note**: These instructions are for the `flask` tag and are intended for a general purpose Flask web application.
 
-You can download this example and use it as the template for your project: [**example-flask**](<>).
+You can download the **example-flask** project example and use it as the template for your project from the section **Examples** above.
 
 ---
 
@@ -126,7 +126,7 @@ You should be able to check it in your Docker container's URL, for example: <htt
 
 **Note**: These instructions are for the `flask-index` tag and are intended for an application that serves a static `index.html` file, as in an Angular JS application.
 
-You can download this example and use it as the template for your project: [**example-flask-index**](<>).
+You can download the example project **example-flask-index** and use it as the template for your project in the **Examples** section above.
 
 ---
 
@@ -202,11 +202,11 @@ docker run -d --name mycontainer -p 80:80 myimage
 
 ## Customizing Nginx configurations
 
-If you only need to configure Nginx to allow uploads of up to 100 MB, you can use one of the example projects:
+If you only need to configure Nginx to allow uploads of up to 100 MB, you can use one of the example projects from the **Examples** section above:
 
-* [**example-flask-upload**](<>): With the Docker image tag `flask-upload`, for general purpose Flask web applications with uploads of up to 100 MB (instead of the default 1 MB).
+* **example-flask-upload**: With the Docker image tag `flask-upload`, for general purpose Flask web applications with uploads of up to 100 MB (instead of the default 1 MB).
 
-* [**example-flask-index-upload**](<>): With the Docker image tag `flask-index-upload`, for Flask web applications that serve `/static/index.html` directly when requested for `/` (useful with Angular JS) and with uploads of up to 100 MB (instead of the default 1 MB).
+* **example-flask-index-upload**: With the Docker image tag `flask-index-upload`, for Flask web applications that serve `/static/index.html` directly when requested for `/` (useful with Angular JS) and with uploads of up to 100 MB (instead of the default 1 MB).
 
 ---
 
