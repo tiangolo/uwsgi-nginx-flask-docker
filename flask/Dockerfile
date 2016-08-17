@@ -1,4 +1,4 @@
-FROM tiangolo/uwsgi-nginx:python3.5
+FROM tiangolo/uwsgi-nginx:python2.7
 
 MAINTAINER Sebastian Ramirez <tiangolo@gmail.com>
 
