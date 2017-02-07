@@ -409,8 +409,8 @@ You will see your Flask debugging server start, you will see how it sends respon
 If for any reason you wish to run your application outside of the /app directory you may do so by using the following instructions.
 
 add the following file to your project (in the same directory as Dockerfile) 
-filename: `supervisord.conf`
-'''
+Filename: `supervisord.conf`
+```
 [supervisord]
 nodaemon=true
 
@@ -427,7 +427,7 @@ stdout_logfile=/dev/stdout
 stdout_logfile_maxbytes=0
 stderr_logfile=/dev/stderr
 stderr_logfile_maxbytes=0
-'''
+```
 
 then add the following lines to the bottom of your Dockerfile
 ```
