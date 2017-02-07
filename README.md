@@ -405,6 +405,41 @@ python main.py
 
 You will see your Flask debugging server start, you will see how it sends responses to every request, you will see the errors thrown when you break your code and how they stop your server and you will be able to re-start your server very fast, by just running the command above again.
 
+## Working Outside of the /app Directory
+If for any reason you wish to run your application outside of the /app directory you may do so by using the following instructions.
+
+add the following file to your project (in the same directory as Dockerfile) 
+filename: `supervisord.conf`
+'''
+[supervisord]
+nodaemon=true
+
+[program:uwsgi]
+command=/usr/local/bin/uwsgi --ini /etc/uwsgi/uwsgi.ini
+stdout_logfile=/dev/stdout
+stdout_logfile_maxbytes=0
+stderr_logfile=/dev/stderr
+stderr_logfile_maxbytes=0
+
+[program:nginx]
+command=/usr/sbin/nginx
+stdout_logfile=/dev/stdout
+stdout_logfile_maxbytes=0
+stderr_logfile=/dev/stderr
+stderr_logfile_maxbytes=0
+'''
+
+then add the following lines to the bottom of your Dockerfile
+```
+# Copy the supervisord.conf which contains the application path to correct location
+COPY ./supervisord.conf /etc/supervisor/conf.d/
+
+# Set the environment variables to configure uWSGI to find the right app to start
+ENV UWSGI_INI=<YOUR_APP_FOLDER>/uwsgi.ini
+WORKDIR <YOUR_APP_FOLDER>
+```
+
+
 ## License
 
 This project is licensed under the terms of the Apache license.
