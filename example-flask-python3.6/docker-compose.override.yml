@@ -1,0 +1,11 @@
+version: '2'
+services:
+  web:
+    volumes:
+      - ./app:/app
+    ports:
+      - "80:80"
+    command: python main.py
+    # command: bash
+    # Infinite loop, to keep it alive, for debugging
+    # command: bash -c "while true; do echo 'sleeping...' && sleep 10; done"
