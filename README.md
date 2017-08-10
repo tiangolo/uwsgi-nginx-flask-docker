@@ -437,6 +437,8 @@ For these last steps to work (live debugging and development), your Python Flask
 
 otherwise your app will only listen to `localhost` (inside the container), in another port (5000) and not in debug mode.
 
+**Note**: The example project **example-flask-python3.6** includes a `docker-compose.yml` and `docker-compose.override.yml` with all these configurations, if you are using Docker Compose.
+
 ---
 
 Also, if you want to do the same live debugging using the tags with `-index` (to serve `/app/static/index.html` directly when requested for `/`) your Nginx won't serve it directly as it won't be running (only your Python Flask app in debug mode will be running).
@@ -457,9 +459,9 @@ def main():
 
 That makes sure your app also serves the `/app/static/index.html` file when requested for `/`.
 
- That's how it is written in the tutorial above and is included in the downloadable examples.
+That's how it is written in the tutorial above and is included in the downloadable examples.
 
- **Note**: The example project **example-flask-python3.6** includes a `docker-compose.yml` and `docker-compose.override.yml` with all these configurations, if you are using Docker Compose.
+**Note**: The example project **example-flask-python3.6-index** includes a `docker-compose.yml` and `docker-compose.override.yml` with all these configurations, if you are using Docker Compose.
 
 ## More advanced development instructions
 
@@ -492,8 +494,6 @@ python main.py
 ```
 
 You will see your Flask debugging server start, you will see how it sends responses to every request, you will see the errors thrown when you break your code and how they stop your server and you will be able to re-start your server very fast, by just running the command above again.
-
-**Note**: The example project **example-flask-python3.6-index** includes a `docker-compose.yml` and `docker-compose.override.yml` with all these configurations, if you are using Docker Compose.
 
 ## License
 
