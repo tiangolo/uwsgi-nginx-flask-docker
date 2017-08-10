@@ -62,7 +62,7 @@ This Docker image is based on [**tiangolo/uwsgi-nginx**](https://hub.docker.com/
 
 ## QuickStart
 
-You can download the **example-flask-python3.6.zip** project example and use it as the template for your project from the section **Examples** above.
+**Note**: You can download the **example-flask-python3.6.zip** project example and use it as the template for your project from the section **Examples** above.
 
 ---
 
@@ -125,11 +125,11 @@ You should be able to check it in your Docker container's URL, for example: <htt
 
 ## QuickStart for SPAs
 
-This section explains how to configure the image to serve the contents of `/static/index.html` directly when the browser request `/`.
+This section explains how to configure the image to serve the contents of `/static/index.html` directly when the browser requests `/`.
 
-This is specially helpful (and efficient) if you are building a Single-Page Application (SPA) with JavaScript (Angular, React, etc) and you want the `index.html` to be served directly without modifications, by Python or Jinja2 templates. And you want to use Flask mainly as an API / back end for your SPA front end.
+This is specially helpful (and efficient) if you are building a Single-Page Application (SPA) with JavaScript (Angular, React, etc) and you want the `index.html` to be served directly, without modifications by Python or Jinja2 templates. And you want to use Flask mainly as an API / back end for your SPA front end.
 
-You can download the example project **example-flask-python3.6-index.zip** and use it as the template for your project in the **Examples** section above.
+**Note**: You can download the example project **example-flask-python3.6-index.zip** and use it as the template for your project in the **Examples** section above.
 
 ---
 
@@ -220,11 +220,11 @@ docker build -t myimage .
 docker run -d --name mycontainer -p 80:80 myimage
 ```
 
-...and you have an optimized Flask server in a Docker container. Also optimized to serve your main non-templated `index.html` page.
+...and you have an optimized Flask server in a Docker container. Also optimized to serve your main static `index.html` page.
 
 * Now, when you go to your Docker container URL, for example: <http://192.168.99.100/>, you will see your `index.html` as if you were in <http://192.168.99.100/static/index.html>.
 
-* You should be able to also go to, for example: <http://192.168.99.100/hello> to see a "Hello World" page served by Flask.
+* You should be able to also go to, for example, <http://192.168.99.100/hello> to see a "Hello World" page served by Flask.
 
 **Note**: As your `index.html` file will be served from `/` and from `/static/index.html`, it would be better to have absolute paths in the links to other files in the `static` directory from your `index.html` file. As in `/static/css/styles.css` instead of relative paths as in `./css/styles.css`. But still, above you added code in your `main.py` to handle that too, just in case.
 
@@ -275,11 +275,11 @@ WORKDIR /application
 **Note**: you would also have to configure the `static` files path, read below.
 
 
-### Custom `./static` path
+### Custom `./static/` path
 
 You can make Nginx use a custom directory path with the files to serve directly (without having uWSGI involved) with the environment variable `STATIC_PATH`.
 
-For example, to make Nginx serve the static content using the files in `/app/custom_static` you could add this to your `Dockerfile`:
+For example, to make Nginx serve the static content using the files in `/app/custom_static/` you could add this to your `Dockerfile`:
 
 ```Dockerfile
 ENV STATIC_PATH /app/custom_static
@@ -287,13 +287,13 @@ ENV STATIC_PATH /app/custom_static
 
 Then, when the browser asked for a file in, for example, http://example.com/static/index.html, Nginx would answer directly using a file in the path `/app/custom_static/index.html`.
 
-**Note**: you would also have to configure Flask to use that as its `static`directory.
+**Note**: you would also have to configure Flask to use that as its `static` directory.
 
 ---
 
-As another example, if you needed to put your application code in a different directory, you could configure Nginx to serve those static files in that different directory.
+As another example, if you needed to put your application code in a different directory, you could configure Nginx to serve those static files from that different directory.
 
-If you needed to have your static files in `/application/static` you could add this to your `Dockerfile`:
+If you needed to have your static files in `/application/static/` you could add this to your `Dockerfile`:
 
 ```Dockerfile
 ENV STATIC_PATH /application/static
@@ -316,7 +316,7 @@ Then, when the browser asked for a file in, for example, http://example.com/cont
 
 If you need to configure Nginx further, you can add `*.conf` files to `/etc/nginx/conf.d/` in your Dockerfile.
 
-Just have in mind that the default configurations are created during startup in a file in `/etc/nginx/conf.d/nginx.conf` and `/etc/nginx/conf.d/upload.conf`. So you shouldn't overwrite it. You should name your `*.conf` file with something different than `nginx.conf` or `upload.conf`.
+Just have in mind that the default configurations are created during startup in a file in `/etc/nginx/conf.d/nginx.conf` and `/etc/nginx/conf.d/upload.conf`. So you shouldn't overwrite them. You should name your `*.conf` file with something different than `nginx.conf` or `upload.conf`.
 
 ## Technical details
 
@@ -332,7 +332,7 @@ Roughly:
 
 The image [**tiangolo/uwsgi-nginx**](https://hub.docker.com/r/tiangolo/uwsgi-nginx/) takes advantage of already slim and optimized existing Docker images (based on Debian as [recommended by Docker](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)) and implements Docker best practices.
 
-It uses the official Python Docker image, installs uWSGI and on top of that, with the least amount of modifications, adds the official Nginx image.
+It uses the official Python Docker image, installs uWSGI and on top of that (with the least amount of modifications) and adds the official Nginx image.
 
 And it controls all these processes with Supervisord.
 
