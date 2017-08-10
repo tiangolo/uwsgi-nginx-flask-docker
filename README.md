@@ -495,6 +495,33 @@ python main.py
 
 You will see your Flask debugging server start, you will see how it sends responses to every request, you will see the errors thrown when you break your code and how they stop your server and you will be able to re-start your server very fast, by just running the command above again.
 
+## What's new
+
+2017-08-10: Many changes:
+
+* New official image tags: `python3.6`, `python3.6-index`, `python.3.5`, `python3.5-index`, `python2.7` and `python2.7-index`. All the other images are deprecated in favor is this ones. 
+* Python 3.6 is now the recommended default. Even the example projects for other versions were removed to discourage using older Python versions for new projects.
+* Any of the older images that didn't have a Python version will show a deprecation warning and take some time to start. As soon the tag `latest` will point to Python 3.6 and the other tags will be removed.
+* There were several improvements in the bas image `tiangolo/uwsgi-nginx` that improved this image too.
+* By default, now there is no limit in the upload file size in Nginx. It can be configured in an environment variable.
+* It's now possible to configure several things with environment variables: 
+  * Serve `index.html` directly: `STATIC_INDEX`
+  * Set the max upload file size: `NGINX_MAX_UPLOAD`
+  * Set a custom `uwsgi.ini` file (that allows using a custom directory different than `/app`): `UWSGI_INI` (using the ideas by @bercikr in #5 ).
+  * Set a custom `./static/` path: `STATIC_PATH`
+  * Set a custom `/static/` URL: `STATIC_URL`
+* As all this configurations are available as environment variables, the choices are a lot more simple. Actually, any new project would just need to use a `Dockerfile` with:
+
+```Dockerfile
+FROM tiangolo/uwsgi-nginx-flask:python3.6
+
+COPY ./app /app
+```
+
+and then customize with environment variables.
+
+
+
 ## License
 
 This project is licensed under the terms of the Apache license.
