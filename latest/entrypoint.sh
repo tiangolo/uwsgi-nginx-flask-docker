@@ -33,9 +33,29 @@ fi
 echo "}" >> /etc/nginx/conf.d/nginx.conf
 
 
-echo -e "WARNING: YOU SHOULDN'T BE USING THE 'latest' DOCKER TAG.
+echo -e "WARNING: YOU SHOULDN'T BE USING THIS DOCKER TAG.
 
-The Docker tag 'latest' will be for Python 3.6 soon.
+These Docker tags will be for Python 3.6 soon:
+
+latest
+flask (deprecated)
+flask-index (deprecated)
+flask-upload (deprecated)
+flask-index-upload (deprecated)
+
+Also, the following Docker tags will be deprecated soon,
+use the new and improved tags:
+
+flask
+flask-index
+flask-upload
+flask-index-upload
+flask-python2.7
+flask-python3.5
+flask-python3.5-index
+flask-python3.5-upload
+flask-python3.5-index-upload
+
 
 If you need Python 2.7, specify it with:
 
@@ -44,6 +64,10 @@ FROM tiangolo/uwsgi-nginx-flask:python2.7
 If you need Python 3.6, specify it with:
 
 FROM tiangolo/uwsgi-nginx-flask:python3.6
+
+Find more options in the documentation:
+
+https://github.com/tiangolo/uwsgi-nginx-flask-docker
 
 Listen to the cow..."
 
