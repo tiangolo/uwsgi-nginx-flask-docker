@@ -35,11 +35,15 @@ uWSGI with Nginx is one of the best ways to deploy a Python web application, so 
 
 * **`python3.6`** tag: general Flask web application: 
 
-[**example-flask-python3.6.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.0/example-flask-python3.6.zip>)
+[**example-flask-python3.6.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.1/example-flask-python3.6.zip>)
+
+* **`python3.6`** tag: general Flask web application, structured as a package, for bigger Flask projects, with different submodules. Use it only as an example of how to import your modules and how to structure your own project:
+
+[**example-flask-package-python3.6.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.1/example-flask-package-python3.6.zip>)
 
 * **`python3.6-index`** tag: `static/index.html` served directly in `/`, e.g. for Angular, React, or any other Single-Page Application that uses a static `index.html`, not modified by Python: 
 
-[**example-flask-python3.6-index.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.0/example-flask-python3.6-index.zip>)
+[**example-flask-python3.6-index.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.1/example-flask-python3.6-index.zip>)
 
 ## General Instructions
 
@@ -55,7 +59,7 @@ There are several image tags available for Python 3.6, Python 3.5 and Python 2.7
 
 As of now, [everyone](https://www.python.org/dev/peps/pep-0373/) [should be](http://flask.pocoo.org/docs/0.12/python3/#python3-support) [using **Python 3**](https://docs.djangoproject.com/en/1.11/faq/install/#what-python-version-should-i-use-with-django).
 
-There are two template projects that you can download (as a `.zip` file) to bootstrap your project in the section "**Examples (project templates)**" above.
+There are several template projects that you can download (as a `.zip` file) to bootstrap your project in the section "**Examples (project templates)**" above.
 
 This Docker image is based on [**tiangolo/uwsgi-nginx**](https://hub.docker.com/r/tiangolo/uwsgi-nginx/). That Docker image has uWSGI and Nginx installed in the same container and was made to be the base of this image.
 
@@ -89,6 +93,7 @@ def hello():
     return "Hello World from Flask"
 
 if __name__ == "__main__":
+    # Only for debugging while developing
     app.run(host='0.0.0.0', debug=True, port=80)
 ```
 
@@ -174,6 +179,7 @@ def route_frontend(path):
         return send_file('./static/index.html')
 
 if __name__ == "__main__":
+    # Only for debugging while developing
     app.run(host='0.0.0.0', debug=True, port=80)
 ```
 
@@ -228,6 +234,85 @@ docker run -d --name mycontainer -p 80:80 myimage
 
 **Note**: As your `index.html` file will be served from `/` and from `/static/index.html`, it would be better to have absolute paths in the links to other files in the `static` directory from your `index.html` file. As in `/static/css/styles.css` instead of relative paths as in `./css/styles.css`. But still, above you added code in your `main.py` to handle that too, just in case.
 
+## QuickStart for bigger projects structured as a Python package
+
+**Note**: You can download the **example-flask-package-python3.6.zip** project example and use it as an example or template for your project from the section **Examples** above.
+
+---
+
+You should be able to follow the same instructions as in the "**QuickStart**" section above, with some minor modifications:
+
+* Instead of putting your code in the `app/` directory, put it in a directory `app/main/`.
+* Add a file `__init__.py` inside of that `app/main/` directory.
+
+Your file structure would look like:
+
+```
+.
+├── app
+│   ├── main
+│   │   ├── __init__.py
+│   │   ├── main.py
+└── Dockerfile
+```
+
+...instead of:
+
+```
+.
+├── app
+│   ├── main.py
+└── Dockerfile
+```
+
+* In the file `app/main/__init__.py` put:
+
+```python
+from .main import app
+```
+
+...after that, everything should work as expected. All the other instructions would apply normally.
+
+### Working with submodules
+
+* After adding all your modules you could end up with a file structure similar to (taken from the example project):
+
+```
+.
+├── app
+│   ├── main
+│   │   ├── api
+│   │   │   ├── api.py
+│   │   │   ├── endpoints
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── user.py
+│   │   │   ├── __init__.py
+│   │   │   └── utils.py
+│   │   ├── core
+│   │   │   ├── app_setup.py
+│   │   │   ├── database.py
+│   │   │   └── __init__.py
+│   │   ├── __init__.py
+│   │   ├── main.py
+│   │   └── models
+│   │       ├── __init__.py
+│   │       └── user.py
+└── Dockerfile
+```
+
+* Make sure you follow [the offical docs while importing your modules](https://docs.python.org/3/tutorial/modules.html#intra-package-references):
+
+* For example, if you are in `app/main/main.py` and want to import the module in `app/main/core/app_setup.py` you would wirte it like:
+
+```python
+from .core import app_setup
+```
+
+* And if you are in `app/main/api/endpoints/user.py` and you want to import the `users` object from `app/main/core/database.py` you would write it like:
+
+```python
+from ...core.database import users
+```
 
 ## Advanced instructions
 
@@ -416,34 +501,39 @@ If you go to your Docker container URL you should see your app, and you should b
 
 ...but, as uWSGI loads your whole Python Flask web application once it starts, you won't be able to edit your Python Flask code and see the changes reflected.
 
-To be able to (temporarily) debug your Python Flask code live, you can run your container overriding the default command (that starts Supervisord which in turn starts uWSGI and Nginx) and run your application directly with `python`, in debug mode.
+To be able to (temporarily) debug your Python Flask code live, you can run your container overriding the default command (that starts Supervisord which in turn starts uWSGI and Nginx) and run your application directly with `python`, in debug mode, using the `flask` command with its environment variables.
 
-So, with all the modifications above and making your app run directly with `python`, the final Docker command would be:
+So, with all the modifications above and making your app run directly with `flask`, the final Docker command would be:
 
  ```bash
-docker run -d --name mycontainer -p 80:80 -v $(pwd)/app:/app myimage python /app/main.py
+docker run -d --name mycontainer -p 80:80 -v $(pwd)/app:/app -e FLASK_APP=main.py -e FLASK_DEBUG=1 myimage flask run --host=0.0.0.0 --port=80
+```
+
+Or in the case of a package project, you would set `FLASK_APP=main/main.py`:
+
+```bash
+docker run -d --name mycontainer -p 80:80 -v $(pwd)/app:/app -e FLASK_APP=main/main.py -e FLASK_DEBUG=1 myimage flask run --host=0.0.0.0 --port=80
 ```
 
 Now you can edit your Flask code in your local machine and once you refresh your browser, you will see the changes live.
 
 Remember that you should use this only for debugging and development, for deployment in production you shouldn't mount volumes and you should let Supervisord start and let it start uWSGI and Nginx (which is what happens by default).
 
-For these last steps to work (live debugging and development), your Python Flask code should have that section with:
+An alternative for these last steps to work when you don't have a package but just a flat structure with single files (modules), your Python Flask code could have that section with:
 
- ```python
- if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True, port=80)
- ```
+```python
+if __name__ == "__main__":
+   # Only for debugging while developing
+   app.run(host='0.0.0.0', debug=True, port=80)
+```
 
-otherwise your app will only listen to `localhost` (inside the container), in another port (5000) and not in debug mode.
+...and you could run it with `python main.py`. But that will only work when you are not using a package structure and don't plan to do it later. In that specific case, if you didn't add the code block above, your app would only listen to `localhost` (inside the container), in another port (5000) and not in debug mode.
 
 **Note**: The example project **example-flask-python3.6** includes a `docker-compose.yml` and `docker-compose.override.yml` with all these configurations, if you are using Docker Compose.
 
 ---
 
-Also, if you want to do the same live debugging using the tags with `-index` (to serve `/app/static/index.html` directly when requested for `/`) your Nginx won't serve it directly as it won't be running (only your Python Flask app in debug mode will be running).
-
-For that, your Python Flask code should have that section with:
+Also, if you want to do the same live debugging using the environment variable `STATIC_INDEX=1` (to serve `/app/static/index.html` directly when requested for `/`) your Nginx won't serve it directly as it won't be running (only your Python Flask app in debug mode will be running).
 
 ```python
 from flask import Flask, send_file
@@ -457,7 +547,25 @@ def main():
     return send_file('./static/index.html')
 ```
 
-That makes sure your app also serves the `/app/static/index.html` file when requested for `/`.
+...that makes sure your app also serves the `/app/static/index.html` file when requested for `/`.
+
+And if you are using a SPA framework, to allow it to handle the URLs in the browser, your Python Flask code should have the section with:
+
+```python
+# Everything not declared before (not a Flask route / API endpoint)...
+@app.route('/<path:path>')
+def route_frontend(path):
+    # ...could be a static file needed by the front end that 
+    # doesn't use the `static` path (like in `<script src="bundle.js">`)
+    file_path = './static/' + path
+    if os.path.isfile(file_path):
+        return send_file(file_path)
+    # ...or should be handled by the SPA's "router" in front end
+    else:
+        return send_file('./static/index.html')
+```
+
+...that makes Flask send all the CSS, JavaScript and image files when requested in the root (`/`) URL but also makes sure that your front end SPA handles all the other URLs that are not defined in your Flask app.
 
 That's how it is written in the tutorial above and is included in the downloadable examples.
 
@@ -471,12 +579,18 @@ And since the only process running was your debugging server, that now is stoppe
 
 Then you will have to start your container again after fixing your code and you won't see very easily what is the error that is crashing your server.
 
-So, while developing, you could do the following (that's what I normally do):
+So, while developing, you could do the following (that's what I normally do, although I do it with Docker Compose, as in the example projects):
 
 * Make your container run and keep it alive in an infinite loop (without running any server):
 
 ```bash
-docker run -d --name mycontainer -p 80:80 -v $(pwd)/app:/app myimage bash -c "while true ; do sleep 10 ; done"
+docker run -d --name mycontainer -p 80:80 -v $(pwd)/app:/app -e FLASK_APP=main.py -e FLASK_DEBUG=1 myimage bash -c "while true ; do sleep 10 ; done"
+```
+
+* Or, if your project is a package, set `FLASK_APP=main/main.py`:
+
+```bash
+docker run -d --name mycontainer -p 80:80 -v $(pwd)/app:/app -e FLASK_APP=main/main.py -e FLASK_DEBUG=1 myimage bash -c "while true ; do sleep 10 ; done"
 ```
 
 * Connect to your container with a new interactive session:
@@ -490,12 +604,17 @@ You will now be inside your container in the `/app` directory.
 * Now, from inside the container, run your Flask debugging server:
 
 ```bash
-python main.py
+flask run --host=0.0.0.0 --port=80
 ```
 
 You will see your Flask debugging server start, you will see how it sends responses to every request, you will see the errors thrown when you break your code and how they stop your server and you will be able to re-start your server very fast, by just running the command above again.
 
 ## What's new
+
+2017-09-02: 
+
+* Example project with a [Python package](https://docs.python.org/3/tutorial/modules.html#packages) structure and a section explaining how to use it and structure a Flask project like that. 
+* Also, the examples and documentation now use the [`flask run`](http://flask.pocoo.org/docs/0.12/quickstart/#a-minimal-application) commands, that allows running a package application while developing more easily.
 
 2017-08-10: Many changes:
 
