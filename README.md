@@ -35,15 +35,15 @@ uWSGI with Nginx is one of the best ways to deploy a Python web application, so 
 
 * **`python3.6`** tag: general Flask web application: 
 
-[**example-flask-python3.6.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.1/example-flask-python3.6.zip>)
+[**example-flask-python3.6.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.2/example-flask-python3.6.zip>)
 
 * **`python3.6`** tag: general Flask web application, structured as a package, for bigger Flask projects, with different submodules. Use it only as an example of how to import your modules and how to structure your own project:
 
-[**example-flask-package-python3.6.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.1/example-flask-package-python3.6.zip>)
+[**example-flask-package-python3.6.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.2/example-flask-package-python3.6.zip>)
 
 * **`python3.6-index`** tag: `static/index.html` served directly in `/`, e.g. for Angular, React, or any other Single-Page Application that uses a static `index.html`, not modified by Python: 
 
-[**example-flask-python3.6-index.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.1/example-flask-python3.6-index.zip>)
+[**example-flask-python3.6-index.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.2/example-flask-python3.6-index.zip>)
 
 ## General Instructions
 
@@ -158,25 +158,31 @@ COPY ./app /app
 from flask import Flask, send_file
 app = Flask(__name__)
 
+
 @app.route("/hello")
 def hello():
     return "Hello World from Flask"
 
+
 @app.route("/")
 def main():
-    return send_file('./static/index.html')
+    index_path = os.path.join(app.static_folder, 'index.html')
+    return send_file(index_path)
+
 
 # Everything not declared before (not a Flask route / API endpoint)...
 @app.route('/<path:path>')
 def route_frontend(path):
-    # ...could be a static file needed by the front end that 
+    # ...could be a static file needed by the front end that
     # doesn't use the `static` path (like in `<script src="bundle.js">`)
-    file_path = './static/' + path
+    file_path = os.path.join(app.static_folder, path)
     if os.path.isfile(file_path):
         return send_file(file_path)
     # ...or should be handled by the SPA's "router" in front end
     else:
-        return send_file('./static/index.html')
+        index_path = os.path.join(app.static_folder, 'index.html')
+        return send_file(index_path)
+
 
 if __name__ == "__main__":
     # Only for debugging while developing
@@ -542,12 +548,13 @@ from flask import Flask, send_file
 and
 
 ```python
-@app.route("/")
-def main():
-    return send_file('./static/index.html')
+@app.route('/')
+def route_root():
+    index_path = os.path.join(app.static_folder, 'index.html')
+    return send_file(index_path)
 ```
 
-...that makes sure your app also serves the `/app/static/index.html` file when requested for `/`.
+...that makes sure your app also serves the `/app/static/index.html` file when requested for `/`. Or if you are using a package structure, the `/app/main/static/index.html` file.
 
 And if you are using a SPA framework, to allow it to handle the URLs in the browser, your Python Flask code should have the section with:
 
@@ -555,14 +562,15 @@ And if you are using a SPA framework, to allow it to handle the URLs in the brow
 # Everything not declared before (not a Flask route / API endpoint)...
 @app.route('/<path:path>')
 def route_frontend(path):
-    # ...could be a static file needed by the front end that 
+    # ...could be a static file needed by the front end that
     # doesn't use the `static` path (like in `<script src="bundle.js">`)
-    file_path = './static/' + path
+    file_path = os.path.join(app.static_folder, path)
     if os.path.isfile(file_path):
         return send_file(file_path)
     # ...or should be handled by the SPA's "router" in front end
     else:
-        return send_file('./static/index.html')
+        index_path = os.path.join(app.static_folder, 'index.html')
+        return send_file(index_path)
 ```
 
 ...that makes Flask send all the CSS, JavaScript and image files when requested in the root (`/`) URL but also makes sure that your front end SPA handles all the other URLs that are not defined in your Flask app.
@@ -610,6 +618,8 @@ flask run --host=0.0.0.0 --port=80
 You will see your Flask debugging server start, you will see how it sends responses to every request, you will see the errors thrown when you break your code and how they stop your server and you will be able to re-start your server very fast, by just running the command above again.
 
 ## What's new
+
+2017-09-10: Updated examples and sample project to work with SPAs even when structuring the app as a package (with subdirectories).
 
 2017-09-02: 
 
