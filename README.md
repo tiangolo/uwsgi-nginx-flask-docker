@@ -346,24 +346,22 @@ For example, to have a maximum upload file size of 1 MB (Nginx's default) add a 
 ENV NGINX_MAX_UPLOAD 1m
 ```
 
-### Listen port
+### Custom listen port
 
 By default, the container made from this image will listen on port 80.
 
-To change this behavior, set the `LISTEN_PORT` environemt variable.
+To change this behavior, set the `LISTEN_PORT` environment variable. You might also need to create the respective `EXPOSE` Docker instruction.
 
-You can do that in your `Dockerfile`:
+You can do that in your `Dockerfile`, it would look something like:
 
-```dockerfile
-# ... (snip) ...
+```Dockerfile
+FROM tiangolo/uwsgi-nginx-flask:python3.6
+
 ENV LISTEN_PORT 8080
-# ... (snip) ...
-```
 
-Or with `-e` option of [`docker run` command](https://docs.docker.com/engine/reference/commandline/run/#options), e.g.:
+EXPOSE 8080
 
-```bash
-docker run -e LISTEN_PORT=8080 -p 8080:8080 myimage
+COPY ./app /app
 ```
 
 ### Custom `uwsgi.ini` file
@@ -639,7 +637,7 @@ You will see your Flask debugging server start, you will see how it sends respon
 
 ## What's new
 
-2017-10-XX: Now you can configure which port the container should listen on, using the environment variable `LISTEN_PORT`.
+2017-12-08: Now you can configure which port the container should listen on, using the environment variable `LISTEN_PORT`.
 
 2017-09-10: Updated examples and sample project to work with SPAs even when structuring the app as a package (with subdirectories).
 
