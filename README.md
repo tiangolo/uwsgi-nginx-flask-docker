@@ -665,6 +665,8 @@ You will see your Flask debugging server start, you will see how it sends respon
 
 ## What's new
 
+2017-12-10: Added support for `/app/prestart.sh` script to run arbitrary code before starting the app (for example, Alembic - SQLAlchemy migrations). The [documentation for the `/app/prestart.sh` is in the main README](https://github.com/tiangolo/uwsgi-nginx-flask-docker#custom-appprestartsh).
+
 2017-12-08: Now you can configure which port the container should listen on, using the environment variable `LISTEN_PORT`.
 
 2017-09-10: Updated examples and sample project to work with SPAs even when structuring the app as a package (with subdirectories).
