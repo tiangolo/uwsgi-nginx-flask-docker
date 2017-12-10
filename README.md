@@ -248,17 +248,31 @@ docker run -d --name mycontainer -p 80:80 myimage
 
 You should be able to follow the same instructions as in the "**QuickStart**" section above, with some minor modifications:
 
-* Instead of putting your code in the `app/` directory, put it in a directory `app/main/`.
-* Add a file `__init__.py` inside of that `app/main/` directory.
+* Instead of putting your code in the `app/` directory, put it in a directory `app/app/`.
+* Add an empty file `__init__.py` inside of that `app/app/` directory.
+* Add a file `uwsgi.ini` inside your `app/` directory (that is copied to `/app/uwsgi.ini` inside the container).
+* In your `uwsgi.ini` file, add:
+
+```ini
+[uwsgi]
+module = app.main
+callable = app
+```
+
+The explanation of the `uwsgi.ini` is as follows:
+
+* The module in where my Python web app lives is `app.main`. So, in the package `app` (`/app/app`), get the `main` module (`main.py`).
+* The Flask web application is the `app` object (`app = Flask(__name__)`).
 
 Your file structure would look like:
 
 ```
 .
 ├── app
-│   ├── main
+│   ├── app
 │   │   ├── __init__.py
 │   │   ├── main.py
+│   └── uwsgi.ini
 └── Dockerfile
 ```
 
@@ -271,12 +285,6 @@ Your file structure would look like:
 └── Dockerfile
 ```
 
-* In the file `app/main/__init__.py` put:
-
-```python
-from .main import app
-```
-
 ...after that, everything should work as expected. All the other instructions would apply normally.
 
 ### Working with submodules
@@ -286,7 +294,7 @@ from .main import app
 ```
 .
 ├── app
-│   ├── main
+│   ├── app
 │   │   ├── api
 │   │   │   ├── api.py
 │   │   │   ├── endpoints
@@ -303,21 +311,35 @@ from .main import app
 │   │   └── models
 │   │       ├── __init__.py
 │   │       └── user.py
+│   └── uwsgi.ini
 └── Dockerfile
 ```
 
 * Make sure you follow [the offical docs while importing your modules](https://docs.python.org/3/tutorial/modules.html#intra-package-references):
 
-* For example, if you are in `app/main/main.py` and want to import the module in `app/main/core/app_setup.py` you would wirte it like:
+* For example, if you are in `app/app/main.py` and want to import the module in `app/app/core/app_setup.py` you would wirte it like:
 
 ```python
 from .core import app_setup
 ```
 
-* And if you are in `app/main/api/endpoints/user.py` and you want to import the `users` object from `app/main/core/database.py` you would write it like:
+or 
+
+```python
+from app.core import app_setup
+```
+
+
+* And if you are in `app/app/api/endpoints/user.py` and you want to import the `users` object from `app/app/core/database.py` you would write it like:
 
 ```python
 from ...core.database import users
+```
+
+or
+
+```python
+from app.core.database import users
 ```
 
 ## Advanced instructions
