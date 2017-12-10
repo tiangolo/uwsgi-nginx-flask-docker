@@ -33,8 +33,11 @@ RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
 
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
 # Add demo app
 COPY ./app /app
 WORKDIR /app
 
-CMD ["/usr/bin/supervisord"]
+CMD ["/start.sh"]
