@@ -421,6 +421,34 @@ ENV STATIC_URL /content
 Then, when the browser asked for a file in, for example, http://example.com/content/index.html, Nginx would answer directly using a file in the path `/app/static/index.html`.
 
 
+### Custom `/app/prestart.sh`
+
+If you need to run anything before starting the app, you can add a file `prestart.sh` to the directory `/app`. The image will automatically detect and run it before starting everything. 
+
+For example, if you want to add Alembic SQL migrations (with SQLALchemy), you could create a `./app/prestart.sh` file in your code directory (that will be copied by your `Dockerfile`) with:
+
+```bash
+#! /usr/bin/env bash
+
+# Let the DB start
+sleep 10;
+# Run migrations
+alembic upgrade head
+```
+
+and it would wait 10 seconds to give the database some time to start and then run that `alembic` command.
+
+If you need to run a Python script before starting the app, you could make the `/app/prestart.sh` file run your Python script, with something like:
+
+```bash
+#! /usr/bin/env bash
+
+# Run custom Python script before starting
+python /app/my_custom_prestart_script.y
+```
+
+**Note**: The image uses `source` to run the script, so for example, environment variables would persist. If you don't understand the previous sentence, you probably don't need it.
+
 ## Customizing Nginx configurations
 
 If you need to configure Nginx further, you can add `*.conf` files to `/etc/nginx/conf.d/` in your Dockerfile.
