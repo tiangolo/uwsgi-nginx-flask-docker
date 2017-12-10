@@ -33,8 +33,14 @@ RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
 
+# Copy start.sh script that will check for a /app/prestart.sh script and run it before starting the app
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
 # Add demo app
 COPY ./app /app
 WORKDIR /app
 
-CMD ["/usr/bin/supervisord"]
+# Run the start script, it will check for an /app/prestart.sh script (e.g. for migrations)
+# And then will start Supervisor, which in turn will start Nginx and uWSGI
+CMD ["/start.sh"]
