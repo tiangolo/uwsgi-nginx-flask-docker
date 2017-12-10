@@ -35,15 +35,15 @@ uWSGI with Nginx is one of the best ways to deploy a Python web application, so 
 
 * **`python3.6`** tag: general Flask web application: 
 
-[**example-flask-python3.6.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.2/example-flask-python3.6.zip>)
+[**example-flask-python3.6.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.6/example-flask-python3.6.zip>)
 
 * **`python3.6`** tag: general Flask web application, structured as a package, for bigger Flask projects, with different submodules. Use it only as an example of how to import your modules and how to structure your own project:
 
-[**example-flask-package-python3.6.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.2/example-flask-package-python3.6.zip>)
+[**example-flask-package-python3.6.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.6/example-flask-package-python3.6.zip>)
 
 * **`python3.6-index`** tag: `static/index.html` served directly in `/`, e.g. for Angular, React, or any other Single-Page Application that uses a static `index.html`, not modified by Python: 
 
-[**example-flask-python3.6-index.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.2/example-flask-python3.6-index.zip>)
+[**example-flask-python3.6-index.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.6/example-flask-python3.6-index.zip>)
 
 ## General Instructions
 
@@ -687,7 +687,10 @@ You will see your Flask debugging server start, you will see how it sends respon
 
 ## What's new
 
-2017-12-10: Added support for `/app/prestart.sh` script to run arbitrary code before starting the app (for example, Alembic - SQLAlchemy migrations). The [documentation for the `/app/prestart.sh` is in the main README](https://github.com/tiangolo/uwsgi-nginx-flask-docker#custom-appprestartsh).
+2017-12-10: 
+
+* Added support for `/app/prestart.sh` script to run arbitrary code before starting the app (for example, Alembic - SQLAlchemy migrations). The [documentation for the `/app/prestart.sh` is in the main README](https://github.com/tiangolo/uwsgi-nginx-flask-docker#custom-appprestartsh).
+* `/app` is part of the `PYTHONPATH` environment variable. That allows global imports from several places, easier Alembic integration, etc.
 
 2017-12-08: Now you can configure which port the container should listen on, using the environment variable `LISTEN_PORT`.
 
