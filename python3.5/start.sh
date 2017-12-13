@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 set -e
 
-# If there's a beforestart.sh script in the /app directory, run it before starting
+# If there's a prestart.sh script in the /app directory, run it before starting
 PRE_START_PATH=/app/prestart.sh
 echo "Checking for script in $PRE_START_PATH"
 if [ -f $PRE_START_PATH ] ; then
