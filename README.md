@@ -27,7 +27,7 @@
 
 This [**Docker**](https://www.docker.com/) image allows you to create [**Flask**](http://flask.pocoo.org/) web applications in [**Python**](https://www.python.org/) that run with [**uWSGI**](https://uwsgi-docs.readthedocs.org/en/latest/) and [**Nginx**](http://nginx.org/en/) in a single container.
 
-uWSGI with Nginx is one of the best ways to deploy a Python web application, so you you should have a [good performance (check the benchmarks)](http://nichol.as/benchmark-of-python-web-servers) with this image.
+uWSGI with Nginx is one of the best ways to deploy a Python web application, so you should have [good performance (check the benchmarks)](http://nichol.as/benchmark-of-python-web-servers) with this image.
 
 There is also an Alpine version. If you want it, use one of the Alpine tags from above.
 
