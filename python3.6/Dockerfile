@@ -1,7 +1,5 @@
 FROM tiangolo/uwsgi-nginx:python3.6
 
-MAINTAINER Sebastian Ramirez <tiangolo@gmail.com>
-
 RUN pip install flask
 
 # By default, allow unlimited file sizes, modify it to limit the file sizes
@@ -27,22 +25,22 @@ ENV STATIC_PATH /app/static
 # ENV STATIC_INDEX 1
 ENV STATIC_INDEX 0
 
-# Copy the entrypoint that will generate Nginx additional configs
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
-
-# Copy start.sh script that will check for a /app/prestart.sh script and run it before starting the app
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
-
 # Add demo app
 COPY ./app /app
 WORKDIR /app
 
 # Make /app/* available to be imported by Python globally to better support several use cases like Alembic migrations.
 ENV PYTHONPATH=/app
+
+# Copy start.sh script that will check for a /app/prestart.sh script and run it before starting the app
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
+# Copy the entrypoint that will generate Nginx additional configs
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
 
 # Run the start script, it will check for an /app/prestart.sh script (e.g. for migrations)
 # And then will start Supervisor, which in turn will start Nginx and uWSGI
