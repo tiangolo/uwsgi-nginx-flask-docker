@@ -475,6 +475,30 @@ python /app/my_custom_prestart_script.y
 
 **Note**: The image uses `source` to run the script, so for example, environment variables would persist. If you don't understand the previous sentence, you probably don't need it.
 
+## Custom Nginx processes number
+
+By default, Nginx will start one "worker process".
+
+If you want to set a different number of Nginx worker processes you can use the environment variable `NGINX_WORKER_PROCESSES`.
+
+You can use a specific single number, e.g.:
+
+```Dockerfile
+ENV NGINX_WORKER_PROCESSES 2
+```
+
+or you can set it to the keyword `auto` and it will try to autodetect the number of CPUs available and use that for the number of workers.
+
+For example, using `auto`, your Dockerfile could look like:
+
+```Dockerfile
+FROM tiangolo/uwsgi-nginx-flask:python3.6
+
+ENV NGINX_WORKER_PROCESSES auto
+
+COPY ./app /app
+```
+
 ## Customizing Nginx configurations
 
 If you need to configure Nginx further, you can add `*.conf` files to `/etc/nginx/conf.d/` in your Dockerfile.
@@ -690,6 +714,10 @@ flask run --host=0.0.0.0 --port=80
 You will see your Flask debugging server start, you will see how it sends responses to every request, you will see the errors thrown when you break your code and how they stop your server and you will be able to re-start your server very fast, by just running the command above again.
 
 ## What's new
+
+2018-02-04:
+
+It's now possible to set the number of Nginx worker processes with the environment variable `NGINX_WORKER_PROCESSES`. Thanks to [naktinis](https://github.com/naktinis) in [this PR](https://github.com/tiangolo/uwsgi-nginx-docker/pull/22).
 
 2018-01-14:
 
