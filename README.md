@@ -728,7 +728,7 @@ It's now possible to set the number of Nginx worker processes with the environme
 * Added support for `/app/prestart.sh` script to run arbitrary code before starting the app (for example, Alembic - SQLAlchemy migrations). The [documentation for the `/app/prestart.sh` is in the main README](https://github.com/tiangolo/uwsgi-nginx-flask-docker#custom-appprestartsh).
 * `/app` is part of the `PYTHONPATH` environment variable. That allows global imports from several places, easier Alembic integration, etc.
 
-2017-12-08: Now you can configure which port the container should listen on, using the environment variable `LISTEN_PORT`.
+2017-12-08: Now you can configure which port the container should listen on, using the environment variable `LISTEN_PORT` thanks to [tmshn](https://github.com/tmshn) in [this PR](https://github.com/tiangolo/uwsgi-nginx-docker/pull/16).
 
 2017-09-10: Updated examples and sample project to work with SPAs even when structuring the app as a package (with subdirectories).
 
