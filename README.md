@@ -511,7 +511,7 @@ ENV NGINX_WORKER_CONNECTIONS 2048
 
 ## Custom Nginx maximum open files setting
 
-Nginx workers are limited by the system with regard to the maximum open file descriptors "worker process".
+Nginx workers are limited by the system with regard to the maximum open file descriptors.
 
 If you want to change the limit you can use the environment variable `NGINX_WORKER_OPEN_FILES`, e.g.:
 
