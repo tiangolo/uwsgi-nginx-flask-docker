@@ -29,6 +29,9 @@ echo "server {
     }
     location $USE_STATIC_URL {
         alias $USE_STATIC_PATH;
+    }
+    location = /robots.txt {
+        alias /app/robots.txt
     }" > /etc/nginx/conf.d/nginx.conf
 
 # If STATIC_INDEX is 1, serve / with /static/index.html directly (or the static URL configured)
