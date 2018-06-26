@@ -1,6 +1,6 @@
 FROM tiangolo/uwsgi-nginx-flask:python2.7
 
-MAINTAINER Sebastian Ramirez <tiangolo@gmail.com>
+LABEL maintainer="Sebastian Ramirez <tiangolo@gmail.com>"
 
 RUN apt-get update && apt-get install -y cowsay
 

@@ -1,5 +1,7 @@
 FROM tiangolo/uwsgi-nginx:python2.7
 
+LABEL maintainer="Sebastian Ramirez <tiangolo@gmail.com>"
+
 RUN pip install flask
 
 # By default, allow unlimited file sizes, modify it to limit the file sizes
