@@ -12,12 +12,12 @@ sed -i "/worker_processes\s/c\worker_processes ${USE_NGINX_WORKER_PROCESSES};" /
 
 # Set the max number of connections per worker for Nginx, if requested
 # Cannot exceed worker_rlimit_nofile, see NGINX_WORKER_OPEN_FILES below
-if [[ -v NGINX_WORKER_CONNECTIONS ]] ; then
+if [[ -v $NGINX_WORKER_CONNECTIONS ]] ; then
     sed -i "/worker_connections\s/c\    worker_connections ${NGINX_WORKER_CONNECTIONS};" /etc/nginx/nginx.conf
 fi
 
 # Set the max number of open file descriptors for Nginx workers, if requested
-if [[ -v NGINX_WORKER_OPEN_FILES ]] ; then
+if [[ -v $NGINX_WORKER_OPEN_FILES ]] ; then
     echo "worker_rlimit_nofile ${NGINX_WORKER_OPEN_FILES};" >> /etc/nginx/nginx.conf
 fi
 
