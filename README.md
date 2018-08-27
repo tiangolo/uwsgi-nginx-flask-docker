@@ -470,7 +470,7 @@ If you need to run a Python script before starting the app, you could make the `
 #! /usr/bin/env bash
 
 # Run custom Python script before starting
-python /app/my_custom_prestart_script.y
+python /app/my_custom_prestart_script.py
 ```
 
 **Note**: The image uses `source` to run the script, so for example, environment variables would persist. If you don't understand the previous sentence, you probably don't need it.
