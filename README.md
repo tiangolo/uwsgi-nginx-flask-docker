@@ -1,5 +1,7 @@
 ## Supported tags and respective `Dockerfile` links
 
+* [`python3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.7/Dockerfile)
+* [`python3.7-alpine3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.7-alpine3.7/Dockerfile)
 * [`python3.6` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.6/Dockerfile)
 * [`python3.6-index` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.6-index/Dockerfile)
 * [`python3.6-alpine3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.6-alpine3.7/Dockerfile)
@@ -21,7 +23,7 @@
 
 # uwsgi-nginx-flask
 
-**Docker** image with **uWSGI** and **Nginx** for **Flask** web applications in **Python 3.6**, **Python 3.5** and **Python 2.7** running in a single container. Optionally using Alpine Linux.
+**Docker** image with **uWSGI** and **Nginx** for **Flask** web applications in **Python 3.7**, **Python 3.6**, **Python 3.5** and **Python 2.7** running in a single container. Optionally using Alpine Linux.
 
 ## Description
 
@@ -37,29 +39,29 @@ There is also an Alpine version. If you want it, use one of the Alpine tags from
 
 ## Examples (project templates)
 
-* **`python3.6`** tag: general Flask web application: 
+* **`python3.7`** tag: general Flask web application: 
 
-[**example-flask-python3.6.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.5/example-flask-python3.6.zip>)
+[**example-flask-python3.7.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.5/example-flask-python3.6.zip>)
 
-* **`python3.6`** tag: general Flask web application, structured as a package, for bigger Flask projects, with different submodules. Use it only as an example of how to import your modules and how to structure your own project:
+* **`python3.7`** tag: general Flask web application, structured as a package, for bigger Flask projects, with different submodules. Use it only as an example of how to import your modules and how to structure your own project:
 
-[**example-flask-package-python3.6.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.5/example-flask-package-python3.6.zip>)
+[**example-flask-package-python3.7.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.5/example-flask-package-python3.6.zip>)
 
-* **`python3.6-index`** tag: `static/index.html` served directly in `/`, e.g. for Angular, React, or any other Single-Page Application that uses a static `index.html`, not modified by Python: 
+* **`python3.7`** tag: `static/index.html` served directly in `/`, e.g. for Angular, React, or any other Single-Page Application that uses a static `index.html`, not modified by Python: 
 
-[**example-flask-python3.6-index.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.5/example-flask-python3.6-index.zip>)
+[**example-flask-python3.7-index.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.5/example-flask-python3.6-index.zip>)
 
 ## General Instructions
 
 You don't have to clone this repo, you should be able to use this image as a base image for your project with something in your `Dockerfile` like:
 
 ```Dockerfile
-FROM tiangolo/uwsgi-nginx-flask:python3.6
+FROM tiangolo/uwsgi-nginx-flask:python3.7
 
 COPY ./app /app
 ```
 
-There are several image tags available for Python 3.6, Python 3.5 and Python 2.7, but for new projects you should use **Python 3.6**. 
+There are several image tags available for Python 3.7, Python 3.6, Python 3.5 and Python 2.7, but for new projects you should use **Python 3.7**. 
 
 As of now, [everyone](https://www.python.org/dev/peps/pep-0373/) [should be](http://flask.pocoo.org/docs/0.12/python3/#python3-support) [using **Python 3**](https://docs.djangoproject.com/en/1.11/faq/install/#what-python-version-should-i-use-with-django).
 
@@ -70,7 +72,7 @@ This Docker image is based on [**tiangolo/uwsgi-nginx**](https://hub.docker.com/
 
 ## QuickStart
 
-**Note**: You can download the **example-flask-python3.6.zip** project example and use it as the template for your project from the section **Examples** above.
+**Note**: You can download the **example-flask-python3.7.zip** project example and use it as the template for your project from the section **Examples** above.
 
 ---
 
@@ -80,7 +82,7 @@ Or you may follow the instructions to build your project from scratch:
 * Create a `Dockerfile` with:
 
 ```Dockerfile
-FROM tiangolo/uwsgi-nginx-flask:python3.6
+FROM tiangolo/uwsgi-nginx-flask:python3.7
 
 COPY ./app /app
 ```
@@ -138,7 +140,7 @@ This section explains how to configure the image to serve the contents of `/stat
 
 This is specially helpful (and efficient) if you are building a Single-Page Application (SPA) with JavaScript (Angular, React, etc) and you want the `index.html` to be served directly, without modifications by Python or Jinja2 templates. And you want to use Flask mainly as an API / back end for your SPA front end.
 
-**Note**: You can download the example project **example-flask-python3.6-index.zip** and use it as the template for your project in the **Examples** section above.
+**Note**: You can download the example project **example-flask-python3.7-index.zip** and use it as the template for your project in the **Examples** section above.
 
 ---
 
@@ -148,7 +150,7 @@ Or you may follow the instructions to build your project from scratch (it's very
 * Create a `Dockerfile` with:
 
 ```Dockerfile
-FROM tiangolo/uwsgi-nginx-flask:python3.6
+FROM tiangolo/uwsgi-nginx-flask:python3.7
 
 ENV STATIC_INDEX 1
 
@@ -246,7 +248,7 @@ docker run -d --name mycontainer -p 80:80 myimage
 
 ## QuickStart for bigger projects structured as a Python package
 
-**Note**: You can download the **example-flask-package-python3.6.zip** project example and use it as an example or template for your project from the section **Examples** above.
+**Note**: You can download the **example-flask-package-python3.7.zip** project example and use it as an example or template for your project from the section **Examples** above.
 
 ---
 
@@ -381,7 +383,7 @@ To change this behavior, set the `LISTEN_PORT` environment variable. You might a
 You can do that in your `Dockerfile`, it would look something like:
 
 ```Dockerfile
-FROM tiangolo/uwsgi-nginx-flask:python3.6
+FROM tiangolo/uwsgi-nginx-flask:python3.7
 
 ENV LISTEN_PORT 8080
 
@@ -492,7 +494,7 @@ or you can set it to the keyword `auto` and it will try to autodetect the number
 For example, using `auto`, your Dockerfile could look like:
 
 ```Dockerfile
-FROM tiangolo/uwsgi-nginx-flask:python3.6
+FROM tiangolo/uwsgi-nginx-flask:python3.7
 
 ENV NGINX_WORKER_PROCESSES auto
 
@@ -653,7 +655,7 @@ if __name__ == "__main__":
 
 ...and you could run it with `python main.py`. But that will only work when you are not using a package structure and don't plan to do it later. In that specific case, if you didn't add the code block above, your app would only listen to `localhost` (inside the container), in another port (5000) and not in debug mode.
 
-**Note**: The example project **example-flask-python3.6** includes a `docker-compose.yml` and `docker-compose.override.yml` with all these configurations, if you are using Docker Compose.
+**Note**: The example project **example-flask-python3.7** includes a `docker-compose.yml` and `docker-compose.override.yml` with all these configurations, if you are using Docker Compose.
 
 ---
 
@@ -695,7 +697,7 @@ def route_frontend(path):
 
 That's how it is written in the tutorial above and is included in the downloadable examples.
 
-**Note**: The example project **example-flask-python3.6-index** includes a `docker-compose.yml` and `docker-compose.override.yml` with all these configurations, if you are using Docker Compose.
+**Note**: The example project **example-flask-python3.7-index** includes a `docker-compose.yml` and `docker-compose.override.yml` with all these configurations, if you are using Docker Compose.
 
 ## More advanced development instructions
 
@@ -736,6 +738,10 @@ flask run --host=0.0.0.0 --port=80
 You will see your Flask debugging server start, you will see how it sends responses to every request, you will see the errors thrown when you break your code and how they stop your server and you will be able to re-start your server very fast, by just running the command above again.
 
 ## What's new
+
+2018-09-22:
+
+* New Python 3.7 images, based on standard Debian and Alpine Linux. All the documentation and project templates have been updated to use Python 3.7 by default. Thanks to [desaintmartin](https://github.com/desaintmartin) in [this PR](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/82).
 
 2018-06-22:
 
