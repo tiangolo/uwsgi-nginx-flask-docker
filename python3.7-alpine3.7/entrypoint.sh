@@ -12,12 +12,12 @@ sed -i "/worker_processes\s/c\worker_processes ${USE_NGINX_WORKER_PROCESSES};" /
 
 # Set the max number of connections per worker for Nginx, if requested
 # Cannot exceed worker_rlimit_nofile, see NGINX_WORKER_OPEN_FILES below
-if [[ -v NGINX_WORKER_CONNECTIONS ]] ; then
+if [ -n "$NGINX_WORKER_CONNECTIONS" ] ; then
     sed -i "/worker_connections\s/c\    worker_connections ${NGINX_WORKER_CONNECTIONS};" /etc/nginx/nginx.conf
 fi
 
 # Set the max number of open file descriptors for Nginx workers, if requested
-if [[ -v NGINX_WORKER_OPEN_FILES ]] ; then
+if [ -n "$NGINX_WORKER_OPEN_FILES" ] ; then
     echo "worker_rlimit_nofile ${NGINX_WORKER_OPEN_FILES};" >> /etc/nginx/nginx.conf
 fi
 
@@ -30,7 +30,7 @@ USE_LISTEN_PORT=${LISTEN_PORT:-80}
 
 # Explicitly add installed Python packages and uWSGI Python packages to PYTHONPATH
 # Otherwise uWSGI can't import Flask
-export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.6/site-packages:/usr/lib/python3.6/site-packages
+export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.7/site-packages:/usr/lib/python3.7/site-packages
 
 # Generate Nginx config first part using the environment variables
 echo "server {
