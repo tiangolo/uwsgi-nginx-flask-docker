@@ -26,7 +26,7 @@ USE_STATIC_URL=${STATIC_URL:-'/static'}
 # Get the absolute path of the static files from the environment variable
 USE_STATIC_PATH=${STATIC_PATH:-'/app/static'}
 # Get the listen port for Nginx, default to 80
-USE_LISTEN_PORT=${LISTEN_PORT:-80}
+USE_LISTEN_PORT=${LISTEN_PORT:-8888}
 
 # Generate Nginx config first part using the environment variables
 echo "server {

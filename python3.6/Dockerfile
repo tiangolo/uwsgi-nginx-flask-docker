@@ -3,6 +3,7 @@ FROM tiangolo/uwsgi-nginx:python3.6
 LABEL maintainer="Sebastian Ramirez <tiangolo@gmail.com>"
 
 RUN pip install flask
+RUN pip install statsd
 
 # By default, allow unlimited file sizes, modify it to limit the file sizes
 # To have a maximum of 1 MB (Nginx's default) change the line to:
@@ -12,7 +13,7 @@ ENV NGINX_MAX_UPLOAD 0
 # By default, Nginx listens on port 80.
 # To modify this, change LISTEN_PORT environment variable.
 # (in a Dockerfile or with an option for `docker run`)
-ENV LISTEN_PORT 80
+ENV LISTEN_PORT 8888
 
 # Which uWSGI .ini file should be used, to make it customizable
 ENV UWSGI_INI /app/uwsgi.ini
