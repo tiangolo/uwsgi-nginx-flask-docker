@@ -161,6 +161,7 @@ COPY ./app /app
 * Create a `main.py` file (it should be named like that and should be in your `app` directory) with:
 
 ```python
+import os
 from flask import Flask, send_file
 app = Flask(__name__)
 
