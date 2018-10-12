@@ -1,7 +1,6 @@
 ## Supported tags and respective `Dockerfile` links
 
 * [`python3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.7/Dockerfile)
-* [`python3.7-alpine3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.7-alpine3.7/Dockerfile)
 * [`python3.6` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.6/Dockerfile)
 * [`python3.6-index` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.6-index/Dockerfile)
 * [`python3.6-alpine3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.6-alpine3.7/Dockerfile)
@@ -10,6 +9,10 @@
 * [`python2.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python2.7/Dockerfile)
 * [`python2.7-index` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python2.7-index/Dockerfile)
 * [`python2.7-alpine3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python2.7-alpine3.7/Dockerfile)
+
+## Temporarily not supported
+
+* [`python3.7-alpine3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.7-alpine3.7/Dockerfile) Temporarily not supported as uWSGI has not been realeased with Python 3.7 support for [Alpine 3.7](https://pkgs.alpinelinux.org/package/v3.7/main/x86/uwsgi-python3) nor for [Alpine 3.8](https://pkgs.alpinelinux.org/package/v3.8/main/x86/uwsgi-python3)
 
 
 ## DEPRECATED tags and respective `Dockerfile` links
