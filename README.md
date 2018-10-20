@@ -368,6 +368,29 @@ For example, to enable it, you could add this to your `Dockerfile`:
 ENV STATIC_INDEX 1
 ```
 
+### Custom uWSGI process number
+
+By default, the image starts with 2 uWSGI processes running. When the server is experiencing a high load, it creates up to 16 uWSGI processes to handle it on demand.
+
+If you need to configure these numbers you can use environment variables.
+
+The starting number of uWSGI processes is controlled by the variable `UWSGI_CHEAPER`, by default set to `2`.
+
+The maximum number of uWSGI processes is controlled by the variable `UWSGI_PROCESSES`, by default set to `16`.
+
+Have in mind that `UWSGI_CHEAPER` must be lower than `UWSGI_PROCESSES`.
+
+So, if, for example, you need to start with 4 processes and grow to a maximum of 64, your `Dockerfile` could look like:
+
+```Dockerfile
+FROM tiangolo/uwsgi-nginx-flask:python3.7
+
+ENV UWSGI_CHEAPER 4
+ENV UWSGI_PROCESSES 64
+
+COPY ./app /app
+```
+
 ### Max upload file size
 
 You can set a custom maximum upload file size using an environment variable `NGINX_MAX_UPLOAD`, by default it has a value of `0`, that allows unlimited upload file sizes. This differs from Nginx's default value of 1 MB. It's configured this way because that's the simplest experience an inexperienced developer in Nginx would expect.
