@@ -50,7 +50,7 @@ There is also an Alpine version. If you want it, use one of the Alpine tags from
 
 [**example-flask-package-python3.7.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.9/example-flask-package-python3.7.zip>)
 
-* **`python3.7`** tag: `static/index.html` served directly in `/`, e.g. for Angular, React, or any other Single-Page Application that uses a static `index.html`, not modified by Python: 
+* **`python3.7`** tag: `static/index.html` served directly in `/`, e.g. for [Vue](https://vuejs.org/), [React](https://reactjs.org/), [Angular](https://angular.io/), or any other Single-Page Application that uses a static `index.html`, not modified by Python: 
 
 [**example-flask-python3.7-index.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.9/example-flask-python3.7-index.zip>)
 
@@ -141,7 +141,7 @@ You should be able to check it in your Docker container's URL, for example: <htt
 
 This section explains how to configure the image to serve the contents of `/static/index.html` directly when the browser requests `/`.
 
-This is specially helpful (and efficient) if you are building a Single-Page Application (SPA) with JavaScript (Angular, React, etc) and you want the `index.html` to be served directly, without modifications by Python or Jinja2 templates. And you want to use Flask mainly as an API / back end for your SPA front end.
+This is specially helpful (and efficient) if you are building a Single-Page Application (SPA) with JavaScript ( [Vue](https://vuejs.org/), [React](https://reactjs.org/), [Angular](https://angular.io/), etc.) and you want the `index.html` to be served directly, without modifications by Python or Jinja2 templates. And you want to use Flask mainly as an API / back end for your SPA front end.
 
 **Note**: You can download the example project **example-flask-python3.7-index.zip** and use it as the template for your project in the **Examples** section above.
 
@@ -327,7 +327,7 @@ Your file structure would look like:
 
 * Make sure you follow [the offical docs while importing your modules](https://docs.python.org/3/tutorial/modules.html#intra-package-references):
 
-* For example, if you are in `app/app/main.py` and want to import the module in `app/app/core/app_setup.py` you would wirte it like:
+* For example, if you are in `app/app/main.py` and want to import the module in `app/app/core/app_setup.py` you would write it like:
 
 ```python
 from .core import app_setup
@@ -370,7 +370,7 @@ ENV STATIC_INDEX 1
 
 ### Max upload file size
 
-You can set a custom maximum upload file size using an environment variable `NGINX_MAX_UPLOAD`, by default it has a value of `0`, that allows unlimited upload file sizes. This differs from Nginx's default value of 1 MB. It's configured this way because that's the simplest experience a developer that is not expert in Nginx would expect.
+You can set a custom maximum upload file size using an environment variable `NGINX_MAX_UPLOAD`, by default it has a value of `0`, that allows unlimited upload file sizes. This differs from Nginx's default value of 1 MB. It's configured this way because that's the simplest experience an inexperienced developer in Nginx would expect.
 
 For example, to have a maximum upload file size of 1 MB (Nginx's default) add a line in your `Dockerfile` with:
 
@@ -545,9 +545,9 @@ Roughly:
 
 * **Your Python code** has the actual **Flask** web application, and is run by uWSGI.
 
-The image [**tiangolo/uwsgi-nginx**](https://hub.docker.com/r/tiangolo/uwsgi-nginx/) takes advantage of already slim and optimized existing Docker images (based on Debian as [recommended by Docker](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)) and implements Docker best practices.
+The image [**tiangolo/uwsgi-nginx**](https://hub.docker.com/r/tiangolo/uwsgi-nginx/) takes advantage of already existing slim and optimized Docker images (based on Debian as [recommended by Docker](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)) and implements several of Docker's best practices.
 
-It uses the official Python Docker image, installs uWSGI and on top of that (with the least amount of modifications) and adds the official Nginx image.
+It uses the official Python Docker image, installs uWSGI and on top of that (with the least amount of modifications) adds the official Nginx image.
 
 And it controls all these processes with Supervisord.
 
@@ -649,7 +649,7 @@ Now you can edit your Flask code in your local machine and once you refresh your
 
 Remember that you should use this only for debugging and development, for deployment in production you shouldn't mount volumes and you should let Supervisord start and let it start uWSGI and Nginx (which is what happens by default).
 
-An alternative for these last steps to work when you don't have a package but just a flat structure with single files (modules), your Python Flask code could have that section with:
+An alternative for these last steps to work when you don't have a package, but just a flat structure with single files (modules), your Python Flask code could have that section with:
 
 ```python
 if __name__ == "__main__":
@@ -697,7 +697,7 @@ def route_frontend(path):
         return send_file(index_path)
 ```
 
-...that makes Flask send all the CSS, JavaScript and image files when requested in the root (`/`) URL but also makes sure that your front end SPA handles all the other URLs that are not defined in your Flask app.
+...that makes Flask send all the CSS, JavaScript and image files when requested in the root (`/`) URL but also makes sure that your frontend SPA handles all the other URLs that are not defined in your Flask app.
 
 That's how it is written in the tutorial above and is included in the downloadable examples.
 
@@ -739,7 +739,7 @@ You will now be inside your container in the `/app` directory.
 flask run --host=0.0.0.0 --port=80
 ```
 
-You will see your Flask debugging server start, you will see how it sends responses to every request, you will see the errors thrown when you break your code and how they stop your server and you will be able to re-start your server very fast, by just running the command above again.
+You will see your Flask debugging server start, you will see how it sends responses to every request, you will see the errors thrown when you break your code, and how they stop your server, and you will be able to re-start it very fast, by just running the command above again.
 
 ## What's new
 
@@ -786,7 +786,7 @@ It's now possible to set the number of Nginx worker processes with the environme
 * New official image tags: `python3.6`, `python3.6-index`, `python.3.5`, `python3.5-index`, `python2.7` and `python2.7-index`. All the other images are deprecated in favor is this ones. 
 * Python 3.6 is now the recommended default. Even the example projects for other versions were removed to discourage using older Python versions for new projects.
 * Any of the older images that didn't have a Python version will show a deprecation warning and take some time to start. As soon the tag `latest` will point to Python 3.6 and the other tags will be removed.
-* There were several improvements in the bas image `tiangolo/uwsgi-nginx` that improved this image too.
+* There were several improvements in the base image `tiangolo/uwsgi-nginx` that improved this image too.
 * By default, now there is no limit in the upload file size in Nginx. It can be configured in an environment variable.
 * It's now possible to configure several things with environment variables: 
   * Serve `index.html` directly: `STATIC_INDEX`
