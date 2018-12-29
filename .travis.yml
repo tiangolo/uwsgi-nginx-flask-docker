@@ -1,0 +1,9 @@
+sudo: required
+
+language: python
+
+services:
+  - docker
+
+script:
+- bash scripts/build-push.sh

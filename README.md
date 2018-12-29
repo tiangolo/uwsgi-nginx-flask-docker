@@ -1,6 +1,8 @@
+[![Build Status](https://travis-ci.org/tiangolo/uwsgi-nginx-flask-docker.svg?branch=master)](https://travis-ci.org/tiangolo/uwsgi-nginx-flask-docker)
+
 ## Supported tags and respective `Dockerfile` links
 
-* [`python3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.7/Dockerfile)
+* [`python3.7`, `latest` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.7/Dockerfile)
 * [`python3.6` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.6/Dockerfile)
 * [`python3.6-index` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.6-index/Dockerfile)
 * [`python3.6-alpine3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.6-alpine3.7/Dockerfile)
@@ -12,18 +14,10 @@
 * [`python2.7-alpine3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python2.7-alpine3.7/Dockerfile)
 * [`python2.7-alpine3.8` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python2.7-alpine3.8/Dockerfile)
 
+
 ## Temporarily not supported
 
 * [`python3.7-alpine3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.7-alpine3.7/Dockerfile) and [`python3.7-alpine3.8` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.7-alpine3.8/Dockerfile) Temporarily not supported as uWSGI has not been released with Python 3.7 support for [Alpine 3.7](https://pkgs.alpinelinux.org/package/v3.7/main/x86/uwsgi-python3) nor for [Alpine 3.8](https://pkgs.alpinelinux.org/package/v3.8/main/x86/uwsgi-python3)
-
-
-## DEPRECATED tags and respective `Dockerfile` links
-
-* [`flask`, `flask-upload`, `latest` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/deprecated/Dockerfile)
-* [`flask-index`, `flask-index-upload` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/deprecated-index/Dockerfile)
-* [`flask-python3.5`, `flask-python3.5-upload`  _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.5/Dockerfile)
-* [`flask-python3.5-index`, `flask-python3.5-index-upload`  _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.5-index/Dockerfile)
-* [`flask-python2.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python2.7/Dockerfile)
 
 
 # uwsgi-nginx-flask
