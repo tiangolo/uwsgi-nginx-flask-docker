@@ -632,7 +632,35 @@ EXPOSE 8080
 COPY ./app /app
 ```
 
-### Custom `uwsgi.ini` file
+### Custom `uwsgi.ini` configurations
+
+There is a default file in `/app/uwsgi.ini` with app specific configurations (on top of the global `uwsgi` configurations).
+
+It only contains:
+
+```ini
+[uwsgi]
+module = main
+callable = app
+```
+
+* `module = main` refers to the file `main.py`.
+* `callable = app` refers to the `Flask` "application", in the variable `app`.
+
+---
+
+You can customize `uwsgi` by replacing that file with your own, including all your configurations.
+
+For example, to extend the default one above and enable threads, you could have a file:
+
+```ini
+[uwsgi]
+module = main
+callable = app
+enable-threads = true
+```
+
+### Custom `uwsgi.ini` file location
 
 You can override where the image should look for the app `uwsgi.ini` file using the envirnoment variable `UWSGI_INI`.
 
@@ -768,6 +796,8 @@ ENV NGINX_WORKER_OPEN_FILES 2048
 If you need to configure Nginx further, you can add `*.conf` files to `/etc/nginx/conf.d/` in your Dockerfile.
 
 Just have in mind that the default configurations are created during startup in a file in `/etc/nginx/conf.d/nginx.conf` and `/etc/nginx/conf.d/upload.conf`. So you shouldn't overwrite them. You should name your `*.conf` file with something different than `nginx.conf` or `upload.conf`.
+
+**Note**: if you are customizing Nginx, maybe copying configurations from a blog or a StackOverflow answer, have in mind that you probably need to use the [configurations specific to uWSGI](http://nginx.org/en/docs/http/ngx_http_uwsgi_module.html), instead of those for other modules, like for example, `ngx_http_fastcgi_module`.
 
 ## Technical details
 
