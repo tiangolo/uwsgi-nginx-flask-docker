@@ -1085,6 +1085,10 @@ COPY ./app /app
 and then customize with environment variables.
 
 
+## Tests
+
+All the image tags, configurations, environment variables and application options are tested.
+
 
 ## License
 

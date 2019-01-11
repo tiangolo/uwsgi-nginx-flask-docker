@@ -1,6 +1,4 @@
-
-
-# This could be a SQLAlchemy model, 
+# This could be a SQLAlchemy model,
 # an ElasticSearch document, a MongoDB document, etc
 class User:
     def __init__(self, name, email):

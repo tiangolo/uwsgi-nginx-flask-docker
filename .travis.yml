@@ -2,8 +2,20 @@ sudo: required
 
 language: python
 
+python:
+  - "3.6"
+
+install:
+  - pip install docker pytest
+
 services:
   - docker
 
 script:
-- bash scripts/build-push.sh
+  - bash scripts/test.sh
+
+deploy:
+  provider: script
+  script: bash scripts/build-push.sh
+  on:
+    branch: master
