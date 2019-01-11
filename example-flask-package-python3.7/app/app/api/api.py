@@ -1,1 +1,1 @@
-from .endpoints import user
+from .endpoints import user  # noqa

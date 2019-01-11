@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask, send_file
+
 app = Flask(__name__)
 
 
@@ -12,12 +13,12 @@ def hello():
 
 @app.route("/")
 def main():
-    index_path = os.path.join(app.static_folder, 'index.html')
+    index_path = os.path.join(app.static_folder, "index.html")
     return send_file(index_path)
 
 
 # Everything not declared before (not a Flask route / API endpoint)...
-@app.route('/<path:path>')
+@app.route("/<path:path>")
 def route_frontend(path):
     # ...could be a static file needed by the front end that
     # doesn't use the `static` path (like in `<script src="bundle.js">`)
@@ -26,10 +27,10 @@ def route_frontend(path):
         return send_file(file_path)
     # ...or should be handled by the SPA's "router" in front end
     else:
-        index_path = os.path.join(app.static_folder, 'index.html')
+        index_path = os.path.join(app.static_folder, "index.html")
         return send_file(index_path)
 
 
 if __name__ == "__main__":
     # Only for debugging while developing
-    app.run(host='0.0.0.0', debug=True, port=80)
+    app.run(host="0.0.0.0", debug=True, port=80)
