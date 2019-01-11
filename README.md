@@ -69,7 +69,7 @@ There are several template projects that you can download (as a `.zip` file) to 
 This Docker image is based on [**tiangolo/uwsgi-nginx**](https://hub.docker.com/r/tiangolo/uwsgi-nginx/). That Docker image has uWSGI and Nginx installed in the same container and was made to be the base of this image.
 
 
-## QuickStart
+## Quick Start
 
 **Note**: You can download the **example-flask-python3.7.zip** project example and use it as the template for your project from the section **Examples** above.
 
@@ -130,168 +130,80 @@ docker run -d --name mycontainer -p 80:80 myimage
 
 ...and you have an optimized Flask server in a Docker container.
 
-You should be able to check it in your Docker container's URL, for example: <http://192.168.99.100/>
+You should be able to check it in your Docker container's URL, for example: <a href="http://192.168.99.100" target="_blank">http://192.168.99.100</a> or <a href="http://127.0.0.1" target="_blank">http://127.0.0.1</a>
 
 
 ## Project Generators
 
 There are several project generators that you can use to start your project, with everything already configured.
 
-They all include automatic and free HTTPS certificate generation using [Traefik](https://traefik.io/) and [Let's Encrypt](https://letsencrypt.org/), using [a very simple to use Docker cluster configuration with Docker Swarm mode](https://medium.com/@tiangolo/docker-swarm-mode-and-traefik-for-a-https-cluster-20328dba6232).
+### Server set up
 
-### [flask-frontend-docker](https://github.com/tiangolo/flask-frontend-docker)
+All these project generators include automatic and free HTTPS certificates generation provided by:
+* [Traefik](https://traefik.io/) and 
+* [Let's Encrypt](https://letsencrypt.org/)
 
-Minimal project generator with a Flask backend, a modern frontend (Vue, React or Angular), a Traefik load balancer with HTTPS, all based on Docker.
+...using [a very simple to use Docker cluster configuration with Docker Swarm mode](https://medium.com/@tiangolo/docker-swarm-mode-and-traefik-for-a-https-cluster-20328dba6232).
 
-Features:
+It would take about 20 minutes to read that guide and have a Docker cluster (of one or more servers) up and running ready for your projects.
 
-* Full Docker integration (Docker based)
-* Docker Swarm Mode deployment
-* Docker Compose integration and optimization for local development
-* Production ready Python web server using Nginx and uWSGI
-* Python Flask backend:
-    * CORS already configured, to be used by the frontend.
-* Vue frontend
-    * Easily updated to be Angular or React.
-    * Docker server based on Nginx (configured to play nicely with Vue-router)
-    * Docker multi-stage building, so you don't need to save or commit compiled code
-    * Easily enable frontend tests at build time
-* Load balancing between frontend and backend with Traefik:
-    * So you can have both backend and frontend under the same domain, separated by path, but served by the two different containers
-* Automatic (free) HTTPS certificate generation with Let's Encrypt and Traefik
+You can have several projects in the same cluster, all with automatic HTTPS, even if they have different domains or sub-domains.
 
+### Generate a project
 
-### [full-stack](https://github.com/tiangolo/full-stack)
+Then you can use one of the following project generators.
 
-Full stack, modern web application generator. Using Flask, PostgreSQL DB, Docker, Swagger, automatic HTTPS and more.
+It would take about 5 extra minutes to generate one of these projects.
 
-Features:
+### Deploy
 
-* Full Docker integration (Docker based)
-* Docker Swarm Mode deployment
-* Docker Compose integration and optimization for local development
-* Production ready Python web server using Nginx and uWSGI
-* Python Flask backend with:
-  * Flask-apispec: Swagger live documentation generation
-  * Marshmallow: model and data serialization (convert model objects to JSON)
-  * Webargs: parse, validate and document inputs to the endpoint / route
-  * Secure password hashing by default
-  * JWT token authentication
-  * SQLAlchemy models (independent of Flask extensions, so they can be used with Celery workers directly)
-  * Basic starting models for users and groups (modify and remove as you need)
-  * Alembic migrations
-  * CORS (Cross Origin Resource Sharing)
-* Celery worker that can import and use models and code from the rest of the backend selectively (you don't have to install the complete app in each worker)
-* REST backend tests based on Pytest, integrated with Docker, so you can test the full API interaction, independent on the database. As it runs in Docker, it can build a new data store from scratch each time (so you can use ElasticSearch, MongoDB, CouchDB, or whatever you want, and just test that the API works)
-* Easy Python integration with Jupyter Kernels for remote or in-Docker development with extensions like Atom Hydrogen or Visual Studio Code Jupyter
-* Vue frontend:
-  * Generated with Vue CLI
-  * JWT Authentication handling
-  * Login view
-  * After login, main dashboard view
-  * Vuex
-  * Vue-router
-  * Vuetify for beautiful material design components
-  * TypeScript
-  * Docker server based on Nginx (configured to play nicely with Vue-router)
-  * Docker multi-stage building, so you don't need to save or commit compiled code
-  * Frontend tests ran at build time (can be disabled too)
-  * Made as modular as possible, so it works out of the box, but you can re-generate with Vue CLI or create it as you need, and re-use what you want
-* PGAdmin for PostgreSQL database, you can modify it to use PHPMyAdmin and MySQL easily
-* Swagger-UI for live interactive documentation
-* Flower for Celery jobs monitoring
-* Load balancing between frontend and backend with Traefik, so you can have both under the same domain, separated by path, but served by different containers
-* Traefik integration, including Let's Encrypt HTTPS certificates automatic generation
-* GitLab CI (continuous integration), including frontend and backend testing
+And it would take about 3 more minutes to deploy them in your cluster.
+
+---
+
+In total, about 28 minutes to start from scratch and get an HTTPS Docker cluster with your full application(s) ready.
+
+---
+
+These are the project generators:
+
+### flask-frontend-docker
+
+Project link: [https://github.com/tiangolo/flask-frontend-docker](https://github.com/tiangolo/flask-frontend-docker)
+
+Minimal project generator with a Flask backend, a modern frontend (Vue, React or Angular) using Docker multi-stage building and Nginx, a Traefik load balancer with HTTPS, Docker Compose (and Docker Swarm mode) etc.
 
 
-### [full-stack-flask-couchbase](https://github.com/tiangolo/full-stack-flask-couchbase)
+### full-stack
 
-Full stack, modern web application generator. Using Flask, Couchbase as database, Docker, Swagger, automatic HTTPS and more.
+Project Link: [https://github.com/tiangolo/full-stack](https://github.com/tiangolo/full-stack)
 
-Features:
-
-* Full Docker integration (Docker based)
-* Docker Swarm Mode deployment
-* Docker Compose integration and optimization for local development
-* Production ready Python web server using Nginx and uWSGI
-* Python Flask backend with:
-  * Flask-apispec: Swagger live documentation generation
-  * Marshmallow: model and data serialization (convert model objects to JSON)
-  * Webargs: parse, validate and document inputs to the endpoint / route
-  * Secure password hashing by default
-  * JWT token authentication
-  * Basic starting functionality for users and roles (modify and remove as you need)
-  * CORS (Cross Origin Resource Sharing)
-* Celery worker that can import and use code from the rest of the backend selectively (you don't have to install the complete app in each worker)
-* NoSQL Couchbase database that supports direct synchronization via Couchbase Sync Gateway for offline-first applications.
-* Full Text Search integrated, using Couchbase.
-* REST backend tests based on Pytest, integrated with Docker, so you can test the full API interaction, independent on the database. As it runs in Docker, it can build a new data store from scratch each time (so you can use ElasticSearch, MongoDB, or whatever you want, and just test that the API works).
-* Easy Python integration with Jupyter Kernels for remote or in-Docker development with extensions like Atom Hydrogen or Visual Studio Code Jupyter
-* Vue frontend:
-  * Generated with Vue CLI
-  * JWT Authentication handling
-  * Login view
-  * After login, main dashboard view
-  * Vuex
-  * Vue-router
-  * Vuetify for beautiful material design components
-  * TypeScript
-  * Docker server based on Nginx (configured to play nicely with Vue-router)
-  * Docker multi-stage building, so you don't need to save or commit compiled code
-  * Frontend tests ran at build time (can be disabled too)
-  * Made as modular as possible, so it works out of the box, but you can re-generate with Vue CLI or create it as you need, and re-use what you want
-* Swagger-UI for live interactive documentation
-* Flower for Celery jobs monitoring
-* Load balancing between frontend and backend with Traefik, so you can have both under the same domain, separated by path, but served by different containers
-* Traefik integration, including Let's Encrypt HTTPS certificates automatic generation
-* GitLab CI (continuous integration), including frontend and backend testing
+Full stack project generator with Flask backend, PostgreSQL DB, PGAdmin, SQLAlchemy, Alembic migrations, Celery asynchronous jobs, API testing, CI integration, Docker Compose (and Docker Swarm mode), Swagger, automatic HTTPS, Vue.js, etc.
 
 
-### [full-stack-flask-couchdb](https://github.com/tiangolo/full-stack-flask-couchdb)
+### full-stack-flask-couchbase
 
-Full stack, modern web application generator. Using Flask, CouchDB as database, Docker, Swagger, automatic HTTPS and more.
+Project Link: [https://github.com/tiangolo/full-stack-flask-couchbase](https://github.com/tiangolo/full-stack-flask-couchbase)
 
-Features:
+✨ This project generator is the most feature-complete. ✨
 
-* Full Docker integration (Docker based)
-* Docker Swarm Mode deployment
-* Docker Compose integration and optimization for local development
-* Production ready Python web server using Nginx and uWSGI
-* Python Flask backend with:
-  * Flask-apispec: Swagger live documentation generation
-  * Marshmallow: model and data serialization (convert model objects to JSON)
-  * Webargs: parse, validate and document inputs to the endpoint / route
-  * Secure password hashing by default
-  * JWT token authentication
-  * Basic starting functionality for users and roles (modify and remove as you need)
-  * CORS (Cross Origin Resource Sharing)
-* Celery worker that can import and use code from the rest of the backend selectively (you don't have to install the complete app in each worker)
-* NoSQL CouchDB database that supports direct synchronization for offline-first applications
-* REST backend tests based on Pytest, integrated with Docker, so you can test the full API interaction, independent on the database. As it runs in Docker, it can build a new data store from scratch each time (so you can use ElasticSearch, MongoDB, or whatever you want, and just test that the API works).
-* Easy Python integration with Jupyter Kernels for remote or in-Docker development with extensions like Atom Hydrogen or Visual Studio Code Jupyter
-* Vue frontend:
-  * Generated with Vue CLI
-  * JWT Authentication handling
-  * Login view
-  * After login, main dashboard view
-  * Vuex
-  * Vue-router
-  * Vuetify for beautiful material design components
-  * TypeScript
-  * Docker server based on Nginx (configured to play nicely with Vue-router)
-  * Docker multi-stage building, so you don't need to save or commit compiled code
-  * Frontend tests ran at build time (can be disabled too)
-  * Made as modular as possible, so it works out of the box, but you can re-generate with Vue CLI or create it as you need, and re-use what you want
-* Swagger-UI for live interactive documentation
-* Flower for Celery jobs monitoring
-* Load balancing between frontend and backend with Traefik, so you can have both under the same domain, separated by path, but served by different containers
-* Traefik integration, including Let's Encrypt HTTPS certificates automatic generation
-* GitLab CI (continuous integration), including frontend and backend testing
+Full stack project generator with Flask backend, Couchbase, Couchbase Sync Gateway, Celery asynchronous jobs, API testing, CI integration, Docker Compose (and Docker Swarm mode), Swagger, automatic HTTPS, Vue.js, etc.
 
-## QuickStart for SPAs *
+Similar to the one above (`full-stack`), but with Couchbase instead of PostgreSQL, and some more features.
 
-### * Deprecation Notice
+
+### full-stack-flask-couchdb
+
+Project Link: [https://github.com/tiangolo/full-stack-flask-couchdb](https://github.com/tiangolo/full-stack-flask-couchdb)
+
+Full stack project generator with Flask backend, CouchDB, Celery asynchronous jobs, API testing, CI integration, Docker Compose (and Docker Swarm mode), Swagger, automatic HTTPS, Vue.js, etc.
+
+Similar to `full-stack-flask-couchbase`, but with CouchDB instead of Couchbase (or PostgreSQL).
+
+
+## Quick Start for SPAs *
+
+### Modern Single Page Applications
 
 If you are building modern frontend applications (e.g. [Vue](https://vuejs.org/), [React](https://reactjs.org/), [Angular](https://angular.io/)) you would most probably be compiling a modern version of JavaScript (ES2015, TypeScript, etc) to a less modern, more compatible version.
 
@@ -345,123 +257,12 @@ In this scenario, you would have 3 Docker containers:
 * Frontend (Vue.js, Angular, React or any other)
 * Traefik (load balancer, HTTPS)
 
+### Deprecated Single Page Applications guide
 
-### Deprecated technique for SPAs in a single container
-
-**Notice**: this technique is deprecated, as it can create several issues with modern frontend frameworks. For the details and better alternatives, read the section above.
-
-This section explains how to configure the image to serve the contents of `/static/index.html` directly when the browser requests `/`.
-
-This is specially helpful (and efficient) if you are building a Single-Page Application (SPA) with JavaScript ( [Vue](https://vuejs.org/), [React](https://reactjs.org/), [Angular](https://angular.io/), etc.) and you want the `index.html` to be served directly, without modifications by Python or Jinja2 templates. And you want to use Flask mainly as an API / back end for your SPA front end.
-
-**Note**: You can download the example project **example-flask-python3.7-index.zip** and use it as the template for your project in the **Examples** section above.
-
----
-
-Or you may follow the instructions to build your project from scratch (it's very similar to the procedure above):
-
-* Go to your project directory
-* Create a `Dockerfile` with:
-
-```Dockerfile
-FROM tiangolo/uwsgi-nginx-flask:python3.7
-
-ENV STATIC_INDEX 1
-
-COPY ./app /app
-```
-
-* Create an `app` directory and enter in it
-* Create a `main.py` file (it should be named like that and should be in your `app` directory) with:
-
-```python
-import os
-from flask import Flask, send_file
-app = Flask(__name__)
+If you want to check the previous (deprecated) documentation on adding a frontend to the same container, you can [read the deprecated guide for single page apps](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/deprecated-single-page-apps-in-same-container.md).
 
 
-@app.route("/hello")
-def hello():
-    return "Hello World from Flask"
-
-
-@app.route("/")
-def main():
-    index_path = os.path.join(app.static_folder, 'index.html')
-    return send_file(index_path)
-
-
-# Everything not declared before (not a Flask route / API endpoint)...
-@app.route('/<path:path>')
-def route_frontend(path):
-    # ...could be a static file needed by the front end that
-    # doesn't use the `static` path (like in `<script src="bundle.js">`)
-    file_path = os.path.join(app.static_folder, path)
-    if os.path.isfile(file_path):
-        return send_file(file_path)
-    # ...or should be handled by the SPA's "router" in front end
-    else:
-        index_path = os.path.join(app.static_folder, 'index.html')
-        return send_file(index_path)
-
-
-if __name__ == "__main__":
-    # Only for debugging while developing
-    app.run(host='0.0.0.0', debug=True, port=80)
-```
-
-the main application object should be named `app` (in the code) as in this example.
-
-**Note**: The section with the `main()` function is for debugging purposes. To learn more, read the **Advanced instructions** below.
-
-* Make sure you have an `index.html` file in `./app/static/index.html`, for example with:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Index</title>
-</head>
-<body>
-<h1>Hello World from HTML</h1>
-</body>
-</html>
-```
-
-* You should now have a directory structure like:
-
-```
-.
-├── app
-│   ├── main.py
-│   └── static
-│       └── index.html
-└── Dockerfile
-```
-
-* Go to the project directory (in where your `Dockerfile` is, containing your `app` directory)
-* Build your Flask image:
-
-```bash
-docker build -t myimage .
-```
-
-* Run a container based on your image:
-
-```bash
-docker run -d --name mycontainer -p 80:80 myimage
-```
-
-...and you have an optimized Flask server in a Docker container. Also optimized to serve your main static `index.html` page.
-
-* Now, when you go to your Docker container URL, for example: <http://192.168.99.100/>, you will see your `index.html` as if you were in <http://192.168.99.100/static/index.html>.
-
-* You should be able to also go to, for example, <http://192.168.99.100/hello> to see a "Hello World" page served by Flask.
-
-**Note**: As your `index.html` file will be served from `/` and from `/static/index.html`, it would be better to have absolute paths in the links to other files in the `static` directory from your `index.html` file. As in `/static/css/styles.css` instead of relative paths as in `./css/styles.css`. But still, above you added code in your `main.py` to handle that too, just in case.
-
-## QuickStart for bigger projects structured as a Python package
+## Quick Start for bigger projects structured as a Python package
 
 **Note**: You can download the **example-flask-package-python3.7.zip** project example and use it as an example or template for your project from the section **Examples** above.
 
@@ -745,7 +546,7 @@ python /app/my_custom_prestart_script.py
 
 **Note**: The image uses `source` to run the script, so for example, environment variables would persist. If you don't understand the previous sentence, you probably don't need it.
 
-## Custom Nginx processes number
+### Custom Nginx processes number
 
 By default, Nginx will start one "worker process".
 
@@ -769,7 +570,7 @@ ENV NGINX_WORKER_PROCESSES auto
 COPY ./app /app
 ```
 
-## Custom Nginx maximum connections per worker
+### Custom Nginx maximum connections per worker
 
 By default, Nginx will start with a maximum limit of 1024 connections per worker.
 
@@ -781,7 +582,7 @@ ENV NGINX_WORKER_CONNECTIONS 2048
 
 It cannot exceed the current limit on the maximum number of open files. See how to configure it in the next section.
 
-## Custom Nginx maximum open files
+### Custom Nginx maximum open files
 
 The number connections per Nginx worker cannot exceed the limit on the maximum number of open files.
 
@@ -791,7 +592,7 @@ You can change the limit of open files with the environment variable `NGINX_WORK
 ENV NGINX_WORKER_OPEN_FILES 2048
 ```
 
-## Customizing Nginx configurations
+### Customizing Nginx configurations
 
 If you need to configure Nginx further, you can add `*.conf` files to `/etc/nginx/conf.d/` in your Dockerfile.
 
