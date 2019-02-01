@@ -5,7 +5,12 @@ import pytest
 import requests
 from requests import Response
 
-from ..utils import CONTAINER_NAME, get_logs, get_nginx_config, stop_previous_container
+from ..utils import (
+    CONTAINER_NAME,
+    get_logs,
+    get_nginx_config,
+    remove_previous_container,
+)
 
 client = docker.from_env()
 
@@ -21,33 +26,12 @@ html_content = """<!DOCTYPE html>
 </html>"""
 
 
-@pytest.mark.parametrize(
-    "image,response_text",
-    [
-        (
-            "tiangolo/uwsgi-nginx-flask:python2.7-index",
-            "Hello World from Flask in a uWSGI Nginx Docker container with Python 2.7 (default)",
-        ),
-        (
-            "tiangolo/uwsgi-nginx-flask:python3.5-index",
-            "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.5 (default)",
-        ),
-        (
-            "tiangolo/uwsgi-nginx-flask:python3.6-index",
-            "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.6 (default)",
-        ),
-    ],
-)
-def test_defaults(image, response_text):
-    stop_previous_container(client)
-    container = client.containers.run(
-        image, name=CONTAINER_NAME, ports={"80": "8000"}, detach=True
-    )
+def verify_container(container, response_text):
     nginx_config = get_nginx_config(container)
     assert "client_max_body_size 0;" in nginx_config
     assert "worker_processes 1;" in nginx_config
     assert "listen 80;" in nginx_config
-    assert "worker_connections  1024;" in nginx_config
+    assert "worker_connections 1024;" in nginx_config
     assert "worker_rlimit_nofile;" not in nginx_config
     assert "daemon off;" in nginx_config
     assert "include uwsgi_params;" in nginx_config
@@ -60,7 +44,6 @@ def test_defaults(image, response_text):
     # Nginx index.thml specific
     assert "location = / {" in nginx_config
     assert "index /static/index.html;" in nginx_config
-    time.sleep(3)
     logs = get_logs(container)
     assert "getting INI configuration from /app/uwsgi.ini" in logs
     assert "getting INI configuration from /etc/uwsgi/uwsgi.ini" in logs
@@ -95,5 +78,36 @@ def test_defaults(image, response_text):
     response: Response = requests.get("http://127.0.0.1:8000/api")
     assert response.status_code == 200
     assert response.text == response_text
+
+
+@pytest.mark.parametrize(
+    "image,response_text",
+    [
+        (
+            "tiangolo/uwsgi-nginx-flask:python2.7-index",
+            "Hello World from Flask in a uWSGI Nginx Docker container with Python 2.7 (default)",
+        ),
+        (
+            "tiangolo/uwsgi-nginx-flask:python3.5-index",
+            "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.5 (default)",
+        ),
+        (
+            "tiangolo/uwsgi-nginx-flask:python3.6-index",
+            "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.6 (default)",
+        ),
+    ],
+)
+def test_defaults(image, response_text):
+    remove_previous_container(client)
+    container = client.containers.run(
+        image, name=CONTAINER_NAME, ports={"80": "8000"}, detach=True
+    )
+    time.sleep(3)
+    verify_container(container, response_text)
+    container.stop()
+    # Test that everything works after restarting too
+    container.start()
+    time.sleep(3)
+    verify_container(container, response_text)
     container.stop()
     container.remove()
