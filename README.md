@@ -166,7 +166,7 @@ All these project generators include automatic and free HTTPS certificates gener
 * [Traefik](https://traefik.io/) and 
 * [Let's Encrypt](https://letsencrypt.org/)
 
-...using [a very simple to use Docker cluster configuration with Docker Swarm mode](https://medium.com/@tiangolo/docker-swarm-mode-and-traefik-for-a-https-cluster-20328dba6232).
+...using the ideas from [DockerSwarm.rocks](https://dockerswarm.rocks).
 
 It would take about 20 minutes to read that guide and have a Docker cluster (of one or more servers) up and running ready for your projects.
 
@@ -832,6 +832,10 @@ flask run --host=0.0.0.0 --port=80
 You will see your Flask debugging server start, you will see how it sends responses to every request, you will see the errors thrown when you break your code, and how they stop your server, and you will be able to re-start it very fast, by just running the command above again.
 
 ## What's new
+
+2019-02-02:
+
+* The Nginx configurations are generated dynamically from the entrypoint, instead of modifying pre-existing files. [PR #50 in the parent image `uwsgi-nginx`](https://github.com/tiangolo/uwsgi-nginx-docker/pull/50) and [PR #121](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/121).
 
 2019-01-01:
 
