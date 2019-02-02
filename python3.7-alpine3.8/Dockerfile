@@ -4,19 +4,6 @@ LABEL maintainer="Sebastian Ramirez <tiangolo@gmail.com>"
 
 RUN pip install flask
 
-# By default, allow unlimited file sizes, modify it to limit the file sizes
-# To have a maximum of 1 MB (Nginx's default) change the line to:
-# ENV NGINX_MAX_UPLOAD 1m
-ENV NGINX_MAX_UPLOAD 0
-
-# By default, Nginx listens on port 80.
-# To modify this, change LISTEN_PORT environment variable.
-# (in a Dockerfile or with an option for `docker run`)
-ENV LISTEN_PORT 80
-
-# Which uWSGI .ini file should be used, to make it customizable
-ENV UWSGI_INI /app/uwsgi.ini
-
 # URL under which static (not modified by Python) files will be requested
 # They will be served by Nginx directly, without being handled by uWSGI
 ENV STATIC_URL /static
@@ -38,6 +25,8 @@ ENV PYTHONPATH=/app
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
+# Move the base entrypoint to reuse it
+RUN mv /entrypoint.sh /uwsgi-nginx-entrypoint.sh
 # Copy the entrypoint that will generate Nginx additional configs
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh

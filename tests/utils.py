@@ -13,7 +13,7 @@ def get_nginx_config(container):
     return result.output.decode()
 
 
-def stop_previous_container(client):
+def remove_previous_container(client):
     try:
         previous = client.containers.get(CONTAINER_NAME)
         previous.stop()
