@@ -615,13 +615,33 @@ You can change the limit of open files with the environment variable `NGINX_WORK
 ENV NGINX_WORKER_OPEN_FILES 2048
 ```
 
-### Customizing Nginx configurations
+### Customizing Nginx additional configurations
 
-If you need to configure Nginx further, you can add `*.conf` files to `/etc/nginx/conf.d/` in your Dockerfile.
+If you need to configure Nginx further, you can add `*.conf` files to `/etc/nginx/conf.d/` in your `Dockerfile`.
 
-Just have in mind that the default configurations are created during startup in a file in `/etc/nginx/conf.d/nginx.conf` and `/etc/nginx/conf.d/upload.conf`. So you shouldn't overwrite them. You should name your `*.conf` file with something different than `nginx.conf` or `upload.conf`.
+Just have in mind that the default configurations are created during startup in a file at `/etc/nginx/conf.d/nginx.conf` and `/etc/nginx/conf.d/upload.conf`. So you shouldn't overwrite them. You should name your `*.conf` file with something different than `nginx.conf` or `upload.conf`, for example: `custom.conf`.
 
 **Note**: if you are customizing Nginx, maybe copying configurations from a blog or a StackOverflow answer, have in mind that you probably need to use the [configurations specific to uWSGI](http://nginx.org/en/docs/http/ngx_http_uwsgi_module.html), instead of those for other modules, like for example, `ngx_http_fastcgi_module`.
+
+
+### Overriding Nginx configuration completely
+
+If you need to configure Nginx even further, completely overriding the defaults, you can add a custom Nginx configuration to `/app/nginx.conf`.
+
+It will be copied to `/etc/nginx/nginx.conf` and used instead of the generated one.
+
+Have in mind that, in that case, this image won't generate any of the Nginx configurations, it will only copy and use your configuration file.
+
+That means that all the environment variables described above that are specific to Nginx won't be used.
+
+It also means that it won't use additional configurations from files in `/etc/nginx/conf.d/*.conf`, unless you explicitly have a section in your custom file `/app/nginx.conf` with:
+
+```conf
+include /etc/nginx/conf.d/*.conf;
+```
+
+If you want to add a custom `/app/nginx.conf` file but don't know where to start from, you can use [the `nginx.conf` used for the tests](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/tests/test_02_app/custom_nginx_app/app/nginx.conf) and customize it or modify it further.
+
 
 ## Technical details
 
@@ -836,6 +856,7 @@ You will see your Flask debugging server start, you will see how it sends respon
 2019-02-02:
 
 * The Nginx configurations are generated dynamically from the entrypoint, instead of modifying pre-existing files. [PR #50 in the parent image `uwsgi-nginx`](https://github.com/tiangolo/uwsgi-nginx-docker/pull/50) and [PR #121](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/121).
+* Support for a completely custom `/app/nginx.conf` file that overrides the generated one. [PR #51 in the parent image `uwsgi-nginx`](https://github.com/tiangolo/uwsgi-nginx-docker/pull/51) and [PR #122](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/122).
 
 2019-01-01:
 
