@@ -23,7 +23,7 @@ content_server=$content_server"    location $USE_STATIC_URL {\n"
 content_server=$content_server"        alias $USE_STATIC_PATH;\n"
 content_server=$content_server'    }\n'
 # If STATIC_INDEX is 1, serve / with /static/index.html directly (or the static URL configured)
-if [[ $STATIC_INDEX == 1 ]] ; then
+if [ "$STATIC_INDEX" = 1 ] ; then
     content_server=$content_server'    location = / {\n'
     content_server=$content_server"        index $USE_STATIC_URL/index.html;\n"
     content_server=$content_server'    }\n'
