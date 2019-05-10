@@ -21,10 +21,6 @@ WORKDIR /app
 # Make /app/* available to be imported by Python globally to better support several use cases like Alembic migrations.
 ENV PYTHONPATH=/app
 
-# Copy start.sh script that will check for a /app/prestart.sh script and run it before starting the app
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
-
 # Move the base entrypoint to reuse it
 RUN mv /entrypoint.sh /uwsgi-nginx-entrypoint.sh
 # Copy the entrypoint that will generate Nginx additional configs
