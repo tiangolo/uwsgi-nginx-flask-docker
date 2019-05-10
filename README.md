@@ -853,6 +853,10 @@ You will see your Flask debugging server start, you will see how it sends respon
 
 ## What's new
 
+2019-05-10:
+
+* Move `/start.sh` and `/app/prestart.sh` functionality to parent image. [PR #134](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/134).
+
 2019-02-02:
 
 * The Nginx configurations are generated dynamically from the entrypoint, instead of modifying pre-existing files. [PR #50 in the parent image `uwsgi-nginx`](https://github.com/tiangolo/uwsgi-nginx-docker/pull/50) and [PR #121](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/121).
