@@ -851,11 +851,13 @@ flask run --host=0.0.0.0 --port=80
 
 You will see your Flask debugging server start, you will see how it sends responses to every request, you will see the errors thrown when you break your code, and how they stop your server, and you will be able to re-start it very fast, by just running the command above again.
 
-## What's new
+## Release Notes
 
-2019-05-10:
+### 1.1.0
 
 * Move `/start.sh` and `/app/prestart.sh` functionality to parent image. [PR #134](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/134).
+
+### 1.0.0
 
 2019-02-02:
 
