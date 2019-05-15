@@ -14,11 +14,9 @@
 * [`python2.7-alpine3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python2.7-alpine3.7/Dockerfile)
 * [`python2.7-alpine3.8` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python2.7-alpine3.8/Dockerfile)
 
-
 ## Temporarily not supported
 
 * [`python3.7-alpine3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.7-alpine3.7/Dockerfile) and [`python3.7-alpine3.8` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.7-alpine3.8/Dockerfile) Temporarily not supported as uWSGI has not been released with Python 3.7 support for [Alpine 3.7](https://pkgs.alpinelinux.org/package/v3.7/main/x86/uwsgi-python3) nor for [Alpine 3.8](https://pkgs.alpinelinux.org/package/v3.8/main/x86/uwsgi-python3)
-
 
 # uwsgi-nginx-flask
 
@@ -55,9 +53,9 @@ It is very simlar to **tiangolo/uwsgi-nginx-flask**, so you can still use many o
 
 ---
 
-**GitHub repo**: <https://github.com/tiangolo/uwsgi-nginx-flask-docker>
+**GitHub repo**: [https://github.com/tiangolo/uwsgi-nginx-flask-docker](https://github.com/tiangolo/uwsgi-nginx-flask-docker)
 
-**Docker Hub image**: <https://hub.docker.com/r/tiangolo/uwsgi-nginx-flask/>
+**Docker Hub image**: [https://hub.docker.com/r/tiangolo/uwsgi-nginx-flask/](https://hub.docker.com/r/tiangolo/uwsgi-nginx-flask/)
 
 ## Examples (simple project templates)
 
@@ -90,7 +88,6 @@ As of now, [everyone](https://www.python.org/dev/peps/pep-0373/) [should be](htt
 There are several template projects that you can download (as a `.zip` file) to bootstrap your project in the section "**Examples (project templates)**" above.
 
 This Docker image is based on [**tiangolo/uwsgi-nginx**](https://hub.docker.com/r/tiangolo/uwsgi-nginx/). That Docker image has uWSGI and Nginx installed in the same container and was made to be the base of this image.
-
 
 ## Quick Start
 
@@ -163,7 +160,7 @@ There are several project generators that you can use to start your project, wit
 ### Server set up
 
 All these project generators include automatic and free HTTPS certificates generation provided by:
-* [Traefik](https://traefik.io/) and 
+* [Traefik](https://traefik.io/) and
 * [Let's Encrypt](https://letsencrypt.org/)
 
 ...using the ideas from [DockerSwarm.rocks](https://dockerswarm.rocks).
@@ -196,13 +193,11 @@ Project link: [https://github.com/tiangolo/flask-frontend-docker](https://github
 
 Minimal project generator with a Flask backend, a modern frontend (Vue, React or Angular) using Docker multi-stage building and Nginx, a Traefik load balancer with HTTPS, Docker Compose (and Docker Swarm mode) etc.
 
-
 ### full-stack
 
 Project Link: [https://github.com/tiangolo/full-stack](https://github.com/tiangolo/full-stack)
 
 Full stack project generator with Flask backend, PostgreSQL DB, PGAdmin, SQLAlchemy, Alembic migrations, Celery asynchronous jobs, API testing, CI integration, Docker Compose (and Docker Swarm mode), Swagger, automatic HTTPS, Vue.js, etc.
-
 
 ### full-stack-flask-couchbase
 
@@ -214,7 +209,6 @@ Full stack project generator with Flask backend, Couchbase, Couchbase Sync Gatew
 
 Similar to the one above (`full-stack`), but with Couchbase instead of PostgreSQL, and some more features.
 
-
 ### full-stack-flask-couchdb
 
 Project Link: [https://github.com/tiangolo/full-stack-flask-couchdb](https://github.com/tiangolo/full-stack-flask-couchdb)
@@ -222,7 +216,6 @@ Project Link: [https://github.com/tiangolo/full-stack-flask-couchdb](https://git
 Full stack project generator with Flask backend, CouchDB, Celery asynchronous jobs, API testing, CI integration, Docker Compose (and Docker Swarm mode), Swagger, automatic HTTPS, Vue.js, etc.
 
 Similar to `full-stack-flask-couchbase`, but with CouchDB instead of Couchbase (or PostgreSQL).
-
 
 ## Quick Start for SPAs *
 
@@ -246,7 +239,6 @@ Adding your compiled code to Git is a very bad idea for several reasons, some of
     * This might also ruin automatic branch merging in pull requests from other team members.
 
 For these reasons, it is not recommended that you serve your frontend code from the same backend (Flask) Docker container.
-
 
 ### Better alternative
 
@@ -283,7 +275,6 @@ In this scenario, you would have 3 Docker containers:
 ### Deprecated Single Page Applications guide
 
 If you want to check the previous (deprecated) documentation on adding a frontend to the same container, you can [read the deprecated guide for single page apps](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/deprecated-single-page-apps-in-same-container.md).
-
 
 ## Quick Start for bigger projects structured as a Python package
 
@@ -374,7 +365,6 @@ or
 from app.core import app_setup
 ```
 
-
 * And if you are in `app/app/api/endpoints/user.py` and you want to import the `users` object from `app/app/core/database.py` you would write it like:
 
 ```python
@@ -395,7 +385,7 @@ You can customize several things using environment variables.
 
 **Notice**: this technique is deprecated, as it can create several issues with modern frontend frameworks. For the details and better alternatives, read the section above.
 
-Setting the environment variable `STATIC_INDEX` to be `1` you can configure Nginx to serve the file in the URL `/static/index.html` when requested for `/`. 
+Setting the environment variable `STATIC_INDEX` to be `1` you can configure Nginx to serve the file in the URL `/static/index.html` when requested for `/`.
 
 That would improve speed as it would not involve uWSGI nor Python. Nginx would serve the file directly. To learn more follow the section above "**QuickStart for SPAs**".
 
@@ -540,7 +530,6 @@ ENV STATIC_URL /content
 
 Then, when the browser asked for a file in, for example, http://example.com/content/index.html, Nginx would answer directly using a file in the path `/app/static/index.html`.
 
-
 ### Custom `/app/prestart.sh`
 
 If you need to run anything before starting the app, you can add a file `prestart.sh` to the directory `/app`. The image will automatically detect and run it before starting everything. 
@@ -623,7 +612,6 @@ Just have in mind that the default configurations are created during startup in 
 
 **Note**: if you are customizing Nginx, maybe copying configurations from a blog or a StackOverflow answer, have in mind that you probably need to use the [configurations specific to uWSGI](http://nginx.org/en/docs/http/ngx_http_uwsgi_module.html), instead of those for other modules, like for example, `ngx_http_fastcgi_module`.
 
-
 ### Overriding Nginx configuration completely
 
 If you need to configure Nginx even further, completely overriding the defaults, you can add a custom Nginx configuration to `/app/nginx.conf`.
@@ -641,7 +629,6 @@ include /etc/nginx/conf.d/*.conf;
 ```
 
 If you want to add a custom `/app/nginx.conf` file but don't know where to start from, you can use [the `nginx.conf` used for the tests](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/tests/test_02_app/custom_nginx_app/app/nginx.conf) and customize it or modify it further.
-
 
 ## Technical details
 
@@ -906,7 +893,7 @@ It's now possible to set the number of Nginx worker processes with the environme
 
 * There are now two Alpine based versions, `python2.7-alpine3.7` and `python3.6-alpine3.7`.
 
-2017-12-10: 
+2017-12-10:
 
 * Added support for `/app/prestart.sh` script to run arbitrary code before starting the app (for example, Alembic - SQLAlchemy migrations). The [documentation for the `/app/prestart.sh` is in the main README](https://github.com/tiangolo/uwsgi-nginx-flask-docker#custom-appprestartsh).
 * `/app` is part of the `PYTHONPATH` environment variable. That allows global imports from several places, easier Alembic integration, etc.
@@ -915,7 +902,7 @@ It's now possible to set the number of Nginx worker processes with the environme
 
 2017-09-10: Updated examples and sample project to work with SPAs even when structuring the app as a package (with subdirectories).
 
-2017-09-02: 
+2017-09-02:
 
 * Example project with a [Python package](https://docs.python.org/3/tutorial/modules.html#packages) structure and a section explaining how to use it and structure a Flask project like that. 
 * Also, the examples and documentation now use the [`flask run`](http://flask.pocoo.org/docs/0.12/quickstart/#a-minimal-application) commands, that allows running a package application while developing more easily.
@@ -943,11 +930,9 @@ COPY ./app /app
 
 and then customize with environment variables.
 
-
 ## Tests
 
 All the image tags, configurations, environment variables and application options are tested.
-
 
 ## License
 
