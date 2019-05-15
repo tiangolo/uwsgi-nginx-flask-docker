@@ -853,6 +853,10 @@ You will see your Flask debugging server start, you will see how it sends respon
 
 ## Release Notes
 
+### Next Release
+
+* Upgrade Travis. PR [#135](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/135).
+
 ### 1.1.0
 
 * Move `/start.sh` and `/app/prestart.sh` functionality to parent image. [PR #134](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/134).
