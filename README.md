@@ -49,7 +49,7 @@ If you need to use Flask (instead of something based on ASGI) and you need to ha
 
 **tiangolo/meinheld-gunicorn-flask** will give you about 400% (4x) the performance of this image (**tiangolo/uwsgi-nginx-flask**).
 
-It is very simlar to **tiangolo/uwsgi-nginx-flask**, so you can still use many of the ideas described here.
+It is very similar to **tiangolo/uwsgi-nginx-flask**, so you can still use many of the ideas described here.
 
 ---
 
@@ -59,7 +59,7 @@ It is very simlar to **tiangolo/uwsgi-nginx-flask**, so you can still use many o
 
 ## Examples (simple project templates)
 
-* **`python3.7`** tag: general Flask web application: 
+* **`python3.7`** tag: general Flask web application:
 
 [**example-flask-python3.7.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.10/example-flask-python3.7.zip>)
 
@@ -67,7 +67,7 @@ It is very simlar to **tiangolo/uwsgi-nginx-flask**, so you can still use many o
 
 [**example-flask-package-python3.7.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.10/example-flask-package-python3.7.zip>)
 
-* **`python3.7`** tag: `static/index.html` served directly in `/`, e.g. for [Vue](https://vuejs.org/), [React](https://reactjs.org/), [Angular](https://angular.io/), or any other Single-Page Application that uses a static `index.html`, not modified by Python: 
+* **`python3.7`** tag: `static/index.html` served directly in `/`, e.g. for [Vue](https://vuejs.org/), [React](https://reactjs.org/), [Angular](https://angular.io/), or any other Single-Page Application that uses a static `index.html`, not modified by Python:
 
 [**example-flask-python3.7-index.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.10/example-flask-python3.7-index.zip>)
 
@@ -81,7 +81,7 @@ FROM tiangolo/uwsgi-nginx-flask:python3.7
 COPY ./app /app
 ```
 
-There are several image tags available for Python 3.7, Python 3.6, Python 3.5 and Python 2.7, but for new projects you should use **Python 3.7**. 
+There are several image tags available for Python 3.7, Python 3.6, Python 3.5 and Python 2.7, but for new projects you should use **Python 3.7**.
 
 As of now, [everyone](https://www.python.org/dev/peps/pep-0373/) [should be](http://flask.pocoo.org/docs/0.12/python3/#python3-support) [using **Python 3**](https://docs.djangoproject.com/en/1.11/faq/install/#what-python-version-should-i-use-with-django).
 
@@ -152,7 +152,6 @@ docker run -d --name mycontainer -p 80:80 myimage
 
 You should be able to check it in your Docker container's URL, for example: <a href="http://192.168.99.100" target="_blank">http://192.168.99.100</a> or <a href="http://127.0.0.1" target="_blank">http://127.0.0.1</a>
 
-
 ## Project Generators
 
 There are several project generators that you can use to start your project, with everything already configured.
@@ -160,6 +159,7 @@ There are several project generators that you can use to start your project, wit
 ### Server set up
 
 All these project generators include automatic and free HTTPS certificates generation provided by:
+
 * [Traefik](https://traefik.io/) and
 * [Let's Encrypt](https://letsencrypt.org/)
 
@@ -231,7 +231,7 @@ That also means that you would have to, somehow, always remember to compile the 
 
 And it might also mean that you could then have to add your compiled frontend code to your `git` repository (hopefully you are using Git already, or [learning how to use `git`](https://www.atlassian.com/git)).
 
-Adding your compiled code to Git is a very bad idea for several reasons, some of those are: 
+Adding your compiled code to Git is a very bad idea for several reasons, some of those are:
 
 * You don't have a single, ultimate source of truth (the source code).
 * The compiled code might be stale, even when your source code is new, which might make you spend a lot of time debugging.
@@ -351,7 +351,7 @@ Your file structure would look like:
 └── Dockerfile
 ```
 
-* Make sure you follow [the offical docs while importing your modules](https://docs.python.org/3/tutorial/modules.html#intra-package-references):
+* Make sure you follow [the official docs while importing your modules](https://docs.python.org/3/tutorial/modules.html#intra-package-references):
 
 * For example, if you are in `app/app/main.py` and want to import the module in `app/app/core/app_setup.py` you would write it like:
 
@@ -359,7 +359,7 @@ Your file structure would look like:
 from .core import app_setup
 ```
 
-or 
+or
 
 ```python
 from app.core import app_setup
@@ -493,7 +493,6 @@ WORKDIR /application
 
 **Note**: you would also have to configure the `static` files path, read below.
 
-
 ### Custom `./static/` path
 
 You can make Nginx use a custom directory path with the files to serve directly (without having uWSGI involved) with the environment variable `STATIC_PATH`.
@@ -532,9 +531,9 @@ Then, when the browser asked for a file in, for example, http://example.com/cont
 
 ### Custom `/app/prestart.sh`
 
-If you need to run anything before starting the app, you can add a file `prestart.sh` to the directory `/app`. The image will automatically detect and run it before starting everything. 
+If you need to run anything before starting the app, you can add a file `prestart.sh` to the directory `/app`. The image will automatically detect and run it before starting everything.
 
-For example, if you want to add Alembic SQL migrations (with SQLALchemy), you could create a `./app/prestart.sh` file in your code directory (that will be copied by your `Dockerfile`) with:
+For example, if you want to add Alembic SQL migrations (with SQLAlchemy), you could create a `./app/prestart.sh` file in your code directory (that will be copied by your `Dockerfile`) with:
 
 ```bash
 #! /usr/bin/env bash
@@ -570,7 +569,7 @@ You can use a specific single number, e.g.:
 ENV NGINX_WORKER_PROCESSES 2
 ```
 
-or you can set it to the keyword `auto` and it will try to autodetect the number of CPUs available and use that for the number of workers.
+or you can set it to the keyword `auto` and it will try to auto-detect the number of CPUs available and use that for the number of workers.
 
 For example, using `auto`, your Dockerfile could look like:
 
@@ -719,8 +718,8 @@ docker build -t myimage .
 ```
 
 * Run a container based on your image, mapping your code directory (`./app`) to your container's `/app` directory:
-bash
-```
+
+```bash
 docker run -d --name mycontainer -p 80:80 -v $(pwd)/app:/app myimage
 ```
 
@@ -904,17 +903,17 @@ It's now possible to set the number of Nginx worker processes with the environme
 
 2017-09-02:
 
-* Example project with a [Python package](https://docs.python.org/3/tutorial/modules.html#packages) structure and a section explaining how to use it and structure a Flask project like that. 
+* Example project with a [Python package](https://docs.python.org/3/tutorial/modules.html#packages) structure and a section explaining how to use it and structure a Flask project like that.
 * Also, the examples and documentation now use the [`flask run`](http://flask.pocoo.org/docs/0.12/quickstart/#a-minimal-application) commands, that allows running a package application while developing more easily.
 
 2017-08-10: Many changes:
 
-* New official image tags: `python3.6`, `python3.6-index`, `python.3.5`, `python3.5-index`, `python2.7` and `python2.7-index`. All the other images are deprecated in favor is this ones. 
+* New official image tags: `python3.6`, `python3.6-index`, `python.3.5`, `python3.5-index`, `python2.7` and `python2.7-index`. All the other images are deprecated in favor is this ones.
 * Python 3.6 is now the recommended default. Even the example projects for other versions were removed to discourage using older Python versions for new projects.
 * Any of the older images that didn't have a Python version will show a deprecation warning and take some time to start. As soon the tag `latest` will point to Python 3.6 and the other tags will be removed.
 * There were several improvements in the base image `tiangolo/uwsgi-nginx` that improved this image too.
 * By default, now there is no limit in the upload file size in Nginx. It can be configured in an environment variable.
-* It's now possible to configure several things with environment variables: 
+* It's now possible to configure several things with environment variables:
   * Serve `index.html` directly: `STATIC_INDEX`
   * Set the max upload file size: `NGINX_MAX_UPLOAD`
   * Set a custom `uwsgi.ini` file (that allows using a custom directory different than `/app`): `UWSGI_INI` (using the ideas by @bercikr in #5 ).
