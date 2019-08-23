@@ -321,6 +321,12 @@ Your file structure would look like:
 └── Dockerfile
 ```
 
+In the Dockerfile, add the following line to change the static path from the default `/app/static` to `/app/app/static`:
+
+```
+ENV STATIC_PATH /app/app/static
+```
+
 ...after that, everything should work as expected. All the other instructions would apply normally.
 
 ### Working with submodules
