@@ -1,3 +1,4 @@
+import os
 import time
 
 import docker
@@ -80,34 +81,26 @@ def verify_container(container, response_text):
     assert response.text == response_text
 
 
-@pytest.mark.parametrize(
-    "image,response_text",
-    [
-        (
-            "tiangolo/uwsgi-nginx-flask:python2.7-index",
-            "Hello World from Flask in a uWSGI Nginx Docker container with Python 2.7 (default)",
-        ),
-        (
-            "tiangolo/uwsgi-nginx-flask:python3.5-index",
-            "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.5 (default)",
-        ),
-        (
-            "tiangolo/uwsgi-nginx-flask:python3.6-index",
-            "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.6 (default)",
-        ),
-    ],
-)
-def test_defaults(image, response_text):
+def test_defaults():
+    if not os.getenv("RUN_TESTS"):
+        return
+    name = os.getenv("NAME")
+    # It's not an index postfix tag, skip it
+    if "index" not in name:
+        return
+    image = f"tiangolo/uwsgi-nginx-flask:{name}"
+    response_text = os.getenv("TEST_STR1")
+    sleep_time = int(os.getenv("SLEEP_TIME", 3))
     remove_previous_container(client)
     container = client.containers.run(
         image, name=CONTAINER_NAME, ports={"80": "8000"}, detach=True
     )
-    time.sleep(3)
+    time.sleep(sleep_time)
     verify_container(container, response_text)
     container.stop()
     # Test that everything works after restarting too
     container.start()
-    time.sleep(3)
+    time.sleep(sleep_time)
     verify_container(container, response_text)
     container.stop()
     container.remove()
