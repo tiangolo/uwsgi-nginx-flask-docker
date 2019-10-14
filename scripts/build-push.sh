@@ -2,12 +2,12 @@
 
 set -e
 
-echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+use_tag="tiangolo/uwsgi-nginx-flask:$NAME"
+use_dated_tag="${use_tag}-$(date -I)"
 
-docker-compose -f docker-compose.build.stage01.yml build
+docker build -t "$use_tag" "$BUILD_PATH"
 
-docker-compose -f docker-compose.build.stage01.yml push
+docker tag "$use_tag" "$use_dated_tag"
 
-docker-compose -f docker-compose.build.stage02.yml build
-
-docker-compose -f docker-compose.build.stage02.yml push
+docker push "$use_tag"
+docker push "$use_dated_tag"
