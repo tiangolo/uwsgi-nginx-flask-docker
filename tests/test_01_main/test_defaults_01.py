@@ -67,6 +67,8 @@ def verify_container(container, response_text):
 
 
 def test_defaults():
+    if not os.getenv("RUN_TESTS"):
+        return
     name = os.getenv("NAME")
     # It's an index postfix tag, skip it
     if "index" in name:

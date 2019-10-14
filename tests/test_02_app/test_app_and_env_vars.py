@@ -71,6 +71,8 @@ def verify_container(container, response_text):
 
 
 def test_env_vars_1():
+    if not os.getenv("RUN_TESTS"):
+        return
     name = os.getenv("NAME")
     # It's an index postfix tag, skip it
     if "index" in name:
