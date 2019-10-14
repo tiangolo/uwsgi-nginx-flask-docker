@@ -1,3 +1,4 @@
+import os
 import time
 from pathlib import Path, PurePath
 
@@ -69,56 +70,14 @@ def verify_container(container, response_text):
     assert response.text == "Static test"
 
 
-@pytest.mark.parametrize(
-    "dockerfile,response_text",
-    [
-        (
-            "python2.7.dockerfile",
-            "Hello World from Flask in a uWSGI Nginx Docker container with Python 2.7 - testing",
-        ),
-        (
-            "python2.7-alpine3.7.dockerfile",
-            "Hello World from Flask in a uWSGI Nginx Docker container with Python 2.7 - testing",
-        ),
-        (
-            "python2.7-alpine3.8.dockerfile",
-            "Hello World from Flask in a uWSGI Nginx Docker container with Python 2.7 - testing",
-        ),
-        (
-            "python3.5.dockerfile",
-            "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.5 - testing",
-        ),
-        (
-            "python3.6.dockerfile",
-            "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.6 - testing",
-        ),
-        (
-            "python3.6-alpine3.7.dockerfile",
-            "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.6 - testing",
-        ),
-        (
-            "python3.6-alpine3.8.dockerfile",
-            "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.6 - testing",
-        ),
-        (
-            "python3.7.dockerfile",
-            "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.7 - testing",
-        ),
-        (
-            "latest.dockerfile",
-            "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.7 - testing",
-        ),
-        # (
-        #     "python3.7-alpine3.7.dockerfile",
-        #     "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.7 - testing",
-        # ),
-        # (
-        #     "python3.7-alpine3.8.dockerfile",
-        #     "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.7 - testing",
-        # ),
-    ],
-)
-def test_env_vars_1(dockerfile, response_text):
+def test_env_vars_1():
+    name = os.getenv("NAME")
+    # It's an index postfix tag, skip it
+    if "index" in name:
+        return
+    dockerfile = f"{name}.dockerfile"
+    response_text = os.getenv("TEST_STR2")
+    sleep_time = int(os.getenv("SLEEP_TIME", 3))
     remove_previous_container(client)
     tag = "uwsgi-nginx-flask-testimage"
     test_path: PurePath = Path(__file__)
@@ -127,12 +86,12 @@ def test_env_vars_1(dockerfile, response_text):
     container = client.containers.run(
         tag, name=CONTAINER_NAME, ports={"80": "8000"}, detach=True
     )
-    time.sleep(5)
+    time.sleep(sleep_time)
     verify_container(container, response_text)
     container.stop()
     # Test that everything works after restarting too
     container.start()
-    time.sleep(3)
+    time.sleep(sleep_time)
     verify_container(container, response_text)
     container.stop()
     container.remove()

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-docker-compose -f docker-compose.build.stage01.yml build
-docker-compose -f docker-compose.build.stage02.yml build
+use_tag="tiangolo/uwsgi-nginx-flask:$NAME"
+
+docker build -t "$use_tag" "$BUILD_PATH"
 pytest tests
