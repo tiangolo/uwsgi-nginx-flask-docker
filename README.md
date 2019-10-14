@@ -843,6 +843,8 @@ You will see your Flask debugging server start, you will see how it sends respon
 
 ### Latest Changes
 
+### 1.2.0
+
 * Refactor tests to use env vars and add image tags for each build date, like `tiangolo/uwsgi-nginx-flask:python3.7-2019-10-14`. PR [#154](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/154).
 * Upgrade Travis. PR [#135](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/135).
 
