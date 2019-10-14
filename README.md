@@ -14,6 +14,8 @@
 * [`python2.7-alpine3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python2.7-alpine3.7/Dockerfile)
 * [`python2.7-alpine3.8` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python2.7-alpine3.8/Dockerfile)
 
+**Note**: Note: There are [tags for each build date](https://hub.docker.com/r/tiangolo/uwsgi-nginx-flask/tags). If you need to "pin" the Docker image version you use, you can select one of those tags. E.g. `tiangolo/uwsgi-nginx-flask:python3.7-2019-10-14`.
+
 ## Temporarily not supported
 
 * [`python3.7-alpine3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.7-alpine3.7/Dockerfile) and [`python3.7-alpine3.8` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.7-alpine3.8/Dockerfile) Temporarily not supported as uWSGI has not been released with Python 3.7 support for [Alpine 3.7](https://pkgs.alpinelinux.org/package/v3.7/main/x86/uwsgi-python3) nor for [Alpine 3.8](https://pkgs.alpinelinux.org/package/v3.8/main/x86/uwsgi-python3)
@@ -839,8 +841,9 @@ You will see your Flask debugging server start, you will see how it sends respon
 
 ## Release Notes
 
-### Next Release
+### Latest Changes
 
+* Refactor tests to use env vars and add image tags for each build date, like `tiangolo/uwsgi-nginx-flask:python3.7-2019-10-14`. PR [#154](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/154).
 * Upgrade Travis. PR [#135](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/135).
 
 ### 1.1.0
