@@ -321,9 +321,9 @@ Your file structure would look like:
 └── Dockerfile
 ```
 
-In the Dockerfile, add the following line to change the static path from the default `/app/static` to `/app/app/static`:
+If you are using static files in the same container, make sure the `STATIC_PATH` environment variable is set accordingly, for example to change the default value of `/app/static` to `/app/app/static` you could add this line to your `Dockerfile`:
 
-```
+```Dockerfile
 ENV STATIC_PATH /app/app/static
 ```
 
