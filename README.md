@@ -63,15 +63,15 @@ It is very similar to **tiangolo/uwsgi-nginx-flask**, so you can still use many 
 
 * **`python3.7`** tag: general Flask web application:
 
-[**example-flask-python3.7.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.10/example-flask-python3.7.zip>)
+[**example-flask-python3.7.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/1.2.1/example-flask-python3.7.zip>)
 
 * **`python3.7`** tag: general Flask web application, structured as a package, for bigger Flask projects, with different submodules. Use it only as an example of how to import your modules and how to structure your own project:
 
-[**example-flask-package-python3.7.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.10/example-flask-package-python3.7.zip>)
+[**example-flask-package-python3.7.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/1.2.1/example-flask-package-python3.7.zip>)
 
 * **`python3.7`** tag: `static/index.html` served directly in `/`, e.g. for [Vue](https://vuejs.org/), [React](https://reactjs.org/), [Angular](https://angular.io/), or any other Single-Page Application that uses a static `index.html`, not modified by Python:
 
-[**example-flask-python3.7-index.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/v0.3.10/example-flask-python3.7-index.zip>)
+[**example-flask-python3.7-index.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/1.2.1/example-flask-python3.7-index.zip>)
 
 ## General Instructions
 
@@ -848,6 +848,8 @@ You will see your Flask debugging server start, you will see how it sends respon
 ## Release Notes
 
 ### Latest Changes
+
+### 1.2.1
 
 * Add note about static path in bigger projects. PR [#150](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/150) by [@reka169](https://github.com/reka169).
 * Fix missing import in example. PR [#141](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/141) by [@Boyu1997](https://github.com/Boyu1997).
