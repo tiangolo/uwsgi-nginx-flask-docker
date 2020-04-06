@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/tiangolo/uwsgi-nginx-flask-docker.svg?branch=master)](https://travis-ci.org/tiangolo/uwsgi-nginx-flask-docker)
+[![Build Status](https://travis-ci.com/tiangolo/uwsgi-nginx-flask-docker.svg?branch=master)](https://travis-ci.com/tiangolo/uwsgi-nginx-flask-docker)
 
 ## Supported tags and respective `Dockerfile` links
 
@@ -849,6 +849,7 @@ You will see your Flask debugging server start, you will see how it sends respon
 
 ### Latest Changes
 
+* Add note about static path in bigger projects. PR [#150](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/150) by [@reka169](https://github.com/reka169).
 * Fix missing import in example. PR [#141](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/141) by [@Boyu1997](https://github.com/Boyu1997).
 
 ### 1.2.0
