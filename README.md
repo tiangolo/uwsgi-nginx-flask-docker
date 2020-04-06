@@ -323,6 +323,12 @@ Your file structure would look like:
 └── Dockerfile
 ```
 
+If you are using static files in the same container, make sure the `STATIC_PATH` environment variable is set accordingly, for example to change the default value of `/app/static` to `/app/app/static` you could add this line to your `Dockerfile`:
+
+```Dockerfile
+ENV STATIC_PATH /app/app/static
+```
+
 ...after that, everything should work as expected. All the other instructions would apply normally.
 
 ### Working with submodules
