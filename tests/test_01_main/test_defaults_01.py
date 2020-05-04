@@ -2,20 +2,23 @@ import os
 import time
 
 import docker
-import pytest
 import requests
+from docker.models.containers import Container
 
 from ..utils import (
     CONTAINER_NAME,
     get_logs,
     get_nginx_config,
+    get_response_text1,
     remove_previous_container,
 )
 
 client = docker.from_env()
 
 
-def verify_container(container, response_text):
+def verify_container(container: Container, response_text: str) -> None:
+    response = requests.get("http://127.0.0.1:8000")
+    assert response.text == response_text
     nginx_config = get_nginx_config(container)
     assert "client_max_body_size 0;" in nginx_config
     assert "worker_processes 1;" in nginx_config
@@ -61,20 +64,13 @@ def verify_container(container, response_text):
     assert 'running "unix_signal:15 gracefully_kill_them_all" (master-start)' in logs
     assert "success: nginx entered RUNNING state, process has stayed up for" in logs
     assert "success: uwsgi entered RUNNING state, process has stayed up for" in logs
-    response = requests.get("http://127.0.0.1:8000")
-    assert response.status_code == 200
-    assert response.text == response_text
 
 
-def test_defaults():
-    if not os.getenv("RUN_TESTS"):
-        return
-    name = os.getenv("NAME")
+def test_defaults() -> None:
+    name = os.getenv("NAME", "")
     # It's an index postfix tag, skip it
-    if "index" in name:
-        return
     image = f"tiangolo/uwsgi-nginx-flask:{name}"
-    response_text = os.getenv("TEST_STR1")
+    response_text = get_response_text1()
     sleep_time = int(os.getenv("SLEEP_TIME", 3))
     remove_previous_container(client)
     container = client.containers.run(
