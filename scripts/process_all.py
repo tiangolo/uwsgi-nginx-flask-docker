@@ -3,102 +3,15 @@ import subprocess
 import sys
 
 environments = [
-    {
-        "NAME": "python2.7",
-        "BUILD_PATH": "python2.7",
-        "TEST_STR1": "Hello World from Flask in a uWSGI Nginx Docker container with Python 2.7 (default)",
-        "TEST_STR2": "Hello World from Flask in a uWSGI Nginx Docker container with Python 2.7 - testing",
-        "RUN_TESTS": "1",
-    },
-    {
-        "NAME": "python2.7-alpine3.7",
-        "BUILD_PATH": "python2.7-alpine3.7",
-        "TEST_STR1": "Hello World from Flask in a uWSGI Nginx Docker container with Python 2.7 on Alpine (default)",
-        "TEST_STR2": "Hello World from Flask in a uWSGI Nginx Docker container with Python 2.7 - testing",
-        "RUN_TESTS": "1",
-    },
-    {
-        "NAME": "python2.7-alpine3.8",
-        "BUILD_PATH": "python2.7-alpine3.8",
-        "TEST_STR1": "Hello World from Flask in a uWSGI Nginx Docker container with Python 2.7 on Alpine (default)",
-        "TEST_STR2": "Hello World from Flask in a uWSGI Nginx Docker container with Python 2.7 - testing",
-        "RUN_TESTS": "1",
-    },
-    {
-        "NAME": "python3.5",
-        "BUILD_PATH": "python3.5",
-        "TEST_STR1": "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.5 (default)",
-        "TEST_STR2": "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.5 - testing",
-        "RUN_TESTS": "1",
-    },
-    {
-        "NAME": "python3.6",
-        "BUILD_PATH": "python3.6",
-        "TEST_STR1": "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.6 (default)",
-        "TEST_STR2": "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.6 - testing",
-        "RUN_TESTS": "1",
-    },
-    {
-        "NAME": "python3.6-alpine3.7",
-        "BUILD_PATH": "python3.6-alpine3.7",
-        "TEST_STR1": "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.6 on Alpine (default)",
-        "TEST_STR2": "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.6 - testing",
-        "RUN_TESTS": "1",
-    },
-    {
-        "NAME": "python3.6-alpine3.8",
-        "BUILD_PATH": "python3.6-alpine3.8",
-        "TEST_STR1": "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.6 on Alpine (default)",
-        "TEST_STR2": "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.6 - testing",
-        "RUN_TESTS": "1",
-    },
-    {
-        "NAME": "python3.7",
-        "BUILD_PATH": "python3.7",
-        "TEST_STR1": "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.7 (default)",
-        "TEST_STR2": "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.7 - testing",
-        "RUN_TESTS": "1",
-    },
-    {
-        "NAME": "latest",
-        "BUILD_PATH": "python3.7",
-        "TEST_STR1": "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.7 (default)",
-        "TEST_STR2": "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.7 - testing",
-        "RUN_TESTS": "1",
-    },
-    {
-        "NAME": "python3.7-alpine3.7",
-        "BUILD_PATH": "python3.7-alpine3.7",
-        "TEST_STR1": "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.7 on Alpine (default)",
-        "TEST_STR2": "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.7 - testing",
-        "RUN_TESTS": "",
-    },
-    {
-        "NAME": "python3.7-alpine3.8",
-        "BUILD_PATH": "python3.7-alpine3.8",
-        "TEST_STR1": "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.7 on Alpine (default)",
-        "TEST_STR2": "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.7 - testing",
-        "RUN_TESTS": "",
-    },
-    # Index versions
-    {
-        "NAME": "python2.7-index",
-        "BUILD_PATH": "python2.7-index",
-        "TEST_STR1": "Hello World from Flask in a uWSGI Nginx Docker container with Python 2.7 (default)",
-        "RUN_TESTS": "1",
-    },
-    {
-        "NAME": "python3.5-index",
-        "BUILD_PATH": "python3.5-index",
-        "TEST_STR1": "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.5 (default)",
-        "RUN_TESTS": "1",
-    },
-    {
-        "NAME": "python3.6-index",
-        "BUILD_PATH": "python3.6-index",
-        "TEST_STR1": "Hello World from Flask in a uWSGI Nginx Docker container with Python 3.6 (default)",
-        "RUN_TESTS": "1",
-    },
+    {"NAME": "latest", "PYTHON_VERSION": "3.7"},
+    {"NAME": "python3.7", "PYTHON_VERSION": "3.7"},
+    {"NAME": "python3.6", "PYTHON_VERSION": "3.6"},
+    {"NAME": "python3.5", "PYTHON_VERSION": "3.5"},
+    {"NAME": "python2.7", "PYTHON_VERSION": "2.7"},
+    {"NAME": "python3.6-alpine3.8", "PYTHON_VERSION": "3.6"},
+    {"NAME": "python3.6-alpine3.7", "PYTHON_VERSION": "3.6"},
+    {"NAME": "python2.7-alpine3.8", "PYTHON_VERSION": "2.7"},
+    {"NAME": "python2.7-alpine3.7", "PYTHON_VERSION": "2.7"},
 ]
 
 start_with = os.environ.get("START_WITH")
