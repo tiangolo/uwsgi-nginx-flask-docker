@@ -849,6 +849,15 @@ You will see your Flask debugging server start, you will see how it sends respon
 
 ### Latest Changes
 
+### 1.3.0
+
+* This is the last version to support:
+    * Debian Stretch (before upgrading to Buster).
+    * Python 3.5.
+    * Alpine 3.7 and 3.8 (before upgrading to Alpine 3.11).
+    * Tags with `-index` (use `ENV STATIC_INDEX 1` instead).
+    * If you need any of those, make sure to use a tag for the build date `2020-05-04`.
+
 ### 1.2.1
 
 * Add note about static path in bigger projects. PR [#150](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/150) by [@reka169](https://github.com/reka169).
