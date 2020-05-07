@@ -6,7 +6,6 @@
 * [`python3.6` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.6.dockerfile)
 * [`python3.6-alpine3.8` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.6-alpine3.8.dockerfile)
 * [`python3.6-alpine3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.6-alpine3.7.dockerfile)
-* [`python3.5` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.5.dockerfile)
 * [`python2.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python2.7.dockerfile)
 * [`python2.7-alpine3.8` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python2.7-alpine3.8.dockerfile)
 * [`python2.7-alpine3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python2.7-alpine3.7.dockerfile)
@@ -21,7 +20,7 @@ It doesn't depend on this image but on uWSGI releases for Alpine.
 
 # uwsgi-nginx-flask
 
-**Docker** image with **uWSGI** and **Nginx** for **Flask** web applications in **Python 3.5** and above, and **Python 2.7** running in a single container. Optionally using Alpine Linux.
+**Docker** image with **uWSGI** and **Nginx** for **Flask** web applications in **Python 3.6** and above, and **Python 2.7** running in a single container. Optionally using Alpine Linux.
 
 ## Description
 
@@ -82,7 +81,7 @@ FROM tiangolo/uwsgi-nginx-flask:python3.7
 COPY ./app /app
 ```
 
-There are several image tags available for Python 3.7, Python 3.6, Python 3.5 and Python 2.7, but for new projects you should use **Python 3.7**.
+There are several image tags available for Python 3.6 and above, and Python 2.7, but for new projects you should use the latest version available.
 
 As of now, [everyone](https://www.python.org/dev/peps/pep-0373/) [should be](http://flask.pocoo.org/docs/0.12/python3/#python3-support) [using **Python 3**](https://docs.djangoproject.com/en/1.11/faq/install/#what-python-version-should-i-use-with-django).
 
