@@ -1,0 +1,46 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        image:
+          - name: latest
+            python_version: "3.7"
+          - name: python3.7
+            python_version: "3.7"
+          - name: python3.6
+            python_version: "3.6"
+          - name: python3.5
+            python_version: "3.5"
+          - name: python2.7
+            python_version: "2.7"
+          - name: python3.6-alpine3.8
+            python_version: "3.6"
+          - name: python3.6-alpine3.7
+            python_version: "3.6"
+          - name: python2.7-alpine3.8
+            python_version: "2.7"
+          - name: python2.7-alpine3.7
+            python_version: "2.7"
+      fail-fast: true
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.7"
+      - name: Install Dependencies
+        run: python3.7 -m pip install docker pytest
+      - name: Test Image
+        run: bash scripts/test.sh
+        env:
+          NAME: ${{ matrix.image.name }}
+          DOCKERFILE: ${{ matrix.image.dockerfile }}
+          PYTHON_VERSION: ${{ matrix.image.python_version }}

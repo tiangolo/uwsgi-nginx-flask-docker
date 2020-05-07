@@ -2,6 +2,6 @@
 
 set -e
 
-echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+bash scripts/docker-login.sh
 
 BUILD_PUSH=1 python scripts/process_all.py
