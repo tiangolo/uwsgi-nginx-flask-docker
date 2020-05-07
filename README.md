@@ -847,6 +847,7 @@ You will see your Flask debugging server start, you will see how it sends respon
 
 ### Latest Changes
 
+* Remove support for Python 3.5. PR [#175](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/175).
 * Refactor build setup:
     * Move to GitHub actions.
     * Re-use and simplify code and configs.
