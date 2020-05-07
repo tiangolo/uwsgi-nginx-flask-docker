@@ -848,6 +848,13 @@ You will see your Flask debugging server start, you will see how it sends respon
 
 ### Latest Changes
 
+* Refactor build setup:
+    * Move to GitHub actions.
+    * Re-use and simplify code and configs.
+    * Simplify and update tests.
+    * Remove deprecated `-index` sufix tags.
+    * PR [#173](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/173).
+
 ### 1.3.0
 
 * This is the last version to support:
