@@ -1,4 +1,4 @@
-FROM tiangolo/uwsgi-nginx:python2.7-alpine3.7
+FROM tiangolo/uwsgi-nginx:python3.8
 
 LABEL maintainer="Sebastian Ramirez <tiangolo@gmail.com>"
 

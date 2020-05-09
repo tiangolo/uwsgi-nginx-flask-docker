@@ -2,21 +2,13 @@
 
 ## Supported tags and respective `Dockerfile` links
 
-* [`python3.7`, `latest` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.7.dockerfile)
+* [`python3.8`, `latest` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.8.dockerfile)
+* [`python3.8-alpine` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.8-alpine.dockerfile)
+* [`python3.7`, _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.7.dockerfile)
 * [`python3.6` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.6.dockerfile)
-* [`python3.6-alpine3.8` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.6-alpine3.8.dockerfile)
-* [`python3.6-alpine3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.6-alpine3.7.dockerfile)
 * [`python2.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python2.7.dockerfile)
-* [`python2.7-alpine3.8` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python2.7-alpine3.8.dockerfile)
-* [`python2.7-alpine3.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python2.7-alpine3.7.dockerfile)
 
 **Note**: Note: There are [tags for each build date](https://hub.docker.com/r/tiangolo/uwsgi-nginx-flask/tags). If you need to "pin" the Docker image version you use, you can select one of those tags. E.g. `tiangolo/uwsgi-nginx-flask:python3.7-2019-10-14`.
-
-## Python 3.7 not supported in in Alpine
-
-As uWSGI has not been released with Python 3.7 support for [Alpine 3.7](https://pkgs.alpinelinux.org/package/v3.7/main/x86/uwsgi-python3) and [Alpine 3.8](https://pkgs.alpinelinux.org/package/v3.8/main/x86/uwsgi-python3), it is still not supported.
-
-It doesn't depend on this image but on uWSGI releases for Alpine.
 
 # uwsgi-nginx-flask
 
@@ -59,24 +51,24 @@ It is very similar to **tiangolo/uwsgi-nginx-flask**, so you can still use many 
 
 ## Examples (simple project templates)
 
-* **`python3.7`** tag: general Flask web application:
+* **`python3.8`** tag: general Flask web application:
 
-[**example-flask-python3.7.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/1.2.1/example-flask-python3.7.zip>)
+[**example-flask-python3.8.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/1.2.1/example-flask-python3.8.zip>)
 
-* **`python3.7`** tag: general Flask web application, structured as a package, for bigger Flask projects, with different submodules. Use it only as an example of how to import your modules and how to structure your own project:
+* **`python3.8`** tag: general Flask web application, structured as a package, for bigger Flask projects, with different submodules. Use it only as an example of how to import your modules and how to structure your own project:
 
-[**example-flask-package-python3.7.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/1.2.1/example-flask-package-python3.7.zip>)
+[**example-flask-package-python3.8.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/1.2.1/example-flask-package-python3.8.zip>)
 
-* **`python3.7`** tag: `static/index.html` served directly in `/`, e.g. for [Vue](https://vuejs.org/), [React](https://reactjs.org/), [Angular](https://angular.io/), or any other Single-Page Application that uses a static `index.html`, not modified by Python:
+* **`python3.8`** tag: `static/index.html` served directly in `/`, e.g. for [Vue](https://vuejs.org/), [React](https://reactjs.org/), [Angular](https://angular.io/), or any other Single-Page Application that uses a static `index.html`, not modified by Python:
 
-[**example-flask-python3.7-index.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/1.2.1/example-flask-python3.7-index.zip>)
+[**example-flask-python3.8-index.zip**](<https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/1.2.1/example-flask-python3.8-index.zip>)
 
 ## General Instructions
 
 You don't have to clone this repo, you should be able to use this image as a base image for your project with something in your `Dockerfile` like:
 
 ```Dockerfile
-FROM tiangolo/uwsgi-nginx-flask:python3.7
+FROM tiangolo/uwsgi-nginx-flask:python3.8
 
 COPY ./app /app
 ```
@@ -91,7 +83,7 @@ This Docker image is based on [**tiangolo/uwsgi-nginx**](https://hub.docker.com/
 
 ## Quick Start
 
-**Note**: You can download the **example-flask-python3.7.zip** project example and use it as the template for your project from the section **Examples** above.
+**Note**: You can download the **example-flask-python3.8.zip** project example and use it as the template for your project from the section **Examples** above.
 
 ---
 
@@ -101,7 +93,7 @@ Or you may follow the instructions to build your project from scratch:
 * Create a `Dockerfile` with:
 
 ```Dockerfile
-FROM tiangolo/uwsgi-nginx-flask:python3.7
+FROM tiangolo/uwsgi-nginx-flask:python3.8
 
 COPY ./app /app
 ```
@@ -278,7 +270,7 @@ If you want to check the previous (deprecated) documentation on adding a fronten
 
 ## Quick Start for bigger projects structured as a Python package
 
-**Note**: You can download the **example-flask-package-python3.7.zip** project example and use it as an example or template for your project from the section **Examples** above.
+**Note**: You can download the **example-flask-package-python3.8.zip** project example and use it as an example or template for your project from the section **Examples** above.
 
 ---
 
@@ -416,7 +408,7 @@ Have in mind that `UWSGI_CHEAPER` must be lower than `UWSGI_PROCESSES`.
 So, if, for example, you need to start with 4 processes and grow to a maximum of 64, your `Dockerfile` could look like:
 
 ```Dockerfile
-FROM tiangolo/uwsgi-nginx-flask:python3.7
+FROM tiangolo/uwsgi-nginx-flask:python3.8
 
 ENV UWSGI_CHEAPER 4
 ENV UWSGI_PROCESSES 64
@@ -443,7 +435,7 @@ To change this behavior, set the `LISTEN_PORT` environment variable. You might a
 You can do that in your `Dockerfile`, it would look something like:
 
 ```Dockerfile
-FROM tiangolo/uwsgi-nginx-flask:python3.7
+FROM tiangolo/uwsgi-nginx-flask:python3.8
 
 ENV LISTEN_PORT 8080
 
@@ -580,7 +572,7 @@ or you can set it to the keyword `auto` and it will try to auto-detect the numbe
 For example, using `auto`, your Dockerfile could look like:
 
 ```Dockerfile
-FROM tiangolo/uwsgi-nginx-flask:python3.7
+FROM tiangolo/uwsgi-nginx-flask:python3.8
 
 ENV NGINX_WORKER_PROCESSES auto
 
@@ -761,7 +753,7 @@ if __name__ == "__main__":
 
 ...and you could run it with `python main.py`. But that will only work when you are not using a package structure and don't plan to do it later. In that specific case, if you didn't add the code block above, your app would only listen to `localhost` (inside the container), in another port (5000) and not in debug mode.
 
-**Note**: The example project **example-flask-python3.7** includes a `docker-compose.yml` and `docker-compose.override.yml` with all these configurations, if you are using Docker Compose.
+**Note**: The example project **example-flask-python3.8** includes a `docker-compose.yml` and `docker-compose.override.yml` with all these configurations, if you are using Docker Compose.
 
 ---
 
@@ -803,7 +795,7 @@ def route_frontend(path):
 
 That's how it is written in the tutorial above and is included in the downloadable examples.
 
-**Note**: The example project **example-flask-python3.7-index** includes a `docker-compose.yml` and `docker-compose.override.yml` with all these configurations, if you are using Docker Compose.
+**Note**: The example project **example-flask-python3.8-index** includes a `docker-compose.yml` and `docker-compose.override.yml` with all these configurations, if you are using Docker Compose.
 
 ## More advanced development instructions
 
@@ -861,6 +853,7 @@ You will see your Flask debugging server start, you will see how it sends respon
     * Debian Stretch (before upgrading to Buster).
     * Python 3.5.
     * Alpine 3.7 and 3.8 (before upgrading to Alpine 3.11).
+    * Alpine in older versions of Python, 2.7 and 3.6 (Before upgrading to Python 3.8).
     * Tags with `-index` (use `ENV STATIC_INDEX 1` instead).
     * If you need any of those, make sure to use a tag for the build date `2020-05-04`.
 
@@ -871,7 +864,7 @@ You will see your Flask debugging server start, you will see how it sends respon
 
 ### 1.2.0
 
-* Refactor tests to use env vars and add image tags for each build date, like `tiangolo/uwsgi-nginx-flask:python3.7-2019-10-14`. PR [#154](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/154).
+* Refactor tests to use env vars and add image tags for each build date, like `tiangolo/uwsgi-nginx-flask:python3.8-2019-10-14`. PR [#154](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/154).
 * Upgrade Travis. PR [#135](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/135).
 
 ### 1.1.0
