@@ -20,7 +20,7 @@ This [**Docker**](https://www.docker.com/) image allows you to create [**Flask**
 
 The combination of uWSGI with Nginx is a [common way to deploy Python Flask web applications](http://flask.pocoo.org/docs/1.0/deploying/uwsgi/). It is widely used in the industry and would give you decent performance. (*)
 
-There is also an Alpine version. If you want it, use one of the Alpine tags from above.
+There is also an Alpine version. If you want it, check the tags from above.
 
 ### * Note on performance and features
 
@@ -75,7 +75,7 @@ COPY ./app /app
 
 There are several image tags available for Python 3.6 and above, and Python 2.7, but for new projects you should use the latest version available.
 
-As of now, [everyone](https://www.python.org/dev/peps/pep-0373/) [should be](http://flask.pocoo.org/docs/0.12/python3/#python3-support) [using **Python 3**](https://docs.djangoproject.com/en/1.11/faq/install/#what-python-version-should-i-use-with-django).
+As of now, [everyone](https://www.python.org/dev/peps/pep-0373/) [should be](http://flask.pocoo.org/docs/0.12/python3/#python3-support) [using **Python 3**](https://docs.djangoproject.com/en/1.11/faq/install/#what-python-version-should-i-use-with-django). And [Python 2.7 has reached its end of life](https://www.python.org/doc/sunset-python-2/).
 
 There are several template projects that you can download (as a `.zip` file) to bootstrap your project in the section "**Examples (project templates)**" above.
 
@@ -194,8 +194,6 @@ Full stack project generator with Flask backend, PostgreSQL DB, PGAdmin, SQLAlch
 ### full-stack-flask-couchbase
 
 Project Link: [https://github.com/tiangolo/full-stack-flask-couchbase](https://github.com/tiangolo/full-stack-flask-couchbase)
-
-✨ This project generator is the most feature-complete. ✨
 
 Full stack project generator with Flask backend, Couchbase, Couchbase Sync Gateway, Celery asynchronous jobs, API testing, CI integration, Docker Compose (and Docker Swarm mode), Swagger, automatic HTTPS, Vue.js, etc.
 
@@ -835,6 +833,16 @@ flask run --host=0.0.0.0 --port=80
 
 You will see your Flask debugging server start, you will see how it sends responses to every request, you will see the errors thrown when you break your code, and how they stop your server, and you will be able to re-start it very fast, by just running the command above again.
 
+## Tests
+
+All the image tags, configurations, environment variables and application options are tested.
+
+## Updates
+
+Updates are announced in the releases.
+
+You can click the "watch" button at the top right and select "Releases only" to receive an email notification when there's a new release.
+
 ## Release Notes
 
 ### Latest Changes
@@ -958,10 +966,6 @@ COPY ./app /app
 ```
 
 and then customize with environment variables.
-
-## Tests
-
-All the image tags, configurations, environment variables and application options are tested.
 
 ## License
 
