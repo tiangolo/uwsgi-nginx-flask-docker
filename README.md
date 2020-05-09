@@ -839,6 +839,11 @@ You will see your Flask debugging server start, you will see how it sends respon
 
 ### Latest Changes
 
+* Add Python 3.8 and Alpine with Python 3.8. This also includes all the recent updates of the parent image, like:
+    * Latest version of Nginx, `1.17.10`.
+    * Latest version of Debian, Buster.
+    * Latest version of Alpine, `3.11`.
+    * PR [#176](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/176).
 * Remove support for Python 3.5. PR [#175](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/175).
 * Refactor build setup:
     * Move to GitHub actions.
