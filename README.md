@@ -839,6 +839,7 @@ You will see your Flask debugging server start, you will see how it sends respon
 
 ### Latest Changes
 
+* Add [GitHub Sponsors](https://github.com/sponsors/tiangolo) button. PR [#177](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/177).
 * Add Python 3.8 and Alpine with Python 3.8. This also includes all the recent updates of the parent image, like:
     * Latest version of Nginx, `1.17.10`.
     * Latest version of Debian, Buster.
