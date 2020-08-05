@@ -11,7 +11,7 @@ USE_STATIC_PATH=${STATIC_PATH:-'/app/static'}
 USE_LISTEN_PORT=${LISTEN_PORT:-80}
 
 if [ -f /app/nginx.conf ]; then
-    cp /app/nginx.conf /etc/nginx/nginx.conf
+    cp /app/nginx.conf /etc/nginx/conf.d/nginx.conf
 else
     content_server='server {\n'
     content_server=$content_server"    listen ${USE_LISTEN_PORT};\n"
