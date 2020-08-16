@@ -847,6 +847,8 @@ You can click the "watch" button at the top right and select "Releases only" to 
 
 ### Latest Changes
 
+* Fix example for Python 3.8. PR [#186](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/186) by [@ericboucher](https://github.com/ericboucher).
+
 ### 1.4.0
 
 * Add [GitHub Sponsors](https://github.com/sponsors/tiangolo) button. PR [#177](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/177).
