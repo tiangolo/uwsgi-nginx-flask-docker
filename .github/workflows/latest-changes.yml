@@ -1,0 +1,22 @@
+name: Latest Changes
+
+on:
+  pull_request_target:
+    branches:
+      - master
+    types:
+      - closed
+  workflow_dispatch:
+    inputs:
+      number:
+        description: PR number
+        required: true
+
+jobs:
+  latest-changes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: docker://tiangolo/latest-changes:0.0.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
