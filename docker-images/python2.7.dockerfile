@@ -2,7 +2,7 @@ FROM tiangolo/uwsgi-nginx:python2.7
 
 LABEL maintainer="Sebastian Ramirez <tiangolo@gmail.com>"
 
-RUN pip install flask
+RUN pip install –upgrade flask pip
 
 # URL under which static (not modified by Python) files will be requested
 # They will be served by Nginx directly, without being handled by uWSGI
