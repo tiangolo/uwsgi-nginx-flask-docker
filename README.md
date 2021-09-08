@@ -848,6 +848,7 @@ You can click the "watch" button at the top right and select "Releases only" to 
 
 ### Latest Changes
 
+* ✨ Add Python 3.9 image. PR [#232](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/232) by [@tiangolo](https://github.com/tiangolo).
 * 👷 Add GitHub Action latest-changes. PR [#210](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/210) by [@tiangolo](https://github.com/tiangolo).
 * Fix example for Python 3.8. PR [#186](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/186) by [@ericboucher](https://github.com/ericboucher).
 
