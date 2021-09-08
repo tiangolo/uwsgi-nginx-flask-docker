@@ -6,7 +6,7 @@ use_tag="tiangolo/uwsgi-nginx-flask:$NAME"
 DOCKERFILE="$NAME"
 
 if [ "$NAME" == "latest" ] ; then
-    DOCKERFILE="python3.8"
+    DOCKERFILE="python3.9"
 fi
 
 docker build -t "$use_tag" --file "./docker-images/${DOCKERFILE}.dockerfile" "./docker-images/"

@@ -2,7 +2,8 @@
 
 ## Supported tags and respective `Dockerfile` links
 
-* [`python3.8`, `latest` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.8.dockerfile)
+* [`python3.9`, `latest` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.9.dockerfile)
+* [`python3.8`, _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.8.dockerfile)
 * [`python3.8-alpine` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.8-alpine.dockerfile)
 * [`python3.7`, _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.7.dockerfile)
 * [`python3.6` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.6.dockerfile)
@@ -68,7 +69,7 @@ It is very similar to **tiangolo/uwsgi-nginx-flask**, so you can still use many 
 You don't have to clone this repo, you should be able to use this image as a base image for your project with something in your `Dockerfile` like:
 
 ```Dockerfile
-FROM tiangolo/uwsgi-nginx-flask:python3.8
+FROM tiangolo/uwsgi-nginx-flask:python3.9
 
 COPY ./app /app
 ```
@@ -93,7 +94,7 @@ Or you may follow the instructions to build your project from scratch:
 * Create a `Dockerfile` with:
 
 ```Dockerfile
-FROM tiangolo/uwsgi-nginx-flask:python3.8
+FROM tiangolo/uwsgi-nginx-flask:python3.9
 
 COPY ./app /app
 ```
@@ -406,7 +407,7 @@ Have in mind that `UWSGI_CHEAPER` must be lower than `UWSGI_PROCESSES`.
 So, if, for example, you need to start with 4 processes and grow to a maximum of 64, your `Dockerfile` could look like:
 
 ```Dockerfile
-FROM tiangolo/uwsgi-nginx-flask:python3.8
+FROM tiangolo/uwsgi-nginx-flask:python3.9
 
 ENV UWSGI_CHEAPER 4
 ENV UWSGI_PROCESSES 64
@@ -433,7 +434,7 @@ To change this behavior, set the `LISTEN_PORT` environment variable. You might a
 You can do that in your `Dockerfile`, it would look something like:
 
 ```Dockerfile
-FROM tiangolo/uwsgi-nginx-flask:python3.8
+FROM tiangolo/uwsgi-nginx-flask:python3.9
 
 ENV LISTEN_PORT 8080
 
@@ -570,7 +571,7 @@ or you can set it to the keyword `auto` and it will try to auto-detect the numbe
 For example, using `auto`, your Dockerfile could look like:
 
 ```Dockerfile
-FROM tiangolo/uwsgi-nginx-flask:python3.8
+FROM tiangolo/uwsgi-nginx-flask:python3.9
 
 ENV NGINX_WORKER_PROCESSES auto
 
