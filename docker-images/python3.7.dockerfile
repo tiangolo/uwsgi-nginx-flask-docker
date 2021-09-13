@@ -2,7 +2,7 @@ FROM tiangolo/uwsgi-nginx:python3.7
 
 LABEL maintainer="Sebastian Ramirez <tiangolo@gmail.com>"
 
-# Install requirements: uWSGI
+# Install requirements
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
 
