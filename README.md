@@ -848,6 +848,7 @@ You can click the "watch" button at the top right and select "Releases only" to 
 
 ### Latest Changes
 
+* 👷 Update Latest Changes GitHub Action. PR [#241](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/241) by [@tiangolo](https://github.com/tiangolo).
 * 👷 Add Dependabot and external dependencies to get automated upgrade PRs. PR [#233](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/233) by [@tiangolo](https://github.com/tiangolo).
 * ✨ Add Python 3.9 image. PR [#232](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/232) by [@tiangolo](https://github.com/tiangolo).
 * 👷 Add GitHub Action latest-changes. PR [#210](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/210) by [@tiangolo](https://github.com/tiangolo).
