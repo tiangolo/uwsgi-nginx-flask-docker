@@ -9,7 +9,7 @@
 * [`python3.6` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.6.dockerfile)
 * [`python2.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python2.7.dockerfile)
 
-**Note**: Note: There are [tags for each build date](https://hub.docker.com/r/tiangolo/uwsgi-nginx-flask/tags). If you need to "pin" the Docker image version you use, you can select one of those tags. E.g. `tiangolo/uwsgi-nginx-flask:python3.7-2019-10-14`.
+**Note**: There are [tags for each build date](https://hub.docker.com/r/tiangolo/uwsgi-nginx-flask/tags). If you need to "pin" the Docker image version you use, you can select one of those tags. E.g. `tiangolo/uwsgi-nginx-flask:python3.7-2019-10-14`.
 
 # uwsgi-nginx-flask
 
