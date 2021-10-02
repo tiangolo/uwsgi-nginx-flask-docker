@@ -7,13 +7,20 @@
 * [`python3.8-alpine` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.8-alpine.dockerfile)
 * [`python3.7`, _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.7.dockerfile)
 * [`python3.6` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.6.dockerfile)
+
+## Deprecated
+
+These tags are no longer supported:
+
 * [`python2.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python2.7.dockerfile)
+
+---
 
 **Note**: There are [tags for each build date](https://hub.docker.com/r/tiangolo/uwsgi-nginx-flask/tags). If you need to "pin" the Docker image version you use, you can select one of those tags. E.g. `tiangolo/uwsgi-nginx-flask:python3.7-2019-10-14`.
 
 # uwsgi-nginx-flask
 
-**Docker** image with **uWSGI** and **Nginx** for **Flask** web applications in **Python 3.6** and above, and **Python 2.7** running in a single container. Optionally using Alpine Linux.
+**Docker** image with **uWSGI** and **Nginx** for **Flask** web applications in **Python** running in a single container. Optionally using Alpine Linux.
 
 ## Description
 
@@ -150,9 +157,7 @@ RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 COPY ./app /app
 ```
 
-There are several image tags available for Python 3.6 and above, and Python 2.7, but for new projects you should use the latest version available.
-
-As of now, [everyone](https://www.python.org/dev/peps/pep-0373/) [should be](http://flask.pocoo.org/docs/0.12/python3/#python3-support) [using **Python 3**](https://docs.djangoproject.com/en/1.11/faq/install/#what-python-version-should-i-use-with-django). And [Python 2.7 has reached its end of life](https://www.python.org/doc/sunset-python-2/).
+There are several image tags available but for new projects you should use the latest version available.
 
 There are several template projects that you can download (as a `.zip` file) to bootstrap your project in the section "**Examples (project templates)**" above.
 
