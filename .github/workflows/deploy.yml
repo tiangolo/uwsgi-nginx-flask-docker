@@ -11,7 +11,9 @@ jobs:
       matrix:
         image:
           - name: latest
-            python_version: "3.9"
+            python_version: "3.10"
+          - name: python3.10
+            python_version: "3.10"
           - name: python3.9
             python_version: "3.9"
           - name: python3.8
