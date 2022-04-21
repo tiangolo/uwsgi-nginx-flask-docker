@@ -953,6 +953,7 @@ You can click the "watch" button at the top right and select "Releases only" to 
 
 ### Latest Changes
 
+* ⬆️ Upgrade Nginx and Alpine (in the base images). PR [#283](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/283) by [@tiangolo](https://github.com/tiangolo).
 * ✨ Add support for Python 3.10. PR [#253](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/253) by [@tiangolo](https://github.com/tiangolo).
 * 📝 Add note to discourage Alpine with Python. PR [#247](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/247) by [@tiangolo](https://github.com/tiangolo).
 * 🔥 Remove support for Python 2.7. PR [#246](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/246) by [@tiangolo](https://github.com/tiangolo).
