@@ -11,15 +11,17 @@ jobs:
       matrix:
         image:
           - name: latest
-            python_version: "3.8"
+            python_version: "3.10"
+          - name: python3.10
+            python_version: "3.10"
+          - name: python3.9
+            python_version: "3.9"
           - name: python3.8
             python_version: "3.8"
           - name: python3.7
             python_version: "3.7"
           - name: python3.6
             python_version: "3.6"
-          - name: python2.7
-            python_version: "2.7"
           - name: python3.8-alpine
             python_version: "3.8"
       fail-fast: true

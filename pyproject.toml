@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "uwsgi-nginx-flask-docker"
 version = "0.1.0"
-description = "Docker image with uWSGI and Nginx for Flask applications in Python 3.6 and above and Python 2.7 running in a single container. Optionally with Alpine Linux."
+description = "Docker image with uWSGI and Nginx for Flask applications in Python running in a single container. Optionally with Alpine Linux."
 authors = ["Sebastián Ramírez <tiangolo@gmail.com>"]
 license = "MIT"
 

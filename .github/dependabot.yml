@@ -1,0 +1,17 @@
+version: 2
+updates:
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  # Development/testing dependencies
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  # Docker image dependencies
+  - package-ecosystem: "pip"
+    directory: "/docker-images"
+    schedule:
+      interval: "daily"
