@@ -573,7 +573,7 @@ COPY ./application /application
 WORKDIR /application
 ```
 
-**Note**: the `WORKDIR` is important, otherwhise uWSGI will try to run the app in `/app`.
+**Note**: the `WORKDIR` is important, otherwise uWSGI will try to run the app in `/app`.
 
 **Note**: you would also have to configure the `static` files path, read below.
 
