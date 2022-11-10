@@ -7,7 +7,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.6"
-docker = "^4.2.0"
+docker = "^5.0.3"
 pytest = "^7.0.1"
 
 [tool.poetry.dev-dependencies]
