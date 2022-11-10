@@ -953,6 +953,7 @@ You can click the "watch" button at the top right and select "Releases only" to 
 
 ### Latest Changes
 
+* ⬆️ Update isort requirement from ^4.3.21 to ^5.8.0. PR [#237](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/237) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆️ Update pytest requirement from ^5.4.1 to ^7.0.1. PR [#270](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/270) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆️ Bump actions/checkout from 2 to 3.1.0. PR [#298](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/298) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆️ Update mypy requirement from ^0.770 to ^0.971. PR [#292](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/292) by [@dependabot[bot]](https://github.com/apps/dependabot).
