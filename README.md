@@ -953,6 +953,7 @@ You can click the "watch" button at the top right and select "Releases only" to 
 
 ### Latest Changes
 
+* ⬆️ Bump actions/checkout from 2 to 3.1.0. PR [#298](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/298) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆️ Update mypy requirement from ^0.770 to ^0.971. PR [#292](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/292) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆️ Bump actions/setup-python from 1 to 4.2.0. PR [#293](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/293) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ✏️ Fix typo: otherwhise -> otherwise in README. PR [#211](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/211) by [@timgates42](https://github.com/timgates42).
