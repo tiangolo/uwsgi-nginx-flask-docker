@@ -8,7 +8,6 @@ environments = [
     {"NAME": "python3.9", "PYTHON_VERSION": "3.9"},
     {"NAME": "python3.8", "PYTHON_VERSION": "3.8"},
     {"NAME": "python3.7", "PYTHON_VERSION": "3.7"},
-    {"NAME": "python3.6", "PYTHON_VERSION": "3.6"},
     {"NAME": "python3.8-alpine", "PYTHON_VERSION": "3.8"},
 ]
 
