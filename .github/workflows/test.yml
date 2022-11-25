@@ -48,3 +48,13 @@ jobs:
           NAME: ${{ matrix.image.name }}
           DOCKERFILE: ${{ matrix.image.dockerfile }}
           PYTHON_VERSION: ${{ matrix.image.python_version }}
+  check:
+    if: always()
+    needs:
+    - build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Decide whether the needed jobs succeeded or failed
+      uses: re-actors/alls-green@release/v1
+      with:
+        jobs: ${{ toJSON(needs) }}
