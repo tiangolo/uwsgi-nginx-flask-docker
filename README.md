@@ -959,6 +959,7 @@ You can click the "watch" button at the top right and select "Releases only" to 
 
 ### Latest Changes
 
+* ⬆️ Update mypy requirement from ^0.971 to ^0.991. PR [#310](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/310) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ✨ Add support for Python 3.11. PR [#312](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/312) by [@tiangolo](https://github.com/tiangolo).
 * ⬆️ Upgrade CI OS. PR [#311](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/311) by [@tiangolo](https://github.com/tiangolo).
 * 🔧 Update Dependabot config. PR [#306](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/306) by [@tiangolo](https://github.com/tiangolo).
