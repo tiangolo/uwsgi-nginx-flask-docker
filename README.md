@@ -953,6 +953,7 @@ You can click the "watch" button at the top right and select "Releases only" to 
 
 ### Latest Changes
 
+* 👷 Add scheduled CI. PR [#303](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/303) by [@tiangolo](https://github.com/tiangolo).
 * 👷 Add alls-green GitHub Action. PR [#302](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/302) by [@tiangolo](https://github.com/tiangolo).
 * ⬆️ Upgrade Flask to the latest version to support Python 3.6. PR [#301](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/301) by [@tiangolo](https://github.com/tiangolo).
 * ⬆️ Bump actions/setup-python from 4.2.0 to 4.3.0. PR [#299](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/299) by [@dependabot[bot]](https://github.com/apps/dependabot).
