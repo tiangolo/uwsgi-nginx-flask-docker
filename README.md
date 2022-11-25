@@ -958,6 +958,7 @@ You can click the "watch" button at the top right and select "Releases only" to 
 
 ### Latest Changes
 
+* ⬆️ Upgrade CI OS. PR [#311](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/311) by [@tiangolo](https://github.com/tiangolo).
 * 🔧 Update Dependabot config. PR [#306](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/306) by [@tiangolo](https://github.com/tiangolo).
 * ⬆️ Bump flask from 2.0.1 to 2.2.2 in /docker-images. PR [#296](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/296) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * 🔥 Remove Travis backup file. PR [#254](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/254) by [@tiangolo](https://github.com/tiangolo).
