@@ -958,6 +958,7 @@ You can click the "watch" button at the top right and select "Releases only" to 
 
 ### Latest Changes
 
+* ⬆️ Bump flask from 2.0.1 to 2.2.2 in /docker-images. PR [#296](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/296) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * 🔥 Remove Travis backup file. PR [#254](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/254) by [@tiangolo](https://github.com/tiangolo).
 * ⬆️ Bump tiangolo/issue-manager from 0.2.0 to 0.4.0. PR [#234](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/234) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * 🔥 Deprecate and remove Python 3.6. PR [#304](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/304) by [@tiangolo](https://github.com/tiangolo).
