@@ -6,7 +6,6 @@
 * [`python3.9`, _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.9.dockerfile)
 * [`python3.8`, _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.8.dockerfile)
 * [`python3.7`, _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.7.dockerfile)
-* [`python3.6` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.6.dockerfile)
 
 ## Discouraged tags
 
@@ -14,11 +13,17 @@
 
 To learn more about why Alpine images are discouraged for Python read the note at the end: [🚨 Alpine Python Warning](#-alpine-python-warning).
 
-## Deprecated
+## Deprecated tags
 
-These tags are no longer supported:
+🚨 These tags are no longer supported or maintained, they are removed from the GitHub repository, but the last version pushed is still available in Docker Hub.
 
-* [`python2.7` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python2.7.dockerfile)
+* `python3.6`
+* `python2.7`
+
+The last date tags for deprecated Python versions are:
+
+* `python3.6-2022-11-25`
+* `python2.7-2022-11-25`
 
 ---
 
@@ -573,7 +578,7 @@ COPY ./application /application
 WORKDIR /application
 ```
 
-**Note**: the `WORKDIR` is important, otherwhise uWSGI will try to run the app in `/app`.
+**Note**: the `WORKDIR` is important, otherwise uWSGI will try to run the app in `/app`.
 
 **Note**: you would also have to configure the `static` files path, read below.
 
@@ -953,6 +958,21 @@ You can click the "watch" button at the top right and select "Releases only" to 
 
 ### Latest Changes
 
+* 🔥 Deprecate and remove Python 3.6. PR [#304](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/304) by [@tiangolo](https://github.com/tiangolo).
+* 👷 Add scheduled CI. PR [#303](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/303) by [@tiangolo](https://github.com/tiangolo).
+* 👷 Add alls-green GitHub Action. PR [#302](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/302) by [@tiangolo](https://github.com/tiangolo).
+* ⬆️ Upgrade Flask to the latest version to support Python 3.6. PR [#301](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/301) by [@tiangolo](https://github.com/tiangolo).
+* ⬆️ Bump actions/setup-python from 4.2.0 to 4.3.0. PR [#299](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/299) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆️ Update black requirement from ^19.10b0 to ^20.8b1. PR [#236](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/236) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆️ Update docker requirement from ^4.2.0 to ^5.0.3. PR [#250](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/250) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆️ Update isort requirement from ^4.3.21 to ^5.8.0. PR [#237](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/237) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆️ Update pytest requirement from ^5.4.1 to ^7.0.1. PR [#270](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/270) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆️ Bump actions/checkout from 2 to 3.1.0. PR [#298](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/298) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆️ Update mypy requirement from ^0.770 to ^0.971. PR [#292](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/292) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆️ Bump actions/setup-python from 1 to 4.2.0. PR [#293](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/293) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ✏️ Fix typo: otherwhise -> otherwise in README. PR [#211](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/211) by [@timgates42](https://github.com/timgates42).
+* 👷 Run tests only on PRs or when pushing on master to avoid double CI. PR [#284](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/284) by [@tiangolo](https://github.com/tiangolo).
+* ⬆️ Upgrade Nginx and Alpine (in the base images). PR [#283](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/283) by [@tiangolo](https://github.com/tiangolo).
 * ✨ Add support for Python 3.10. PR [#253](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/253) by [@tiangolo](https://github.com/tiangolo).
 * 📝 Add note to discourage Alpine with Python. PR [#247](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/247) by [@tiangolo](https://github.com/tiangolo).
 * 🔥 Remove support for Python 2.7. PR [#246](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/246) by [@tiangolo](https://github.com/tiangolo).
