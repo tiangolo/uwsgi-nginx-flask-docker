@@ -6,7 +6,7 @@ authors = ["Sebastián Ramírez <tiangolo@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.7"
 docker = "^5.0.3"
 pytest = "^7.0.1"
 

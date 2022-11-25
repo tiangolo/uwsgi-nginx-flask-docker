@@ -25,8 +25,6 @@ jobs:
             python_version: "3.8"
           - name: python3.7
             python_version: "3.7"
-          - name: python3.6
-            python_version: "3.6"
           - name: python3.8-alpine
             python_version: "3.8"
       fail-fast: true
