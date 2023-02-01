@@ -11,7 +11,7 @@ docker = "^6.0.1"
 pytest = "^7.0.1"
 
 [tool.poetry.dev-dependencies]
-black = "^22.10"
+black = "^23.1"
 isort = "^5.8.0"
 autoflake = "^2.0.0"
 mypy = "^0.991"
