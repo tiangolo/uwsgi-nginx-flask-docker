@@ -14,7 +14,7 @@ pytest = "^7.0.1"
 black = "^22.10"
 isort = "^5.8.0"
 autoflake = "^2.0.0"
-mypy = "^0.991"
+mypy = "^1.1"
 
 [build-system]
 requires = ["poetry>=0.12"]
