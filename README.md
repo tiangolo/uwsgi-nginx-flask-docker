@@ -566,7 +566,7 @@ enable-threads = true
 
 ### Custom `uwsgi.ini` file location
 
-You can override where the image should look for the app `uwsgi.ini` file using the envirnoment variable `UWSGI_INI`.
+You can override where the image should look for the app `uwsgi.ini` file using the environment variable `UWSGI_INI`.
 
 With that you could change the default directory for your app from `/app` to something else, like `/application`.
 
