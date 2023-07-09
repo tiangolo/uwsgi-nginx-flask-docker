@@ -959,6 +959,7 @@ You can click the "watch" button at the top right and select "Releases only" to 
 
 ### Latest Changes
 
+* ⬆️ Update black requirement from ^22.10 to ^23.1. PR [#319](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/319) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆️ Bump actions/setup-python from 4.3.0 to 4.5.0. PR [#318](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/318) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * 👷 Update token for latest changes. PR [#326](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/326) by [@tiangolo](https://github.com/tiangolo).
 * 👷 Add GitHub Action for Docker Hub description. PR [#313](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/313) by [@tiangolo](https://github.com/tiangolo).
