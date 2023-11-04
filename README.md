@@ -969,6 +969,10 @@ You can click the "watch" button at the top right and select "Releases only" to 
 * 👷 Update token for latest changes. PR [#326](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/326) by [@tiangolo](https://github.com/tiangolo).
 * 👷 Add GitHub Action for Docker Hub description. PR [#313](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/313) by [@tiangolo](https://github.com/tiangolo).
 
+#### Internal
+
+* ⬆️ Bump actions/checkout from 3 to 4. PR [#332](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/332) by [@dependabot[bot]](https://github.com/apps/dependabot).
+
 ### 2.0.0
 
 Highlights of this release:
