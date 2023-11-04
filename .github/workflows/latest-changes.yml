@@ -11,15 +11,20 @@ on:
       number:
         description: PR number
         required: true
+      debug_enabled:
+        description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
+        required: false
+        default: 'false'
 
 jobs:
   latest-changes:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           # To allow latest-changes to commit to master
           token: ${{ secrets.UWSGI_NGINX_FLASK_DOCKER_LATEST_CHANGES }}
-      - uses: docker://tiangolo/latest-changes:0.0.3
+      - uses: docker://tiangolo/latest-changes:0.2.0
+      # - uses: tiangolo/latest-changes@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
