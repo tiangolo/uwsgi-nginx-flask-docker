@@ -971,6 +971,7 @@ You can click the "watch" button at the top right and select "Releases only" to 
 
 #### Internal
 
+* 👷 Update dependabot. PR [#336](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/336) by [@tiangolo](https://github.com/tiangolo).
 * ⬆️ Bump actions/setup-python from 4.5.0 to 4.7.1. PR [#333](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/333) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆️ Bump actions/checkout from 3 to 4. PR [#332](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/332) by [@dependabot[bot]](https://github.com/apps/dependabot).
 
