@@ -8,21 +8,17 @@
 * [`python3.8`, _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.8.dockerfile)
 * [`python3.7`, _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.7.dockerfile)
 
-## Discouraged tags
-
-* [`python3.8-alpine` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.8-alpine.dockerfile)
-
-To learn more about why Alpine images are discouraged for Python read the note at the end: [🚨 Alpine Python Warning](#-alpine-python-warning).
-
 ## Deprecated tags
 
-🚨 These tags are no longer supported or maintained, they are removed from the GitHub repository, but the last version pushed is still available in Docker Hub.
+🚨 These tags are no longer supported or maintained, they are removed from the GitHub repository, but the last versions pushed might still be available in Docker Hub if anyone has been pulling them:
 
+* `python3.8-alpine`
 * `python3.6`
 * `python2.7`
 
-The last date tags for deprecated Python versions are:
+The last date tags for these versions are:
 
+* `python3.8-alpine-2024-03-11`
 * `python3.6-2022-11-25`
 * `python2.7-2022-11-25`
 
@@ -32,7 +28,7 @@ The last date tags for deprecated Python versions are:
 
 # uwsgi-nginx-flask
 
-**Docker** image with **uWSGI** and **Nginx** for **Flask** web applications in **Python** running in a single container. Optionally using Alpine Linux.
+**Docker** image with **uWSGI** and **Nginx** for **Flask** web applications in **Python** running in a single container.
 
 ## Description
 
