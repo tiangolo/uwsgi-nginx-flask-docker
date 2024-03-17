@@ -1,4 +1,4 @@
-[![Test](https://github.com/tiangolo/uwsgi-nginx-flask-docker/workflows/Test/badge.svg)](https://github.com/tiangolo/uwsgi-nginx-flask-docker/actions?query=workflow%3ATest) [![Deploy](https://github.com/tiangolo/uwsgi-nginx-flask-docker/workflows/Deploy/badge.svg)](https://github.com/tiangolo/uwsgi-nginx-flask-docker/actions?query=workflow%3ADeploy)
+[![Test](https://github.com/tiangolo/uwsgi-nginx-flask-docker/actions/workflows/test.yml/badge.svg)](https://github.com/tiangolo/uwsgi-nginx-flask-docker/actions/workflows/test.yml) [![Deploy](https://github.com/tiangolo/uwsgi-nginx-flask-docker/workflows/Deploy/badge.svg)](https://github.com/tiangolo/uwsgi-nginx-flask-docker/actions?query=workflow%3ADeploy)
 
 ## Supported tags and respective `Dockerfile` links
 
