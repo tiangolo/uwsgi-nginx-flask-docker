@@ -969,6 +969,10 @@ You can click the "watch" button at the top right and select "Releases only" to 
 
 * 🔥 Remove Alpine support. PR [#345](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/345) by [@tiangolo](https://github.com/tiangolo).
 
+#### Docs
+
+* 📝 Update test badge in `README.md`. PR [#346](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/346) by [@alejsdev](https://github.com/alejsdev).
+
 #### Internal
 
 * ⬆ Bump actions/setup-python from 4.7.1 to 5.0.0. PR [#338](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/338) by [@dependabot[bot]](https://github.com/apps/dependabot).
