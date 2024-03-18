@@ -955,15 +955,7 @@ You can click the "watch" button at the top right and select "Releases only" to 
 
 ### Latest Changes
 
-* 👷 Update latest-changes GitHub Action. PR [#335](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/335) by [@tiangolo](https://github.com/tiangolo).
-* ⬆️ Bump flask from 2.2.3 to 2.2.5 in /docker-images. PR [#327](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/327) by [@dependabot[bot]](https://github.com/apps/dependabot).
-* ✏️ Fix typo in README. PR [#316](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/316) by [@cclauss](https://github.com/cclauss).
-* ⬆️ Update mypy requirement from ^0.991 to ^1.1. PR [#322](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/322) by [@dependabot[bot]](https://github.com/apps/dependabot).
-* ⬆️ Bump flask from 2.2.2 to 2.2.3. PR [#321](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/321) by [@dependabot[bot]](https://github.com/apps/dependabot).
-* ⬆️ Update black requirement from ^22.10 to ^23.1. PR [#319](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/319) by [@dependabot[bot]](https://github.com/apps/dependabot).
-* ⬆️ Bump actions/setup-python from 4.3.0 to 4.5.0. PR [#318](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/318) by [@dependabot[bot]](https://github.com/apps/dependabot).
-* 👷 Update token for latest changes. PR [#326](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/326) by [@tiangolo](https://github.com/tiangolo).
-* 👷 Add GitHub Action for Docker Hub description. PR [#313](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/313) by [@tiangolo](https://github.com/tiangolo).
+### 2.1.0
 
 #### Features
 
