@@ -957,6 +957,7 @@ You can click the "watch" button at the top right and select "Releases only" to 
 
 #### Internal
 
+* 🔧  Add GitHub templates for discussions and issues, and security policy. PR [#354](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/354) by [@alejsdev](https://github.com/alejsdev).
 * 🔧 Update `latest-changes.yml`. PR [#348](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/348) by [@alejsdev](https://github.com/alejsdev).
 
 ### 2.1.0
