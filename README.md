@@ -955,6 +955,10 @@ You can click the "watch" button at the top right and select "Releases only" to 
 
 ### Latest Changes
 
+#### Internal
+
+* 🔧 Update `latest-changes.yml`. PR [#348](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/348) by [@alejsdev](https://github.com/alejsdev).
+
 ### 2.1.0
 
 #### Features
