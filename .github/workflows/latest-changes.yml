@@ -24,7 +24,7 @@ jobs:
         with:
           # To allow latest-changes to commit to master
           token: ${{ secrets.UWSGI_NGINX_FLASK_DOCKER_LATEST_CHANGES }}
-      - uses: docker://tiangolo/latest-changes:0.2.0
+      - uses: docker://tiangolo/latest-changes:0.3.0
       # - uses: tiangolo/latest-changes@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
