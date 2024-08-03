@@ -957,6 +957,7 @@ You can click the "watch" button at the top right and select "Releases only" to 
 
 #### Internal
 
+* ⬆ Bump docker/build-push-action from 2 to 5. PR [#350](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/350) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump actions/setup-python from 4 to 5. PR [#349](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/349) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * 👷 Update issue-manager.yml GitHub Action permissions. PR [#357](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/357) by [@tiangolo](https://github.com/tiangolo).
 * 🔧  Add GitHub templates for discussions and issues, and security policy. PR [#354](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/354) by [@alejsdev](https://github.com/alejsdev).
