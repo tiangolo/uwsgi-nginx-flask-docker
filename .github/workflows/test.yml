@@ -40,7 +40,7 @@ jobs:
         if: matrix.image.name == 'latest'
         run: echo "DOCKERFILE_NAME=python${{ matrix.image.python_version }}" >> $GITHUB_ENV
       - name: Build
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: false
           tags: tiangolo/uwsgi-nginx-flask:${{ matrix.image.name }}
