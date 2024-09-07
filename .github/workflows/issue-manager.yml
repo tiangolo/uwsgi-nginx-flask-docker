@@ -2,17 +2,21 @@ name: Issue Manager
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "15 9 * * *"
   issue_comment:
     types:
       - created
-      - edited
   issues:
     types:
       - labeled
+  pull_request_target:
+    types:
+      - labeled
+  workflow_dispatch:
 
 permissions:
   issues: write
+  pull-requests: write
 
 jobs:
   issue-manager:
@@ -24,6 +28,11 @@ jobs:
           config: >
             {
               "answered": {
-                "message": "Assuming the original issue was solved, it will be automatically closed now. But feel free to add more comments or create new issues."
+                "delay": 864000,
+                "message": "Assuming the original need was handled, this will be automatically closed now. But feel free to add more comments or create new issues or PRs."
+              },
+              "waiting": {
+                "delay": 2628000,
+                "message": "As this PR has been waiting for the original user for a while but seems to be inactive, it's now going to be closed. But if there's anyone interested, feel free to create a new PR."
               }
             }
