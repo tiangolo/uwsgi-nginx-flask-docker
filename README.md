@@ -828,6 +828,7 @@ All the image tags, configurations, environment variables and application option
 
 #### Internal
 
+* 🔥 Remove old unused files. PR [#389](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/389) by [@tiangolo](https://github.com/tiangolo).
 * ⬆ Bump tiangolo/issue-manager from 0.5.0 to 0.5.1. PR [#387](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/387) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * 👷 Update `issue-manager.yml`. PR [#385](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/385) by [@tiangolo](https://github.com/tiangolo).
 * 👷 Update `latest-changes` GitHub Action. PR [#360](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/360) by [@tiangolo](https://github.com/tiangolo).
