@@ -51,7 +51,7 @@ jobs:
       - name: Install Dependencies
         run: python -m pip install docker pytest
       - name: Test Image
-        run: bash scripts/test.sh
+        run: pytest tests
         env:
           NAME: ${{ matrix.image.name }}
           PYTHON_VERSION: ${{ matrix.image.python_version }}
