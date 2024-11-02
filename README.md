@@ -822,6 +822,10 @@ All the image tags, configurations, environment variables and application option
 
 * ✨ Add Python 3.12. PR [#386](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/386) by [@tiangolo](https://github.com/tiangolo).
 
+#### Upgrades
+
+* 🔥 Drop support for Python 3.7 and 3.8. PR [#388](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/388) by [@tiangolo](https://github.com/tiangolo).
+
 #### Internal
 
 * 👷 Update `issue-manager.yml`. PR [#385](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/385) by [@tiangolo](https://github.com/tiangolo).
