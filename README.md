@@ -6,20 +6,22 @@
 * [`python3.11`, _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.11.dockerfile)
 * [`python3.10` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.10.dockerfile)
 * [`python3.9`, _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.9.dockerfile)
-* [`python3.8`, _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.8.dockerfile)
-* [`python3.7`, _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.7.dockerfile)
 
 ## Deprecated tags
 
 🚨 These tags are no longer supported or maintained, they are removed from the GitHub repository, but the last versions pushed might still be available in Docker Hub if anyone has been pulling them:
 
+* `python3.8`
 * `python3.8-alpine`
+* `python3.7`
 * `python3.6`
 * `python2.7`
 
 The last date tags for these versions are:
 
+* `python3.8-2024-10-28`
 * `python3.8-alpine-2024-03-11`
+* `python3.7-2024-10-28`
 * `python3.6-2022-11-25`
 * `python2.7-2022-11-25`
 
@@ -35,30 +37,11 @@ The last date tags for these versions are:
 
 This [**Docker**](https://www.docker.com/) image allows you to create [**Flask**](http://flask.pocoo.org/) web applications in [**Python**](https://www.python.org/) that run with [**uWSGI**](https://uwsgi-docs.readthedocs.org/en/latest/) and [**Nginx**](http://nginx.org/en/) in a single container.
 
-The combination of uWSGI with Nginx is a [common way to deploy Python Flask web applications](http://flask.pocoo.org/docs/1.0/deploying/uwsgi/). It is widely used in the industry and would give you decent performance. (*)
+The combination of uWSGI with Nginx is a [common way to deploy Python Flask web applications](http://flask.pocoo.org/docs/1.0/deploying/uwsgi/).
 
-There is also an Alpine version. If you want it, check the tags from above.
+### Alternative - FastAPI
 
-### * Note on performance and features
-
-If you are starting a new project, you might benefit from a newer and faster framework based on ASGI instead of WSGI (Flask and Django are WSGI-based).
-
-You could use an ASGI framework like:
-
-* [**FastAPI**](https://github.com/tiangolo/fastapi) (which is based on Starlette) with this Docker image: [**tiangolo/uvicorn-gunicorn-fastapi**](https://github.com/tiangolo/uvicorn-gunicorn-fastapi-docker).
-* [**Starlette**](https://github.com/encode/starlette) directly, with this Docker image: [**tiangolo/uvicorn-gunicorn-starlette**](https://github.com/tiangolo/uvicorn-gunicorn-starlette-docker).
-
-FastAPI, or Starlette, would give you about 800% (8x) the performance achievable with Flask using this image (**tiangolo/uwsgi-nginx-flask**). [You can see the third-party benchmarks here](https://www.techempower.com/benchmarks/#section=test&runid=a979de55-980d-4721-a46f-77298b3f3923&hw=ph&test=fortune&l=zijzen-7).
-
-Also, if you want to use new technologies like WebSockets it would be easier (and *possible*) with a newer framework based on ASGI, like FastAPI or Starlette. As the standard ASGI was designed to be able to handle asynchronous code like the one needed for WebSockets.
-
-#### If you need Flask
-
-If you need to use Flask (instead of something based on ASGI) and you need to have the best performance possible, you can use the alternative image: [**tiangolo/meinheld-gunicorn-flask**](https://github.com/tiangolo/meinheld-gunicorn-flask-docker).
-
-**tiangolo/meinheld-gunicorn-flask** will give you about 400% (4x) the performance of this image (**tiangolo/uwsgi-nginx-flask**).
-
-It is very similar to **tiangolo/uwsgi-nginx-flask**, so you can still use many of the ideas described here.
+If you are starting a new project, you might want to try [**FastAPI**](https://github.com/tiangolo/fastapi), which I created, and where I spend most of my time now. It also doesn't need a custom base image, there are instructions in the docs to build your own `Dockerfile`.
 
 ---
 
@@ -93,7 +76,7 @@ threads = 3
 And then you could have a `Dockerfile` with:
 
 ```Dockerfile
-FROM python:3.9
+FROM python:3.12
 
 WORKDIR /code
 
@@ -120,7 +103,7 @@ You could be deploying to a **single server** (not a cluster) with **Docker Comp
 
 Then you could want to have **a single container** with a **process manager** starting **several worker processes** inside, as this Docker image does.
 
-### Prometheus and Other Reasons
+### Other Reasons
 
 You could also have **other reasons** that would make it easier to have a **single container** with **multiple processes** instead of having **multiple containers** with **a single process** in each of them.
 
@@ -133,20 +116,6 @@ Then, in that case, it could be simpler to have **one container** with **multipl
 ---
 
 Read more about it all in the [FastAPI documentation about: FastAPI in Containers - Docker](https://fastapi.tiangolo.com/deployment/docker/), as the same concepts apply to other web applications in containers.
-
-## Examples (simple project templates)
-
-* **`python3.8`** tag: general Flask web application:
-
-[**example-flask-python3.8.zip**](https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/1.4.0/example-flask-python3.8.zip)
-
-* **`python3.8`** tag: general Flask web application, structured as a package, for bigger Flask projects, with different submodules. Use it only as an example of how to import your modules and how to structure your own project:
-
-[**example-flask-package-python3.8.zip**](https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/1.4.0/example-flask-package-python3.8.zip)
-
-* **`python3.8`** tag: `static/index.html` served directly in `/`, e.g. for [Vue](https://vuejs.org/), [React](https://reactjs.org/), [Angular](https://angular.io/), or any other Single-Page Application that uses a static `index.html`, not modified by Python:
-
-[**example-flask-python3.8-index.zip**](https://github.com/tiangolo/uwsgi-nginx-flask-docker/releases/download/1.4.0/example-flask-python3.8-index.zip)
 
 ## General Instructions
 
@@ -168,17 +137,9 @@ COPY ./app /app
 
 There are several image tags available but for new projects you should use the latest version available.
 
-There are several template projects that you can download (as a `.zip` file) to bootstrap your project in the section "**Examples (project templates)**" above.
-
 This Docker image is based on [**tiangolo/uwsgi-nginx**](https://hub.docker.com/r/tiangolo/uwsgi-nginx/). That Docker image has uWSGI and Nginx installed in the same container and was made to be the base of this image.
 
 ## Quick Start
-
-**Note**: You can download the **example-flask-python3.8.zip** project example and use it as the template for your project from the section **Examples** above.
-
----
-
-Or you may follow the instructions to build your project from scratch:
 
 * Go to your project directory
 * Create a `Dockerfile` with:
@@ -235,69 +196,6 @@ docker run -d --name mycontainer -p 80:80 myimage
 
 You should be able to check it in your Docker container's URL, for example: <a href="http://192.168.99.100" target="_blank">http://192.168.99.100</a> or <a href="http://127.0.0.1" target="_blank">http://127.0.0.1</a>
 
-## Project Generators
-
-There are several project generators that you can use to start your project, with everything already configured.
-
-### Server set up
-
-All these project generators include automatic and free HTTPS certificates generation provided by:
-
-* [Traefik](https://traefik.io/) and
-* [Let's Encrypt](https://letsencrypt.org/)
-
-...using the ideas from [DockerSwarm.rocks](https://dockerswarm.rocks).
-
-It would take about 20 minutes to read that guide and have a Docker cluster (of one or more servers) up and running ready for your projects.
-
-You can have several projects in the same cluster, all with automatic HTTPS, even if they have different domains or sub-domains.
-
-### Generate a project
-
-Then you can use one of the following project generators.
-
-It would take about 5 extra minutes to generate one of these projects.
-
-### Deploy
-
-And it would take about 3 more minutes to deploy them in your cluster.
-
----
-
-In total, about 28 minutes to start from scratch and get an HTTPS Docker cluster with your full application(s) ready.
-
----
-
-These are the project generators:
-
-### flask-frontend-docker
-
-Project link: [https://github.com/tiangolo/flask-frontend-docker](https://github.com/tiangolo/flask-frontend-docker)
-
-Minimal project generator with a Flask backend, a modern frontend (Vue, React or Angular) using Docker multi-stage building and Nginx, a Traefik load balancer with HTTPS, Docker Compose (and Docker Swarm mode) etc.
-
-### full-stack
-
-Project Link: [https://github.com/tiangolo/full-stack](https://github.com/tiangolo/full-stack)
-
-Full stack project generator with Flask backend, PostgreSQL DB, PGAdmin, SQLAlchemy, Alembic migrations, Celery asynchronous jobs, API testing, CI integration, Docker Compose (and Docker Swarm mode), Swagger, automatic HTTPS, Vue.js, etc.
-
-### full-stack-flask-couchbase
-
-Project Link: [https://github.com/tiangolo/full-stack-flask-couchbase](https://github.com/tiangolo/full-stack-flask-couchbase)
-
-Full stack project generator with Flask backend, Couchbase, Couchbase Sync Gateway, Celery asynchronous jobs, API testing, CI integration, Docker Compose (and Docker Swarm mode), Swagger, automatic HTTPS, Vue.js, etc.
-
-Similar to the one above (`full-stack`), but with Couchbase instead of PostgreSQL, and some more features.
-
-### full-stack-flask-couchdb
-
-Project Link: [https://github.com/tiangolo/full-stack-flask-couchdb](https://github.com/tiangolo/full-stack-flask-couchdb)
-
-Full stack project generator with Flask backend, CouchDB, Celery asynchronous jobs, API testing, CI integration, Docker Compose (and Docker Swarm mode), Swagger, automatic HTTPS, Vue.js, etc.
-
-Similar to `full-stack-flask-couchbase`, but with CouchDB instead of Couchbase (or PostgreSQL).
-
 ## Quick Start for SPAs *
 
 ### Modern Single Page Applications
@@ -353,15 +251,7 @@ In this scenario, you would have 3 Docker containers:
 * Frontend (Vue.js, Angular, React or any other)
 * Traefik (load balancer, HTTPS)
 
-### Deprecated Single Page Applications guide
-
-If you want to check the previous (deprecated) documentation on adding a frontend to the same container, you can [read the deprecated guide for single page apps](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/deprecated-single-page-apps-in-same-container.md).
-
 ## Quick Start for bigger projects structured as a Python package
-
-**Note**: You can download the **example-flask-package-python3.8.zip** project example and use it as an example or template for your project from the section **Examples** above.
-
----
 
 You should be able to follow the same instructions as in the "**QuickStart**" section above, with some minor modifications:
 
@@ -842,8 +732,6 @@ if __name__ == "__main__":
 
 ...and you could run it with `python main.py`. But that will only work when you are not using a package structure and don't plan to do it later. In that specific case, if you didn't add the code block above, your app would only listen to `localhost` (inside the container), in another port (5000) and not in debug mode.
 
-**Note**: The example project **example-flask-python3.8** includes a `docker-compose.yml` and `docker-compose.override.yml` with all these configurations, if you are using Docker Compose.
-
 ---
 
 Also, if you want to do the same live debugging using the environment variable `STATIC_INDEX=1` (to serve `/app/static/index.html` directly when requested for `/`) your Nginx won't serve it directly as it won't be running (only your Python Flask app in debug mode will be running).
@@ -884,8 +772,6 @@ def route_frontend(path):
 
 That's how it is written in the tutorial above and is included in the downloadable examples.
 
-**Note**: The example project **example-flask-python3.8-index** includes a `docker-compose.yml` and `docker-compose.override.yml` with all these configurations, if you are using Docker Compose.
-
 ## More advanced development instructions
 
 If you follow the instructions above, it's probable that at some point, you will write code that will break your Flask debugging server and it will crash.
@@ -924,33 +810,9 @@ flask run --host=0.0.0.0 --port=80
 
 You will see your Flask debugging server start, you will see how it sends responses to every request, you will see the errors thrown when you break your code, and how they stop your server, and you will be able to re-start it very fast, by just running the command above again.
 
-## 🚨 Alpine Python Warning
-
-In short: You probably shouldn't use Alpine for Python projects, instead use the `slim` Docker image versions.
-
----
-
-Do you want more details? Continue reading 👇
-
-Alpine is more useful for other languages where you build a static binary in one Docker image stage (using multi-stage Docker building) and then copy it to a simple Alpine image, and then just execute that binary. For example, using Go.
-
-But for Python, as Alpine doesn't use the standard tooling used for building Python extensions, when installing packages, in many cases Python (`pip`) won't find a precompiled installable package (a "wheel") for Alpine. And after debugging lots of strange errors you will realize that you have to install a lot of extra tooling and build a lot of dependencies just to use some of these common Python packages. 😩
-
-This means that, although the original Alpine image might have been small, you end up with a an image with a size comparable to the size you would have gotten if you had just used a standard Python image (based on Debian), or in some cases even larger. 🤯
-
-And in all those cases, it will take much longer to build, consuming much more resources, building dependencies for longer, and also increasing its carbon footprint, as you are using more CPU time and energy for each build. 🌳
-
-If you want slim Python images, you should instead try and use the `slim` versions that are still based on Debian, but are smaller. 🤓
-
 ## Tests
 
 All the image tags, configurations, environment variables and application options are tested.
-
-## Updates
-
-Updates are announced in the releases.
-
-You can click the "watch" button at the top right and select "Releases only" to receive an email notification when there's a new release.
 
 ## Release Notes
 
