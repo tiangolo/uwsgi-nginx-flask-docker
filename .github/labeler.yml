@@ -1,0 +1,14 @@
+internal:
+  - all:
+    - changed-files:
+      - any-glob-to-any-file:
+        - .github/**
+        - .gitignore
+      - all-globs-to-all-files:
+        - '!docker-images/requirements.txt'
+
+upgrade:
+  - all:
+    - changed-files:
+      - any-glob-to-any-file:
+        - docker-images/requirements.txt
