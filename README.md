@@ -831,6 +831,7 @@ All the image tags, configurations, environment variables and application option
 
 #### Internal
 
+* ⬆ Bump actions/labeler from 5 to 6. PR [#399](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/399) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump actions/setup-python from 5 to 6. PR [#398](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/398) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump actions/checkout from 4 to 5. PR [#396](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/396) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump tiangolo/latest-changes from 0.3.2 to 0.4.0. PR [#395](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/395) by [@dependabot[bot]](https://github.com/apps/dependabot).
