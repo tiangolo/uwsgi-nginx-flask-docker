@@ -832,6 +832,7 @@ All the image tags, configurations, environment variables and application option
 
 #### Internal
 
+* 🔥 Drop support for Python 3.9. PR [#401](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/401) by [@tiangolo](https://github.com/tiangolo).
 * ⬆ Bump tiangolo/issue-manager from 0.5.1 to 0.6.0. PR [#400](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/400) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump actions/labeler from 5 to 6. PR [#399](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/399) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump actions/setup-python from 5 to 6. PR [#398](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/398) by [@dependabot[bot]](https://github.com/apps/dependabot).
