@@ -818,6 +818,7 @@ All the image tags, configurations, environment variables and application option
 
 #### Docs
 
+* 📝 Add note about historical README. PR [#403](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/403) by [@tiangolo](https://github.com/tiangolo).
 * 📝 Add deprecation note. PR [#402](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/402) by [@tiangolo](https://github.com/tiangolo).
 
 #### Internal
