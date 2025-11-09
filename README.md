@@ -100,6 +100,12 @@ Additionally, I haven't used this Docker image in years, so I don't have much ba
 
 You can probably still use this image as-is, while you migrate to a different tool, but I won't be adding (and maintaining) support for new versions of Python.
 
+---
+
+## Historical Docs
+
+The rest of the README is preserved mainly for historical reasons.
+
 ## General Instructions
 
 You don't have to clone this repo.
