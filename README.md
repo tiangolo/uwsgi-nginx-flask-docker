@@ -810,6 +810,10 @@ All the image tags, configurations, environment variables and application option
 * ⬆ Bump flask from 2.2.5 to 3.1.0. PR [#391](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/391) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * 🔥 Drop support for Python 3.7 and 3.8. PR [#388](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/388) by [@tiangolo](https://github.com/tiangolo).
 
+#### Docs
+
+* 📝 Add deprecation note. PR [#402](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/402) by [@tiangolo](https://github.com/tiangolo).
+
 #### Internal
 
 * 🔥 Drop support for Python 3.9. PR [#401](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/401) by [@tiangolo](https://github.com/tiangolo).
