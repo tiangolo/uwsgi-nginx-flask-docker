@@ -26,7 +26,7 @@ jobs:
       fail-fast: true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Set Dockerfile name
         if: matrix.image.name != 'latest'
         run: echo "DOCKERFILE_NAME=${{ matrix.image.name }}" >> $GITHUB_ENV
