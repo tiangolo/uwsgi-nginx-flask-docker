@@ -5,12 +5,12 @@
 * [`python3.12`, `latest` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.12.dockerfile)
 * [`python3.11`, _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.11.dockerfile)
 * [`python3.10` _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.10.dockerfile)
-* [`python3.9`, _(Dockerfile)_](https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/docker-images/python3.9.dockerfile)
 
 ## Deprecated tags
 
 🚨 These tags are no longer supported or maintained, they are removed from the GitHub repository, but the last versions pushed might still be available in Docker Hub if anyone has been pulling them:
 
+* `python3.9`
 * `python3.8`
 * `python3.8-alpine`
 * `python3.7`
@@ -19,6 +19,7 @@
 
 The last date tags for these versions are:
 
+* * `python3.9-2025-11-09`
 * `python3.8-2024-10-28`
 * `python3.8-alpine-2024-03-11`
 * `python3.7-2024-10-28`
