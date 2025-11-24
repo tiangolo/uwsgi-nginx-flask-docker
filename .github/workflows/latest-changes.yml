@@ -20,10 +20,12 @@ jobs:
   latest-changes:
     runs-on: ubuntu-latest
     steps:
+      # pin to actions/checkout@v5 for compatibility with latest-changes
+      # Ref: https://github.com/actions/checkout/issues/2313
       - uses: actions/checkout@v5
         with:
           # To allow latest-changes to commit to master
           token: ${{ secrets.UWSGI_NGINX_FLASK_DOCKER_LATEST_CHANGES }}
-      - uses: tiangolo/latest-changes@0.4.0
+      - uses: tiangolo/latest-changes@0.4.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
