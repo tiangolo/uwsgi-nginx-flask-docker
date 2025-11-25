@@ -823,6 +823,7 @@ All the image tags, configurations, environment variables and application option
 
 #### Internal
 
+* 👷 Upgrade actions/checkout from v5 to v6. PR [#407](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/407) by [@tiangolo](https://github.com/tiangolo).
 * 👷 Upgrade `latest-changes` GitHub Action and pin `actions/checkout@v5`. PR [#406](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/406) by [@tiangolo](https://github.com/tiangolo).
 * 🔥 Drop support for Python 3.9. PR [#401](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/401) by [@tiangolo](https://github.com/tiangolo).
 * ⬆ Bump tiangolo/issue-manager from 0.5.1 to 0.6.0. PR [#400](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/400) by [@dependabot[bot]](https://github.com/apps/dependabot).
