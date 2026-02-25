@@ -823,6 +823,7 @@ All the image tags, configurations, environment variables and application option
 
 #### Internal
 
+* ⬆ Bump actions/checkout from 5 to 6. PR [#405](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/405) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump peter-evans/dockerhub-description from 4 to 5. PR [#404](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/404) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * 👷 Upgrade actions/checkout from v5 to v6. PR [#407](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/407) by [@tiangolo](https://github.com/tiangolo).
 * 👷 Upgrade `latest-changes` GitHub Action and pin `actions/checkout@v5`. PR [#406](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/406) by [@tiangolo](https://github.com/tiangolo).
