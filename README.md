@@ -811,6 +811,7 @@ All the image tags, configurations, environment variables and application option
 
 #### Upgrades
 
+* Bump flask from 3.1.2 to 3.1.3 in /docker-images. PR [#408](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/408) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump flask from 3.1.1 to 3.1.2. PR [#397](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/397) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * Bump flask from 3.1.0 to 3.1.1 in /docker-images. PR [#393](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/393) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump flask from 2.2.5 to 3.1.0. PR [#391](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/391) by [@dependabot[bot]](https://github.com/apps/dependabot).
