@@ -824,6 +824,7 @@ All the image tags, configurations, environment variables and application option
 
 #### Internal
 
+* 👷 Update Dependabot. PR [#412](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/412) by [@tiangolo](https://github.com/tiangolo).
 * ⬆ Bump docker/build-push-action from 6 to 7. PR [#411](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/411) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump actions/checkout from 5 to 6. PR [#405](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/405) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump peter-evans/dockerhub-description from 4 to 5. PR [#404](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/404) by [@dependabot[bot]](https://github.com/apps/dependabot).
