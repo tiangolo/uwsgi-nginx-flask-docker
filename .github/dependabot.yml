@@ -26,10 +26,6 @@ updates:
       prefix: ⬆
     cooldown:
       default-days: 7
-    labels:
-      - "internal"
-      - "dependencies"
-      - "python:pip"
     groups:
       python-packages:
         dependency-type: "development"
