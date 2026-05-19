@@ -4,13 +4,34 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     commit-message:
       prefix: ⬆
+    cooldown:
+      default-days: 7
+    labels:
+      - "internal"
+      - "dependencies"
+      - "github_actions"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
   # Python
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     commit-message:
       prefix: ⬆
+    cooldown:
+      default-days: 7
+    labels:
+      - "internal"
+      - "dependencies"
+      - "python:pip"
+    groups:
+      python-packages:
+        dependency-type: "development"
+        patterns:
+          - "*"
