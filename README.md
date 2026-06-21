@@ -824,6 +824,7 @@ All the image tags, configurations, environment variables and application option
 
 #### Internal
 
+* 🔒️ Add zizmor workflow security checks. PR [#418](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/418) by [@tiangolo](https://github.com/tiangolo).
 * ⬆ Bump the github-actions group across 1 directory with 3 updates. PR [#417](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/417) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * 🔥 Remove configs now stored in central GitHub repo. PR [#414](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/414) by [@tiangolo](https://github.com/tiangolo).
 * 👷 Update Dependabot. PR [#412](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/412) by [@tiangolo](https://github.com/tiangolo).
