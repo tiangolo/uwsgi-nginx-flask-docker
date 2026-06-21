@@ -21,10 +21,10 @@ jobs:
     - run: echo "Done adding labels"
   # Run this after labeler applied labels
   check-labels:
-    needs:
-      - labeler
     permissions:
       pull-requests: read
+    needs:
+      - labeler
     runs-on: ubuntu-latest
     steps:
       - uses: docker://agilepathway/pull-request-label-checker:latest

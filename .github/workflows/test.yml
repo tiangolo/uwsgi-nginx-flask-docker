@@ -10,8 +10,11 @@ on:
   schedule:
     # cron every week on monday
     - cron: "0 0 * * 1"
+permissions: {}
 jobs:
   test:
+    permissions:
+      contents: read
     strategy:
       matrix:
         image:
@@ -53,9 +56,8 @@ jobs:
         env:
           NAME: ${{ matrix.image.name }}
           PYTHON_VERSION: ${{ matrix.image.python_version }}
-    permissions:
-      contents: read
   check:
+    permissions: {}
     if: always()
     needs:
       - test
@@ -65,5 +67,3 @@ jobs:
         uses: re-actors/alls-green@05ac9388f0aebcb5727afa17fcccfecd6f8ec5fe # v1.2.2
         with:
           jobs: ${{ toJSON(needs) }}
-    permissions: {}
-permissions: {}
