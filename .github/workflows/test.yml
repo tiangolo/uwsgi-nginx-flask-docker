@@ -1,5 +1,4 @@
 name: Test
-
 on:
   push:
     branches:
@@ -11,7 +10,6 @@ on:
   schedule:
     # cron every week on monday
     - cron: "0 0 * * 1"
-
 jobs:
   test:
     strategy:
@@ -28,7 +26,9 @@ jobs:
       fail-fast: true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          persist-credentials: false
       - name: Set Dockerfile name
         if: matrix.image.name != 'latest'
         run: echo "DOCKERFILE_NAME=${{ matrix.image.name }}" >> $GITHUB_ENV
@@ -36,14 +36,14 @@ jobs:
         if: matrix.image.name == 'latest'
         run: echo "DOCKERFILE_NAME=python${{ matrix.image.python_version }}" >> $GITHUB_ENV
       - name: Build
-        uses: docker/build-push-action@v7
+        uses: docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf # v7
         with:
           push: false
           tags: tiangolo/uwsgi-nginx-flask:${{ matrix.image.name }}
           context: ./docker-images/
           file: ./docker-images/${{ env.DOCKERFILE_NAME }}.dockerfile
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
         with:
           python-version: "3.10"
       - name: Install Dependencies
@@ -53,13 +53,17 @@ jobs:
         env:
           NAME: ${{ matrix.image.name }}
           PYTHON_VERSION: ${{ matrix.image.python_version }}
+    permissions:
+      contents: read
   check:
     if: always()
     needs:
-    - test
+      - test
     runs-on: ubuntu-latest
     steps:
-    - name: Decide whether the needed jobs succeeded or failed
-      uses: re-actors/alls-green@release/v1
-      with:
-        jobs: ${{ toJSON(needs) }}
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@05ac9388f0aebcb5727afa17fcccfecd6f8ec5fe # v1.2.2
+        with:
+          jobs: ${{ toJSON(needs) }}
+    permissions: {}
+permissions: {}
