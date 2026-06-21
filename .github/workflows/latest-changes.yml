@@ -24,8 +24,8 @@ jobs:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           # To allow latest-changes to commit to master
-          token: ${{ secrets.UWSGI_NGINX_FLASK_DOCKER_LATEST_CHANGES }}
-          persist-credentials: false
+          token: ${{ secrets.UWSGI_NGINX_FLASK_DOCKER_LATEST_CHANGES }} # zizmor: ignore[secrets-outside-env]
+          persist-credentials: true # required by tiangolo/latest-changes
       - uses: tiangolo/latest-changes@eb3f6e7ff0073896ecb561e774a121de9418fa06 # 0.5.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
