@@ -26,7 +26,7 @@ jobs:
       fail-fast: true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - name: Set Dockerfile name
@@ -36,14 +36,14 @@ jobs:
         if: matrix.image.name == 'latest'
         run: echo "DOCKERFILE_NAME=python${{ matrix.image.python_version }}" >> $GITHUB_ENV
       - name: Build
-        uses: docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf # v7.2.0
+        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
         with:
           push: false
           tags: tiangolo/uwsgi-nginx-flask:${{ matrix.image.name }}
           context: ./docker-images/
           file: ./docker-images/${{ env.DOCKERFILE_NAME }}.dockerfile
       - name: Set up Python
-        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.10"
       - name: Install Dependencies
