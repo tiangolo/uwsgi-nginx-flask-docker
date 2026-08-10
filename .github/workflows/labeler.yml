@@ -5,9 +5,6 @@ on:
       - opened
       - synchronize
       - reopened
-      # For label-checker
-      - labeled
-      - unlabeled
 
 jobs:
   labeler:
@@ -17,17 +14,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/labeler@bf12e9b00b37c5c0ca2b87b79b2daf7891dbda13 # v7.0.0
-      if: ${{ github.event.action != 'labeled' && github.event.action != 'unlabeled' }}
     - run: echo "Done adding labels"
-  # Run this after labeler applied labels
-  check-labels:
-    permissions:
-      pull-requests: read
-    needs:
-      - labeler
-    runs-on: ubuntu-latest
-    steps:
-      - uses: docker://agilepathway/pull-request-label-checker:latest
-        with:
-          one_of: breaking,security,feature,bug,refactor,upgrade,docs,internal
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
