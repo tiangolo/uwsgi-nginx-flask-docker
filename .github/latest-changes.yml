@@ -1,0 +1,6 @@
+auto-labels:
+  upgrade:
+    - docker-images/requirements.txt
+  internal:
+    - .github/**
+    - .gitignore
