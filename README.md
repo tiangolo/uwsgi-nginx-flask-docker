@@ -144,15 +144,18 @@ COPY ./app /app
 
 ```python
 from flask import Flask
+
 app = Flask(__name__)
+
 
 @app.route("/")
 def hello():
     return "Hello World from Flask"
 
+
 if __name__ == "__main__":
     # Only for debugging while developing
-    app.run(host='0.0.0.0', debug=True, port=80)
+    app.run(host="0.0.0.0", debug=True, port=80)
 ```
 
 the main application object should be named `app` (in the code) as in this example.
@@ -713,8 +716,8 @@ An alternative for these last steps to work when you don't have a package, but j
 
 ```python
 if __name__ == "__main__":
-   # Only for debugging while developing
-   app.run(host='0.0.0.0', debug=True, port=80)
+    # Only for debugging while developing
+    app.run(host="0.0.0.0", debug=True, port=80)
 ```
 
 ...and you could run it with `python main.py`. But that will only work when you are not using a package structure and don't plan to do it later. In that specific case, if you didn't add the code block above, your app would only listen to `localhost` (inside the container), in another port (5000) and not in debug mode.
@@ -730,9 +733,9 @@ from flask import Flask, send_file
 and
 
 ```python
-@app.route('/')
+@app.route("/")
 def route_root():
-    index_path = os.path.join(app.static_folder, 'index.html')
+    index_path = os.path.join(app.static_folder, "index.html")
     return send_file(index_path)
 ```
 
@@ -742,7 +745,7 @@ And if you are using a SPA framework, to allow it to handle the URLs in the brow
 
 ```python
 # Everything not declared before (not a Flask route / API endpoint)...
-@app.route('/<path:path>')
+@app.route("/<path:path>")
 def route_frontend(path):
     # ...could be a static file needed by the front end that
     # doesn't use the `static` path (like in `<script src="bundle.js">`)
@@ -751,7 +754,7 @@ def route_frontend(path):
         return send_file(file_path)
     # ...or should be handled by the SPA's "router" in front end
     else:
-        index_path = os.path.join(app.static_folder, 'index.html')
+        index_path = os.path.join(app.static_folder, "index.html")
         return send_file(index_path)
 ```
 
