@@ -16,6 +16,7 @@
 
 ### Docs
 
+* 🎨 Format Python in Markdown with Ruff. PR [#442](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/442) by [@tiangolo](https://github.com/tiangolo).
 * 📝 Add note about historical README. PR [#403](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/403) by [@tiangolo](https://github.com/tiangolo).
 * 📝 Add deprecation note. PR [#402](https://github.com/tiangolo/uwsgi-nginx-flask-docker/pull/402) by [@tiangolo](https://github.com/tiangolo).
 
